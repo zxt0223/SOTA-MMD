@@ -1,0 +1,1911 @@
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  warnings.warn(
+[2026-03-12 16:54:52,156] torch.distributed.run: [WARNING] 
+[2026-03-12 16:54:52,156] torch.distributed.run: [WARNING] *****************************************
+[2026-03-12 16:54:52,156] torch.distributed.run: [WARNING] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+[2026-03-12 16:54:52,156] torch.distributed.run: [WARNING] *****************************************
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/mmengine/utils/dl_utils/setup_env.py:56: UserWarning: Setting MKL_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed.
+  warnings.warn(
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/mmengine/utils/dl_utils/setup_env.py:56: UserWarning: Setting MKL_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed.
+  warnings.warn(
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/mmengine/utils/dl_utils/setup_env.py:56: UserWarning: Setting MKL_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed.
+  warnings.warn(
+03/12 16:55:04 - mmengine - INFO - 
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.8.20 (default, Oct  3 2024, 15:24:27) [GCC 11.2.0]
+    CUDA available: True
+    MUSA available: False
+    numpy_random_seed: 1623410580
+    GPU 0,1,2: NVIDIA GeForce RTX 4090
+    CUDA_HOME: /cuda_alls/cuda-12.6
+    NVCC: Cuda compilation tools, release 12.6, V12.6.85
+    GCC: gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+    PyTorch: 2.1.2
+    PyTorch compiling details: PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201703
+  - Intel(R) oneAPI Math Kernel Library Version 2023.1-Product Build 20230303 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v3.1.1 (Git Hash 64f6bcbcbab628e96f33a62c3e975f8535a7bde4)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 12.1
+  - NVCC architecture flags: -gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_61,code=sm_61;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_90,code=sm_90
+  - CuDNN 8.9.2
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=12.1, CUDNN_VERSION=8.9.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -D_GLIBCXX_USE_CXX11_ABI=0 -fabi-version=11 -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=old-style-cast -Wno-invalid-partial-specialization -Wno-unused-private-field -Wno-aligned-allocation-unavailable -Wno-missing-braces -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_DISABLE_GPU_ASSERTS=ON, TORCH_VERSION=2.1.2, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+    TorchVision: 0.16.2
+    OpenCV: 4.13.0
+    MMEngine: 0.10.7
+
+Runtime environment:
+    cudnn_benchmark: False
+    mp_cfg: {'mp_start_method': 'fork', 'opencv_num_threads': 0}
+    dist_cfg: {'backend': 'nccl'}
+    seed: 1623410580
+    Distributed launcher: pytorch
+    Distributed training: True
+    GPU number: 3
+------------------------------------------------------------
+
+03/12 16:55:04 - mmengine - INFO - Config:
+auto_scale_lr = dict(base_batch_size=16, enable=False)
+backend_args = None
+custom_imports = dict(
+    allow_failed_imports=False, imports=[
+        'A_models.legnet_3x',
+    ])
+data_root = 'A-datas/'
+dataset_type = 'CocoDataset'
+default_hooks = dict(
+    checkpoint=dict(
+        interval=10,
+        max_keep_ckpts=10,
+        save_best='auto',
+        type='CheckpointHook'),
+    logger=dict(interval=50, type='LoggerHook'),
+    param_scheduler=dict(type='ParamSchedulerHook'),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    timer=dict(type='IterTimerHook'),
+    visualization=dict(type='DetVisualizationHook'))
+default_scope = 'mmdet'
+env_cfg = dict(
+    cudnn_benchmark=False,
+    dist_cfg=dict(backend='nccl'),
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
+launcher = 'pytorch'
+load_from = None
+log_level = 'INFO'
+log_processor = dict(by_epoch=True, type='LogProcessor', window_size=50)
+metainfo = dict(
+    classes=('stone', ), palette=[
+        (
+            20,
+            220,
+            20,
+        ),
+    ])
+model = dict(
+    backbone=dict(
+        depths=(
+            1,
+            4,
+            4,
+            2,
+        ),
+        drop_path_rate=0.1,
+        fork_feat=True,
+        in_chans=3,
+        init_cfg=dict(
+            checkpoint='/group/chenjinming/LEG的权重文件/LWEGNet_tiny.pth',
+            type='Pretrained'),
+        stem_dim=32,
+        type='LWEGNet'),
+    data_preprocessor=dict(
+        bgr_to_rgb=True,
+        mean=[
+            123.675,
+            116.28,
+            103.53,
+        ],
+        pad_mask=True,
+        pad_size_divisor=32,
+        std=[
+            58.395,
+            57.12,
+            57.375,
+        ],
+        type='DetDataPreprocessor'),
+    neck=dict(
+        in_channels=[
+            64,
+            128,
+            256,
+            512,
+        ],
+        num_outs=5,
+        out_channels=256,
+        type='FPN'),
+    roi_head=dict(
+        bbox_head=dict(
+            bbox_coder=dict(
+                target_means=[
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                ],
+                target_stds=[
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.2,
+                ],
+                type='DeltaXYWHBBoxCoder'),
+            fc_out_channels=1024,
+            in_channels=256,
+            loss_bbox=dict(loss_weight=1.0, type='L1Loss'),
+            loss_cls=dict(
+                loss_weight=1.0, type='CrossEntropyLoss', use_sigmoid=False),
+            num_classes=1,
+            reg_class_agnostic=False,
+            roi_feat_size=7,
+            type='Shared2FCBBoxHead'),
+        bbox_roi_extractor=dict(
+            featmap_strides=[
+                4,
+                8,
+                16,
+                32,
+            ],
+            out_channels=256,
+            roi_layer=dict(output_size=7, sampling_ratio=0, type='RoIAlign'),
+            type='SingleRoIExtractor'),
+        mask_head=dict(
+            conv_out_channels=256,
+            in_channels=256,
+            loss_mask=dict(
+                loss_weight=1.0, type='CrossEntropyLoss', use_mask=True),
+            num_classes=1,
+            num_convs=4,
+            type='FCNMaskHead'),
+        mask_roi_extractor=dict(
+            featmap_strides=[
+                4,
+                8,
+                16,
+                32,
+            ],
+            out_channels=256,
+            roi_layer=dict(output_size=14, sampling_ratio=0, type='RoIAlign'),
+            type='SingleRoIExtractor'),
+        type='StandardRoIHead'),
+    rpn_head=dict(
+        anchor_generator=dict(
+            ratios=[
+                0.5,
+                1.0,
+                2.0,
+            ],
+            scales=[
+                8,
+            ],
+            strides=[
+                4,
+                8,
+                16,
+                32,
+                64,
+            ],
+            type='AnchorGenerator'),
+        bbox_coder=dict(
+            target_means=[
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+            ],
+            target_stds=[
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+            ],
+            type='DeltaXYWHBBoxCoder'),
+        feat_channels=256,
+        in_channels=256,
+        loss_bbox=dict(loss_weight=1.0, type='L1Loss'),
+        loss_cls=dict(
+            loss_weight=1.0, type='CrossEntropyLoss', use_sigmoid=True),
+        type='RPNHead'),
+    test_cfg=dict(
+        rcnn=dict(
+            mask_thr_binary=0.5,
+            max_per_img=100,
+            nms=dict(iou_threshold=0.5, type='nms'),
+            score_thr=0.05),
+        rpn=dict(
+            max_per_img=1000,
+            min_bbox_size=0,
+            nms=dict(iou_threshold=0.7, type='nms'),
+            nms_pre=1000)),
+    train_cfg=dict(
+        rcnn=dict(
+            assigner=dict(
+                ignore_iof_thr=-1,
+                match_low_quality=True,
+                min_pos_iou=0.5,
+                neg_iou_thr=0.5,
+                pos_iou_thr=0.5,
+                type='MaxIoUAssigner'),
+            debug=False,
+            mask_size=28,
+            pos_weight=-1,
+            sampler=dict(
+                add_gt_as_proposals=True,
+                neg_pos_ub=-1,
+                num=512,
+                pos_fraction=0.25,
+                type='RandomSampler')),
+        rpn=dict(
+            allowed_border=-1,
+            assigner=dict(
+                ignore_iof_thr=-1,
+                match_low_quality=True,
+                min_pos_iou=0.3,
+                neg_iou_thr=0.3,
+                pos_iou_thr=0.7,
+                type='MaxIoUAssigner'),
+            debug=False,
+            pos_weight=-1,
+            sampler=dict(
+                add_gt_as_proposals=False,
+                neg_pos_ub=-1,
+                num=256,
+                pos_fraction=0.5,
+                type='RandomSampler')),
+        rpn_proposal=dict(
+            max_per_img=1000,
+            min_bbox_size=0,
+            nms=dict(iou_threshold=0.7, type='nms'),
+            nms_pre=2000)),
+    type='MaskRCNN')
+model_wrapper_cfg = dict(
+    find_unused_parameters=True, type='MMDistributedDataParallel')
+optim_wrapper = dict(
+    clip_grad=dict(max_norm=35.0, norm_type=2),
+    optimizer=dict(
+        betas=(
+            0.9,
+            0.999,
+        ), lr=0.0002, type='AdamW', weight_decay=0.05),
+    type='OptimWrapper')
+param_scheduler = [
+    dict(
+        begin=0, by_epoch=False, end=500, start_factor=0.001, type='LinearLR'),
+    dict(
+        begin=0,
+        by_epoch=True,
+        end=100,
+        gamma=0.1,
+        milestones=[
+            70,
+            90,
+        ],
+        type='MultiStepLR'),
+]
+resume = False
+test_cfg = dict(type='TestLoop')
+test_dataloader = dict(
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_val2017.json',
+        backend_args=None,
+        data_prefix=dict(img='val2017/'),
+        data_root='A-datas/',
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                1333,
+                800,
+            ), type='Resize'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(
+                meta_keys=(
+                    'img_id',
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackDetInputs'),
+        ],
+        test_mode=True,
+        type='CocoDataset'),
+    drop_last=False,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+test_evaluator = dict(
+    ann_file='A-datas/annotations/instances_val2017.json',
+    backend_args=None,
+    format_only=False,
+    metric=[
+        'bbox',
+        'segm',
+    ],
+    type='CocoMetric')
+test_pipeline = [
+    dict(backend_args=None, type='LoadImageFromFile'),
+    dict(keep_ratio=True, scale=(
+        1333,
+        800,
+    ), type='Resize'),
+    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    dict(
+        meta_keys=(
+            'img_id',
+            'img_path',
+            'ori_shape',
+            'img_shape',
+            'scale_factor',
+        ),
+        type='PackDetInputs'),
+]
+train_cfg = dict(max_epochs=100, type='EpochBasedTrainLoop', val_interval=5)
+train_dataloader = dict(
+    batch_sampler=dict(type='AspectRatioBatchSampler'),
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_train2017.json',
+        backend_args=None,
+        data_prefix=dict(img='train2017/'),
+        data_root='A-datas/',
+        filter_cfg=dict(filter_empty_gt=True, min_size=32),
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(keep_ratio=True, scale=(
+                1333,
+                800,
+            ), type='Resize'),
+            dict(prob=0.5, type='RandomFlip'),
+            dict(type='PackDetInputs'),
+        ],
+        type='CocoDataset'),
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=True, type='DefaultSampler'))
+train_pipeline = [
+    dict(backend_args=None, type='LoadImageFromFile'),
+    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    dict(keep_ratio=True, scale=(
+        1333,
+        800,
+    ), type='Resize'),
+    dict(prob=0.5, type='RandomFlip'),
+    dict(type='PackDetInputs'),
+]
+val_cfg = dict(type='ValLoop')
+val_dataloader = dict(
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_val2017.json',
+        backend_args=None,
+        data_prefix=dict(img='val2017/'),
+        data_root='A-datas/',
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                1333,
+                800,
+            ), type='Resize'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(
+                meta_keys=(
+                    'img_id',
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackDetInputs'),
+        ],
+        test_mode=True,
+        type='CocoDataset'),
+    drop_last=False,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+val_evaluator = dict(
+    ann_file='A-datas/annotations/instances_val2017.json',
+    backend_args=None,
+    format_only=False,
+    metric=[
+        'bbox',
+        'segm',
+    ],
+    type='CocoMetric')
+vis_backends = [
+    dict(type='LocalVisBackend'),
+]
+visualizer = dict(
+    name='visualizer',
+    type='DetLocalVisualizer',
+    vis_backends=[
+        dict(type='LocalVisBackend'),
+        dict(type='TensorboardVisBackend'),
+    ])
+work_dir = '/group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed'
+
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400400184/work/aten/src/ATen/native/TensorShape.cpp:3526.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400400184/work/aten/src/ATen/native/TensorShape.cpp:3526.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400400184/work/aten/src/ATen/native/TensorShape.cpp:3526.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+loading annotations into memory...
+03/12 16:55:05 - mmengine - INFO - Hooks will be executed in the following order:
+before_run:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+before_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_train_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DistSamplerSeedHook                
+ -------------------- 
+before_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_train_epoch:
+(NORMAL      ) IterTimerHook                      
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_val_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_val_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_val_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DetVisualizationHook               
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_val_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_test_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_test_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_test_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DetVisualizationHook               
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_run:
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+loading annotations into memory...
+loading annotations into memory...
+Done (t=0.32s)
+creating index...
+Done (t=0.32s)
+creating index...
+index created!
+index created!
+Done (t=0.48s)
+creating index...
+index created!
+loading annotations into memory...
+loading annotations into memory...
+Done (t=0.03s)
+creating index...
+index created!
+Done (t=0.03s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.03s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.03s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.03s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.03s)
+creating index...
+index created!
+03/12 16:55:07 - mmengine - INFO - load model from: /group/chenjinming/LEG的权重文件/LWEGNet_tiny.pth
+03/12 16:55:07 - mmengine - INFO - Loads checkpoint by local backend from path: /group/chenjinming/LEG的权重文件/LWEGNet_tiny.pth
+03/12 16:55:07 - mmengine - WARNING - The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: model, optimizer, epoch, scaler, args, model_ema
+
+missing keys in source state_dict: Stem.Conv_D.0.weight, Stem.Conv_D.0.bias, Stem.Conv_D.1.weight, Stem.Conv_D.1.bias, Stem.Conv_D.2.weight, Stem.Conv_D.2.bias, Stem.Conv_D.2.running_mean, Stem.Conv_D.2.running_var, Stem.LoG.conv_init.weight, Stem.LoG.conv_init.bias, Stem.LoG.LoG.weight, Stem.LoG.norm1.weight, Stem.LoG.norm1.bias, Stem.LoG.norm1.running_mean, Stem.LoG.norm1.running_var, Stem.LoG.norm2.weight, Stem.LoG.norm2.bias, Stem.LoG.norm2.running_mean, Stem.LoG.norm2.running_var, Stem.gaussian.gaussian.weight, Stem.gaussian.norm.weight, Stem.gaussian.norm.bias, Stem.gaussian.norm.running_mean, Stem.gaussian.norm.running_var, Stem.gaussian.conv_extra.block.0.weight, Stem.gaussian.conv_extra.block.0.bias, Stem.gaussian.conv_extra.block.1.weight, Stem.gaussian.conv_extra.block.1.bias, Stem.gaussian.conv_extra.block.1.running_mean, Stem.gaussian.conv_extra.block.1.running_var, Stem.gaussian.conv_extra.block.3.weight, Stem.gaussian.conv_extra.block.4.weight, Stem.gaussian.conv_extra.block.4.bias, Stem.gaussian.conv_extra.block.4.running_mean, Stem.gaussian.conv_extra.block.4.running_var, Stem.gaussian.conv_extra.block.6.weight, Stem.gaussian.conv_extra.block.6.bias, Stem.gaussian.conv_extra.block.7.weight, Stem.gaussian.conv_extra.block.7.bias, Stem.gaussian.conv_extra.block.7.running_mean, Stem.gaussian.conv_extra.block.7.running_var, Stem.norm.weight, Stem.norm.bias, Stem.norm.running_mean, Stem.norm.running_var, Stem.drfd.conv.weight, Stem.drfd.conv.bias, Stem.drfd.conv_c.weight, Stem.drfd.conv_c.bias, Stem.drfd.norm_c.weight, Stem.drfd.norm_c.bias, Stem.drfd.norm_c.running_mean, Stem.drfd.norm_c.running_var, Stem.drfd.norm_m.weight, Stem.drfd.norm_m.bias, Stem.drfd.norm_m.running_mean, Stem.drfd.norm_m.running_var, Stem.drfd.fusion.weight, Stem.drfd.fusion.bias, Stem.drfd.gaussian.gaussian.weight, Stem.drfd.gaussian.norm.weight, Stem.drfd.gaussian.norm.bias, Stem.drfd.gaussian.norm.running_mean, Stem.drfd.gaussian.norm.running_var, Stem.drfd.norm_g.weight, Stem.drfd.norm_g.bias, Stem.drfd.norm_g.running_mean, Stem.drfd.norm_g.running_var, stages.0.blocks.0.mlp.0.weight, stages.0.blocks.0.mlp.1.weight, stages.0.blocks.0.mlp.1.bias, stages.0.blocks.0.mlp.1.running_mean, stages.0.blocks.0.mlp.1.running_var, stages.0.blocks.0.mlp.3.weight, stages.0.blocks.0.LFEA.conv2d.0.weight, stages.0.blocks.0.LFEA.conv2d.1.weight, stages.0.blocks.0.LFEA.conv2d.1.bias, stages.0.blocks.0.LFEA.conv2d.1.running_mean, stages.0.blocks.0.LFEA.conv2d.1.running_var, stages.0.blocks.0.LFEA.conv1d.weight, stages.0.blocks.0.LFEA.norm.weight, stages.0.blocks.0.LFEA.norm.bias, stages.0.blocks.0.LFEA.norm.running_mean, stages.0.blocks.0.LFEA.norm.running_var, stages.0.blocks.0.Scharr_edge.conv_x.weight, stages.0.blocks.0.Scharr_edge.conv_y.weight, stages.0.blocks.0.Scharr_edge.norm.weight, stages.0.blocks.0.Scharr_edge.norm.bias, stages.0.blocks.0.Scharr_edge.norm.running_mean, stages.0.blocks.0.Scharr_edge.norm.running_var, stages.0.blocks.0.Scharr_edge.conv_extra.block.0.weight, stages.0.blocks.0.Scharr_edge.conv_extra.block.0.bias, stages.0.blocks.0.Scharr_edge.conv_extra.block.1.weight, stages.0.blocks.0.Scharr_edge.conv_extra.block.1.bias, stages.0.blocks.0.Scharr_edge.conv_extra.block.1.running_mean, stages.0.blocks.0.Scharr_edge.conv_extra.block.1.running_var, stages.0.blocks.0.Scharr_edge.conv_extra.block.3.weight, stages.0.blocks.0.Scharr_edge.conv_extra.block.4.weight, stages.0.blocks.0.Scharr_edge.conv_extra.block.4.bias, stages.0.blocks.0.Scharr_edge.conv_extra.block.4.running_mean, stages.0.blocks.0.Scharr_edge.conv_extra.block.4.running_var, stages.0.blocks.0.Scharr_edge.conv_extra.block.6.weight, stages.0.blocks.0.Scharr_edge.conv_extra.block.6.bias, stages.0.blocks.0.Scharr_edge.conv_extra.block.7.weight, stages.0.blocks.0.Scharr_edge.conv_extra.block.7.bias, stages.0.blocks.0.Scharr_edge.conv_extra.block.7.running_mean, stages.0.blocks.0.Scharr_edge.conv_extra.block.7.running_var, stages.0.blocks.0.norm.weight, stages.0.blocks.0.norm.bias, stages.0.blocks.0.norm.running_mean, stages.0.blocks.0.norm.running_var, stages.1.conv.weight, stages.1.conv.bias, stages.1.conv_c.weight, stages.1.conv_c.bias, stages.1.norm_c.weight, stages.1.norm_c.bias, stages.1.norm_c.running_mean, stages.1.norm_c.running_var, stages.1.norm_m.weight, stages.1.norm_m.bias, stages.1.norm_m.running_mean, stages.1.norm_m.running_var, stages.1.fusion.weight, stages.1.fusion.bias, stages.1.gaussian.gaussian.weight, stages.1.gaussian.norm.weight, stages.1.gaussian.norm.bias, stages.1.gaussian.norm.running_mean, stages.1.gaussian.norm.running_var, stages.1.norm_g.weight, stages.1.norm_g.bias, stages.1.norm_g.running_mean, stages.1.norm_g.running_var, stages.2.blocks.0.mlp.0.weight, stages.2.blocks.0.mlp.1.weight, stages.2.blocks.0.mlp.1.bias, stages.2.blocks.0.mlp.1.running_mean, stages.2.blocks.0.mlp.1.running_var, stages.2.blocks.0.mlp.3.weight, stages.2.blocks.0.LFEA.conv2d.0.weight, stages.2.blocks.0.LFEA.conv2d.1.weight, stages.2.blocks.0.LFEA.conv2d.1.bias, stages.2.blocks.0.LFEA.conv2d.1.running_mean, stages.2.blocks.0.LFEA.conv2d.1.running_var, stages.2.blocks.0.LFEA.conv1d.weight, stages.2.blocks.0.LFEA.norm.weight, stages.2.blocks.0.LFEA.norm.bias, stages.2.blocks.0.LFEA.norm.running_mean, stages.2.blocks.0.LFEA.norm.running_var, stages.2.blocks.0.gaussian.gaussian.weight, stages.2.blocks.0.gaussian.norm.weight, stages.2.blocks.0.gaussian.norm.bias, stages.2.blocks.0.gaussian.norm.running_mean, stages.2.blocks.0.gaussian.norm.running_var, stages.2.blocks.0.gaussian.conv_extra.block.0.weight, stages.2.blocks.0.gaussian.conv_extra.block.0.bias, stages.2.blocks.0.gaussian.conv_extra.block.1.weight, stages.2.blocks.0.gaussian.conv_extra.block.1.bias, stages.2.blocks.0.gaussian.conv_extra.block.1.running_mean, stages.2.blocks.0.gaussian.conv_extra.block.1.running_var, stages.2.blocks.0.gaussian.conv_extra.block.3.weight, stages.2.blocks.0.gaussian.conv_extra.block.4.weight, stages.2.blocks.0.gaussian.conv_extra.block.4.bias, stages.2.blocks.0.gaussian.conv_extra.block.4.running_mean, stages.2.blocks.0.gaussian.conv_extra.block.4.running_var, stages.2.blocks.0.gaussian.conv_extra.block.6.weight, stages.2.blocks.0.gaussian.conv_extra.block.6.bias, stages.2.blocks.0.gaussian.conv_extra.block.7.weight, stages.2.blocks.0.gaussian.conv_extra.block.7.bias, stages.2.blocks.0.gaussian.conv_extra.block.7.running_mean, stages.2.blocks.0.gaussian.conv_extra.block.7.running_var, stages.2.blocks.0.norm.weight, stages.2.blocks.0.norm.bias, stages.2.blocks.0.norm.running_mean, stages.2.blocks.0.norm.running_var, stages.2.blocks.1.mlp.0.weight, stages.2.blocks.1.mlp.1.weight, stages.2.blocks.1.mlp.1.bias, stages.2.blocks.1.mlp.1.running_mean, stages.2.blocks.1.mlp.1.running_var, stages.2.blocks.1.mlp.3.weight, stages.2.blocks.1.LFEA.conv2d.0.weight, stages.2.blocks.1.LFEA.conv2d.1.weight, stages.2.blocks.1.LFEA.conv2d.1.bias, stages.2.blocks.1.LFEA.conv2d.1.running_mean, stages.2.blocks.1.LFEA.conv2d.1.running_var, stages.2.blocks.1.LFEA.conv1d.weight, stages.2.blocks.1.LFEA.norm.weight, stages.2.blocks.1.LFEA.norm.bias, stages.2.blocks.1.LFEA.norm.running_mean, stages.2.blocks.1.LFEA.norm.running_var, stages.2.blocks.1.gaussian.gaussian.weight, stages.2.blocks.1.gaussian.norm.weight, stages.2.blocks.1.gaussian.norm.bias, stages.2.blocks.1.gaussian.norm.running_mean, stages.2.blocks.1.gaussian.norm.running_var, stages.2.blocks.1.gaussian.conv_extra.block.0.weight, stages.2.blocks.1.gaussian.conv_extra.block.0.bias, stages.2.blocks.1.gaussian.conv_extra.block.1.weight, stages.2.blocks.1.gaussian.conv_extra.block.1.bias, stages.2.blocks.1.gaussian.conv_extra.block.1.running_mean, stages.2.blocks.1.gaussian.conv_extra.block.1.running_var, stages.2.blocks.1.gaussian.conv_extra.block.3.weight, stages.2.blocks.1.gaussian.conv_extra.block.4.weight, stages.2.blocks.1.gaussian.conv_extra.block.4.bias, stages.2.blocks.1.gaussian.conv_extra.block.4.running_mean, stages.2.blocks.1.gaussian.conv_extra.block.4.running_var, stages.2.blocks.1.gaussian.conv_extra.block.6.weight, stages.2.blocks.1.gaussian.conv_extra.block.6.bias, stages.2.blocks.1.gaussian.conv_extra.block.7.weight, stages.2.blocks.1.gaussian.conv_extra.block.7.bias, stages.2.blocks.1.gaussian.conv_extra.block.7.running_mean, stages.2.blocks.1.gaussian.conv_extra.block.7.running_var, stages.2.blocks.1.norm.weight, stages.2.blocks.1.norm.bias, stages.2.blocks.1.norm.running_mean, stages.2.blocks.1.norm.running_var, stages.2.blocks.2.mlp.0.weight, stages.2.blocks.2.mlp.1.weight, stages.2.blocks.2.mlp.1.bias, stages.2.blocks.2.mlp.1.running_mean, stages.2.blocks.2.mlp.1.running_var, stages.2.blocks.2.mlp.3.weight, stages.2.blocks.2.LFEA.conv2d.0.weight, stages.2.blocks.2.LFEA.conv2d.1.weight, stages.2.blocks.2.LFEA.conv2d.1.bias, stages.2.blocks.2.LFEA.conv2d.1.running_mean, stages.2.blocks.2.LFEA.conv2d.1.running_var, stages.2.blocks.2.LFEA.conv1d.weight, stages.2.blocks.2.LFEA.norm.weight, stages.2.blocks.2.LFEA.norm.bias, stages.2.blocks.2.LFEA.norm.running_mean, stages.2.blocks.2.LFEA.norm.running_var, stages.2.blocks.2.gaussian.gaussian.weight, stages.2.blocks.2.gaussian.norm.weight, stages.2.blocks.2.gaussian.norm.bias, stages.2.blocks.2.gaussian.norm.running_mean, stages.2.blocks.2.gaussian.norm.running_var, stages.2.blocks.2.gaussian.conv_extra.block.0.weight, stages.2.blocks.2.gaussian.conv_extra.block.0.bias, stages.2.blocks.2.gaussian.conv_extra.block.1.weight, stages.2.blocks.2.gaussian.conv_extra.block.1.bias, stages.2.blocks.2.gaussian.conv_extra.block.1.running_mean, stages.2.blocks.2.gaussian.conv_extra.block.1.running_var, stages.2.blocks.2.gaussian.conv_extra.block.3.weight, stages.2.blocks.2.gaussian.conv_extra.block.4.weight, stages.2.blocks.2.gaussian.conv_extra.block.4.bias, stages.2.blocks.2.gaussian.conv_extra.block.4.running_mean, stages.2.blocks.2.gaussian.conv_extra.block.4.running_var, stages.2.blocks.2.gaussian.conv_extra.block.6.weight, stages.2.blocks.2.gaussian.conv_extra.block.6.bias, stages.2.blocks.2.gaussian.conv_extra.block.7.weight, stages.2.blocks.2.gaussian.conv_extra.block.7.bias, stages.2.blocks.2.gaussian.conv_extra.block.7.running_mean, stages.2.blocks.2.gaussian.conv_extra.block.7.running_var, stages.2.blocks.2.norm.weight, stages.2.blocks.2.norm.bias, stages.2.blocks.2.norm.running_mean, stages.2.blocks.2.norm.running_var, stages.2.blocks.3.mlp.0.weight, stages.2.blocks.3.mlp.1.weight, stages.2.blocks.3.mlp.1.bias, stages.2.blocks.3.mlp.1.running_mean, stages.2.blocks.3.mlp.1.running_var, stages.2.blocks.3.mlp.3.weight, stages.2.blocks.3.LFEA.conv2d.0.weight, stages.2.blocks.3.LFEA.conv2d.1.weight, stages.2.blocks.3.LFEA.conv2d.1.bias, stages.2.blocks.3.LFEA.conv2d.1.running_mean, stages.2.blocks.3.LFEA.conv2d.1.running_var, stages.2.blocks.3.LFEA.conv1d.weight, stages.2.blocks.3.LFEA.norm.weight, stages.2.blocks.3.LFEA.norm.bias, stages.2.blocks.3.LFEA.norm.running_mean, stages.2.blocks.3.LFEA.norm.running_var, stages.2.blocks.3.gaussian.gaussian.weight, stages.2.blocks.3.gaussian.norm.weight, stages.2.blocks.3.gaussian.norm.bias, stages.2.blocks.3.gaussian.norm.running_mean, stages.2.blocks.3.gaussian.norm.running_var, stages.2.blocks.3.gaussian.conv_extra.block.0.weight, stages.2.blocks.3.gaussian.conv_extra.block.0.bias, stages.2.blocks.3.gaussian.conv_extra.block.1.weight, stages.2.blocks.3.gaussian.conv_extra.block.1.bias, stages.2.blocks.3.gaussian.conv_extra.block.1.running_mean, stages.2.blocks.3.gaussian.conv_extra.block.1.running_var, stages.2.blocks.3.gaussian.conv_extra.block.3.weight, stages.2.blocks.3.gaussian.conv_extra.block.4.weight, stages.2.blocks.3.gaussian.conv_extra.block.4.bias, stages.2.blocks.3.gaussian.conv_extra.block.4.running_mean, stages.2.blocks.3.gaussian.conv_extra.block.4.running_var, stages.2.blocks.3.gaussian.conv_extra.block.6.weight, stages.2.blocks.3.gaussian.conv_extra.block.6.bias, stages.2.blocks.3.gaussian.conv_extra.block.7.weight, stages.2.blocks.3.gaussian.conv_extra.block.7.bias, stages.2.blocks.3.gaussian.conv_extra.block.7.running_mean, stages.2.blocks.3.gaussian.conv_extra.block.7.running_var, stages.2.blocks.3.norm.weight, stages.2.blocks.3.norm.bias, stages.2.blocks.3.norm.running_mean, stages.2.blocks.3.norm.running_var, stages.3.conv.weight, stages.3.conv.bias, stages.3.conv_c.weight, stages.3.conv_c.bias, stages.3.norm_c.weight, stages.3.norm_c.bias, stages.3.norm_c.running_mean, stages.3.norm_c.running_var, stages.3.norm_m.weight, stages.3.norm_m.bias, stages.3.norm_m.running_mean, stages.3.norm_m.running_var, stages.3.fusion.weight, stages.3.fusion.bias, stages.3.gaussian.gaussian.weight, stages.3.gaussian.norm.weight, stages.3.gaussian.norm.bias, stages.3.gaussian.norm.running_mean, stages.3.gaussian.norm.running_var, stages.3.norm_g.weight, stages.3.norm_g.bias, stages.3.norm_g.running_mean, stages.3.norm_g.running_var, stages.4.blocks.0.mlp.0.weight, stages.4.blocks.0.mlp.1.weight, stages.4.blocks.0.mlp.1.bias, stages.4.blocks.0.mlp.1.running_mean, stages.4.blocks.0.mlp.1.running_var, stages.4.blocks.0.mlp.3.weight, stages.4.blocks.0.LFEA.conv2d.0.weight, stages.4.blocks.0.LFEA.conv2d.1.weight, stages.4.blocks.0.LFEA.conv2d.1.bias, stages.4.blocks.0.LFEA.conv2d.1.running_mean, stages.4.blocks.0.LFEA.conv2d.1.running_var, stages.4.blocks.0.LFEA.conv1d.weight, stages.4.blocks.0.LFEA.norm.weight, stages.4.blocks.0.LFEA.norm.bias, stages.4.blocks.0.LFEA.norm.running_mean, stages.4.blocks.0.LFEA.norm.running_var, stages.4.blocks.0.gaussian.gaussian.weight, stages.4.blocks.0.gaussian.norm.weight, stages.4.blocks.0.gaussian.norm.bias, stages.4.blocks.0.gaussian.norm.running_mean, stages.4.blocks.0.gaussian.norm.running_var, stages.4.blocks.0.gaussian.conv_extra.block.0.weight, stages.4.blocks.0.gaussian.conv_extra.block.0.bias, stages.4.blocks.0.gaussian.conv_extra.block.1.weight, stages.4.blocks.0.gaussian.conv_extra.block.1.bias, stages.4.blocks.0.gaussian.conv_extra.block.1.running_mean, stages.4.blocks.0.gaussian.conv_extra.block.1.running_var, stages.4.blocks.0.gaussian.conv_extra.block.3.weight, stages.4.blocks.0.gaussian.conv_extra.block.4.weight, stages.4.blocks.0.gaussian.conv_extra.block.4.bias, stages.4.blocks.0.gaussian.conv_extra.block.4.running_mean, stages.4.blocks.0.gaussian.conv_extra.block.4.running_var, stages.4.blocks.0.gaussian.conv_extra.block.6.weight, stages.4.blocks.0.gaussian.conv_extra.block.6.bias, stages.4.blocks.0.gaussian.conv_extra.block.7.weight, stages.4.blocks.0.gaussian.conv_extra.block.7.bias, stages.4.blocks.0.gaussian.conv_extra.block.7.running_mean, stages.4.blocks.0.gaussian.conv_extra.block.7.running_var, stages.4.blocks.0.norm.weight, stages.4.blocks.0.norm.bias, stages.4.blocks.0.norm.running_mean, stages.4.blocks.0.norm.running_var, stages.4.blocks.1.mlp.0.weight, stages.4.blocks.1.mlp.1.weight, stages.4.blocks.1.mlp.1.bias, stages.4.blocks.1.mlp.1.running_mean, stages.4.blocks.1.mlp.1.running_var, stages.4.blocks.1.mlp.3.weight, stages.4.blocks.1.LFEA.conv2d.0.weight, stages.4.blocks.1.LFEA.conv2d.1.weight, stages.4.blocks.1.LFEA.conv2d.1.bias, stages.4.blocks.1.LFEA.conv2d.1.running_mean, stages.4.blocks.1.LFEA.conv2d.1.running_var, stages.4.blocks.1.LFEA.conv1d.weight, stages.4.blocks.1.LFEA.norm.weight, stages.4.blocks.1.LFEA.norm.bias, stages.4.blocks.1.LFEA.norm.running_mean, stages.4.blocks.1.LFEA.norm.running_var, stages.4.blocks.1.gaussian.gaussian.weight, stages.4.blocks.1.gaussian.norm.weight, stages.4.blocks.1.gaussian.norm.bias, stages.4.blocks.1.gaussian.norm.running_mean, stages.4.blocks.1.gaussian.norm.running_var, stages.4.blocks.1.gaussian.conv_extra.block.0.weight, stages.4.blocks.1.gaussian.conv_extra.block.0.bias, stages.4.blocks.1.gaussian.conv_extra.block.1.weight, stages.4.blocks.1.gaussian.conv_extra.block.1.bias, stages.4.blocks.1.gaussian.conv_extra.block.1.running_mean, stages.4.blocks.1.gaussian.conv_extra.block.1.running_var, stages.4.blocks.1.gaussian.conv_extra.block.3.weight, stages.4.blocks.1.gaussian.conv_extra.block.4.weight, stages.4.blocks.1.gaussian.conv_extra.block.4.bias, stages.4.blocks.1.gaussian.conv_extra.block.4.running_mean, stages.4.blocks.1.gaussian.conv_extra.block.4.running_var, stages.4.blocks.1.gaussian.conv_extra.block.6.weight, stages.4.blocks.1.gaussian.conv_extra.block.6.bias, stages.4.blocks.1.gaussian.conv_extra.block.7.weight, stages.4.blocks.1.gaussian.conv_extra.block.7.bias, stages.4.blocks.1.gaussian.conv_extra.block.7.running_mean, stages.4.blocks.1.gaussian.conv_extra.block.7.running_var, stages.4.blocks.1.norm.weight, stages.4.blocks.1.norm.bias, stages.4.blocks.1.norm.running_mean, stages.4.blocks.1.norm.running_var, stages.4.blocks.2.mlp.0.weight, stages.4.blocks.2.mlp.1.weight, stages.4.blocks.2.mlp.1.bias, stages.4.blocks.2.mlp.1.running_mean, stages.4.blocks.2.mlp.1.running_var, stages.4.blocks.2.mlp.3.weight, stages.4.blocks.2.LFEA.conv2d.0.weight, stages.4.blocks.2.LFEA.conv2d.1.weight, stages.4.blocks.2.LFEA.conv2d.1.bias, stages.4.blocks.2.LFEA.conv2d.1.running_mean, stages.4.blocks.2.LFEA.conv2d.1.running_var, stages.4.blocks.2.LFEA.conv1d.weight, stages.4.blocks.2.LFEA.norm.weight, stages.4.blocks.2.LFEA.norm.bias, stages.4.blocks.2.LFEA.norm.running_mean, stages.4.blocks.2.LFEA.norm.running_var, stages.4.blocks.2.gaussian.gaussian.weight, stages.4.blocks.2.gaussian.norm.weight, stages.4.blocks.2.gaussian.norm.bias, stages.4.blocks.2.gaussian.norm.running_mean, stages.4.blocks.2.gaussian.norm.running_var, stages.4.blocks.2.gaussian.conv_extra.block.0.weight, stages.4.blocks.2.gaussian.conv_extra.block.0.bias, stages.4.blocks.2.gaussian.conv_extra.block.1.weight, stages.4.blocks.2.gaussian.conv_extra.block.1.bias, stages.4.blocks.2.gaussian.conv_extra.block.1.running_mean, stages.4.blocks.2.gaussian.conv_extra.block.1.running_var, stages.4.blocks.2.gaussian.conv_extra.block.3.weight, stages.4.blocks.2.gaussian.conv_extra.block.4.weight, stages.4.blocks.2.gaussian.conv_extra.block.4.bias, stages.4.blocks.2.gaussian.conv_extra.block.4.running_mean, stages.4.blocks.2.gaussian.conv_extra.block.4.running_var, stages.4.blocks.2.gaussian.conv_extra.block.6.weight, stages.4.blocks.2.gaussian.conv_extra.block.6.bias, stages.4.blocks.2.gaussian.conv_extra.block.7.weight, stages.4.blocks.2.gaussian.conv_extra.block.7.bias, stages.4.blocks.2.gaussian.conv_extra.block.7.running_mean, stages.4.blocks.2.gaussian.conv_extra.block.7.running_var, stages.4.blocks.2.norm.weight, stages.4.blocks.2.norm.bias, stages.4.blocks.2.norm.running_mean, stages.4.blocks.2.norm.running_var, stages.4.blocks.3.mlp.0.weight, stages.4.blocks.3.mlp.1.weight, stages.4.blocks.3.mlp.1.bias, stages.4.blocks.3.mlp.1.running_mean, stages.4.blocks.3.mlp.1.running_var, stages.4.blocks.3.mlp.3.weight, stages.4.blocks.3.LFEA.conv2d.0.weight, stages.4.blocks.3.LFEA.conv2d.1.weight, stages.4.blocks.3.LFEA.conv2d.1.bias, stages.4.blocks.3.LFEA.conv2d.1.running_mean, stages.4.blocks.3.LFEA.conv2d.1.running_var, stages.4.blocks.3.LFEA.conv1d.weight, stages.4.blocks.3.LFEA.norm.weight, stages.4.blocks.3.LFEA.norm.bias, stages.4.blocks.3.LFEA.norm.running_mean, stages.4.blocks.3.LFEA.norm.running_var, stages.4.blocks.3.gaussian.gaussian.weight, stages.4.blocks.3.gaussian.norm.weight, stages.4.blocks.3.gaussian.norm.bias, stages.4.blocks.3.gaussian.norm.running_mean, stages.4.blocks.3.gaussian.norm.running_var, stages.4.blocks.3.gaussian.conv_extra.block.0.weight, stages.4.blocks.3.gaussian.conv_extra.block.0.bias, stages.4.blocks.3.gaussian.conv_extra.block.1.weight, stages.4.blocks.3.gaussian.conv_extra.block.1.bias, stages.4.blocks.3.gaussian.conv_extra.block.1.running_mean, stages.4.blocks.3.gaussian.conv_extra.block.1.running_var, stages.4.blocks.3.gaussian.conv_extra.block.3.weight, stages.4.blocks.3.gaussian.conv_extra.block.4.weight, stages.4.blocks.3.gaussian.conv_extra.block.4.bias, stages.4.blocks.3.gaussian.conv_extra.block.4.running_mean, stages.4.blocks.3.gaussian.conv_extra.block.4.running_var, stages.4.blocks.3.gaussian.conv_extra.block.6.weight, stages.4.blocks.3.gaussian.conv_extra.block.6.bias, stages.4.blocks.3.gaussian.conv_extra.block.7.weight, stages.4.blocks.3.gaussian.conv_extra.block.7.bias, stages.4.blocks.3.gaussian.conv_extra.block.7.running_mean, stages.4.blocks.3.gaussian.conv_extra.block.7.running_var, stages.4.blocks.3.norm.weight, stages.4.blocks.3.norm.bias, stages.4.blocks.3.norm.running_mean, stages.4.blocks.3.norm.running_var, stages.5.conv.weight, stages.5.conv.bias, stages.5.conv_c.weight, stages.5.conv_c.bias, stages.5.norm_c.weight, stages.5.norm_c.bias, stages.5.norm_c.running_mean, stages.5.norm_c.running_var, stages.5.norm_m.weight, stages.5.norm_m.bias, stages.5.norm_m.running_mean, stages.5.norm_m.running_var, stages.5.fusion.weight, stages.5.fusion.bias, stages.5.gaussian.gaussian.weight, stages.5.gaussian.norm.weight, stages.5.gaussian.norm.bias, stages.5.gaussian.norm.running_mean, stages.5.gaussian.norm.running_var, stages.5.norm_g.weight, stages.5.norm_g.bias, stages.5.norm_g.running_mean, stages.5.norm_g.running_var, stages.6.blocks.0.mlp.0.weight, stages.6.blocks.0.mlp.1.weight, stages.6.blocks.0.mlp.1.bias, stages.6.blocks.0.mlp.1.running_mean, stages.6.blocks.0.mlp.1.running_var, stages.6.blocks.0.mlp.3.weight, stages.6.blocks.0.LFEA.conv2d.0.weight, stages.6.blocks.0.LFEA.conv2d.1.weight, stages.6.blocks.0.LFEA.conv2d.1.bias, stages.6.blocks.0.LFEA.conv2d.1.running_mean, stages.6.blocks.0.LFEA.conv2d.1.running_var, stages.6.blocks.0.LFEA.conv1d.weight, stages.6.blocks.0.LFEA.norm.weight, stages.6.blocks.0.LFEA.norm.bias, stages.6.blocks.0.LFEA.norm.running_mean, stages.6.blocks.0.LFEA.norm.running_var, stages.6.blocks.0.gaussian.gaussian.weight, stages.6.blocks.0.gaussian.norm.weight, stages.6.blocks.0.gaussian.norm.bias, stages.6.blocks.0.gaussian.norm.running_mean, stages.6.blocks.0.gaussian.norm.running_var, stages.6.blocks.0.gaussian.conv_extra.block.0.weight, stages.6.blocks.0.gaussian.conv_extra.block.0.bias, stages.6.blocks.0.gaussian.conv_extra.block.1.weight, stages.6.blocks.0.gaussian.conv_extra.block.1.bias, stages.6.blocks.0.gaussian.conv_extra.block.1.running_mean, stages.6.blocks.0.gaussian.conv_extra.block.1.running_var, stages.6.blocks.0.gaussian.conv_extra.block.3.weight, stages.6.blocks.0.gaussian.conv_extra.block.4.weight, stages.6.blocks.0.gaussian.conv_extra.block.4.bias, stages.6.blocks.0.gaussian.conv_extra.block.4.running_mean, stages.6.blocks.0.gaussian.conv_extra.block.4.running_var, stages.6.blocks.0.gaussian.conv_extra.block.6.weight, stages.6.blocks.0.gaussian.conv_extra.block.6.bias, stages.6.blocks.0.gaussian.conv_extra.block.7.weight, stages.6.blocks.0.gaussian.conv_extra.block.7.bias, stages.6.blocks.0.gaussian.conv_extra.block.7.running_mean, stages.6.blocks.0.gaussian.conv_extra.block.7.running_var, stages.6.blocks.0.norm.weight, stages.6.blocks.0.norm.bias, stages.6.blocks.0.norm.running_mean, stages.6.blocks.0.norm.running_var, stages.6.blocks.1.mlp.0.weight, stages.6.blocks.1.mlp.1.weight, stages.6.blocks.1.mlp.1.bias, stages.6.blocks.1.mlp.1.running_mean, stages.6.blocks.1.mlp.1.running_var, stages.6.blocks.1.mlp.3.weight, stages.6.blocks.1.LFEA.conv2d.0.weight, stages.6.blocks.1.LFEA.conv2d.1.weight, stages.6.blocks.1.LFEA.conv2d.1.bias, stages.6.blocks.1.LFEA.conv2d.1.running_mean, stages.6.blocks.1.LFEA.conv2d.1.running_var, stages.6.blocks.1.LFEA.conv1d.weight, stages.6.blocks.1.LFEA.norm.weight, stages.6.blocks.1.LFEA.norm.bias, stages.6.blocks.1.LFEA.norm.running_mean, stages.6.blocks.1.LFEA.norm.running_var, stages.6.blocks.1.gaussian.gaussian.weight, stages.6.blocks.1.gaussian.norm.weight, stages.6.blocks.1.gaussian.norm.bias, stages.6.blocks.1.gaussian.norm.running_mean, stages.6.blocks.1.gaussian.norm.running_var, stages.6.blocks.1.gaussian.conv_extra.block.0.weight, stages.6.blocks.1.gaussian.conv_extra.block.0.bias, stages.6.blocks.1.gaussian.conv_extra.block.1.weight, stages.6.blocks.1.gaussian.conv_extra.block.1.bias, stages.6.blocks.1.gaussian.conv_extra.block.1.running_mean, stages.6.blocks.1.gaussian.conv_extra.block.1.running_var, stages.6.blocks.1.gaussian.conv_extra.block.3.weight, stages.6.blocks.1.gaussian.conv_extra.block.4.weight, stages.6.blocks.1.gaussian.conv_extra.block.4.bias, stages.6.blocks.1.gaussian.conv_extra.block.4.running_mean, stages.6.blocks.1.gaussian.conv_extra.block.4.running_var, stages.6.blocks.1.gaussian.conv_extra.block.6.weight, stages.6.blocks.1.gaussian.conv_extra.block.6.bias, stages.6.blocks.1.gaussian.conv_extra.block.7.weight, stages.6.blocks.1.gaussian.conv_extra.block.7.bias, stages.6.blocks.1.gaussian.conv_extra.block.7.running_mean, stages.6.blocks.1.gaussian.conv_extra.block.7.running_var, stages.6.blocks.1.norm.weight, stages.6.blocks.1.norm.bias, stages.6.blocks.1.norm.running_mean, stages.6.blocks.1.norm.running_var, compensators.0.0.weight, compensators.0.1.weight, compensators.0.1.bias, compensators.0.1.running_mean, compensators.0.1.running_var, compensators.1.0.weight, compensators.1.1.weight, compensators.1.1.bias, compensators.1.1.running_mean, compensators.1.1.running_var, compensators.2.0.weight, compensators.2.1.weight, compensators.2.1.bias, compensators.2.1.running_mean, compensators.2.1.running_var, compensators.3.0.weight, compensators.3.1.weight, compensators.3.1.bias, compensators.3.1.running_mean, compensators.3.1.running_var, norm0.weight, norm0.bias, norm0.running_mean, norm0.running_var, norm2.weight, norm2.bias, norm2.running_mean, norm2.running_var, norm4.weight, norm4.bias, norm4.running_mean, norm4.running_var, norm6.weight, norm6.bias, norm6.running_mean, norm6.running_var
+
+03/12 16:55:07 - mmengine - WARNING - "FileClient" will be deprecated in future. Please use io functions in https://mmengine.readthedocs.io/en/latest/api/fileio.html#file-io
+03/12 16:55:07 - mmengine - WARNING - "HardDiskBackend" is the alias of "LocalBackend" and the former will be deprecated in future.
+03/12 16:55:07 - mmengine - INFO - Checkpoints will be saved to /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed.
+[W reducer.cpp:1346] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[W reducer.cpp:1346] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[W reducer.cpp:1346] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/torch/autograd/__init__.py:251: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [1, 1, 5], strides() = [5, 1, 1]
+bucket_view.sizes() = [1, 1, 5], strides() = [5, 5, 1] (Triggered internally at /opt/conda/conda-bld/pytorch_1702400400184/work/torch/csrc/distributed/c10d/reducer.cpp:320.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/torch/autograd/__init__.py:251: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [1, 1, 5], strides() = [5, 1, 1]
+bucket_view.sizes() = [1, 1, 5], strides() = [5, 5, 1] (Triggered internally at /opt/conda/conda-bld/pytorch_1702400400184/work/torch/csrc/distributed/c10d/reducer.cpp:320.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/group/chenjinming/wyy/anaconda3/envs/mmd-new/lib/python3.8/site-packages/torch/autograd/__init__.py:251: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [1, 1, 5], strides() = [5, 1, 1]
+bucket_view.sizes() = [1, 1, 5], strides() = [5, 5, 1] (Triggered internally at /opt/conda/conda-bld/pytorch_1702400400184/work/torch/csrc/distributed/c10d/reducer.cpp:320.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+03/12 16:55:31 - mmengine - INFO - Epoch(train)   [1][ 50/149]  lr: 1.9820e-05  eta: 1:58:32  time: 0.4790  data_time: 0.0680  memory: 4887  grad_norm: 144.2195  loss: 3.9790  loss_rpn_cls: 0.6704  loss_rpn_bbox: 0.1629  loss_cls: 0.4245  acc: 96.8750  loss_bbox: 0.1506  loss_mask: 2.5705
+03/12 16:55:48 - mmengine - INFO - Epoch(train)   [1][100/149]  lr: 3.9840e-05  eta: 1:40:46  time: 0.3382  data_time: 0.0614  memory: 5085  grad_norm: 40.6713  loss: 2.3143  loss_rpn_cls: 0.5314  loss_rpn_bbox: 0.1497  loss_cls: 0.3271  acc: 87.6953  loss_bbox: 0.3629  loss_mask: 0.9432
+03/12 16:56:02 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 16:56:17 - mmengine - INFO - Epoch(train)   [2][ 50/149]  lr: 7.9479e-05  eta: 1:26:48  time: 0.3057  data_time: 0.0523  memory: 5324  grad_norm: 13.3908  loss: 1.7324  loss_rpn_cls: 0.1786  loss_rpn_bbox: 0.1232  loss_cls: 0.3406  acc: 90.1367  loss_bbox: 0.5433  loss_mask: 0.5467
+03/12 16:56:33 - mmengine - INFO - Epoch(train)   [2][100/149]  lr: 9.9499e-05  eta: 1:24:24  time: 0.3116  data_time: 0.0454  memory: 5325  grad_norm: 11.7594  loss: 1.7724  loss_rpn_cls: 0.1388  loss_rpn_bbox: 0.1188  loss_cls: 0.3680  acc: 79.2969  loss_bbox: 0.6448  loss_mask: 0.5021
+03/12 16:56:48 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 16:57:04 - mmengine - INFO - Epoch(train)   [3][ 50/149]  lr: 1.3914e-04  eta: 1:21:21  time: 0.3117  data_time: 0.0479  memory: 5326  grad_norm: 11.0214  loss: 1.7367  loss_rpn_cls: 0.0963  loss_rpn_bbox: 0.1122  loss_cls: 0.3897  acc: 83.6914  loss_bbox: 0.7331  loss_mask: 0.4053
+03/12 16:57:20 - mmengine - INFO - Epoch(train)   [3][100/149]  lr: 1.5916e-04  eta: 1:20:45  time: 0.3252  data_time: 0.0557  memory: 5326  grad_norm: 9.4334  loss: 1.6621  loss_rpn_cls: 0.0857  loss_rpn_bbox: 0.1108  loss_cls: 0.3909  acc: 83.6914  loss_bbox: 0.7127  loss_mask: 0.3620
+03/12 16:57:34 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 16:57:50 - mmengine - INFO - Epoch(train)   [4][ 50/149]  lr: 1.9880e-04  eta: 1:19:00  time: 0.3219  data_time: 0.0619  memory: 5326  grad_norm: 7.2744  loss: 1.3764  loss_rpn_cls: 0.0619  loss_rpn_bbox: 0.1008  loss_cls: 0.3578  acc: 83.4961  loss_bbox: 0.5762  loss_mask: 0.2797
+03/12 16:58:05 - mmengine - INFO - Epoch(train)   [4][100/149]  lr: 2.0000e-04  eta: 1:17:49  time: 0.2874  data_time: 0.0434  memory: 5326  grad_norm: 7.3717  loss: 1.3042  loss_rpn_cls: 0.0496  loss_rpn_bbox: 0.0866  loss_cls: 0.3400  acc: 82.7148  loss_bbox: 0.5585  loss_mask: 0.2694
+03/12 16:58:19 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 16:58:33 - mmengine - INFO - Epoch(train)   [5][ 50/149]  lr: 2.0000e-04  eta: 1:15:58  time: 0.2911  data_time: 0.0438  memory: 5326  grad_norm: 6.1586  loss: 1.1275  loss_rpn_cls: 0.0405  loss_rpn_bbox: 0.0785  loss_cls: 0.3047  acc: 84.0820  loss_bbox: 0.4750  loss_mask: 0.2287
+03/12 16:58:48 - mmengine - INFO - Epoch(train)   [5][100/149]  lr: 2.0000e-04  eta: 1:15:22  time: 0.2999  data_time: 0.0401  memory: 5326  grad_norm: 6.3101  loss: 1.0463  loss_rpn_cls: 0.0344  loss_rpn_bbox: 0.0697  loss_cls: 0.2827  acc: 86.3281  loss_bbox: 0.4481  loss_mask: 0.2114
+03/12 16:59:04 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 16:59:26 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=1.02s).
+Accumulating evaluation results...
+DONE (t=0.06s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.513
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.871
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.574
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.452
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.540
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.611
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.611
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.611
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.551
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.634
+03/12 16:59:27 - mmengine - INFO - bbox_mAP_copypaste: 0.513 0.871 0.574 -1.000 0.452 0.540
+03/12 16:59:27 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.05s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=1.13s).
+Accumulating evaluation results...
+DONE (t=0.06s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.554
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.879
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.642
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.448
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.602
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.647
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.647
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.647
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.578
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.674
+03/12 16:59:28 - mmengine - INFO - segm_mAP_copypaste: 0.554 0.879 0.642 -1.000 0.448 0.602
+03/12 16:59:28 - mmengine - INFO - Epoch(val) [5][17/17]    coco/bbox_mAP: 0.5130  coco/bbox_mAP_50: 0.8710  coco/bbox_mAP_75: 0.5740  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.4520  coco/bbox_mAP_l: 0.5400  coco/segm_mAP: 0.5540  coco/segm_mAP_50: 0.8790  coco/segm_mAP_75: 0.6420  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4480  coco/segm_mAP_l: 0.6020  data_time: 0.3135  time: 0.8447
+03/12 16:59:29 - mmengine - INFO - The best checkpoint with 0.5130 coco/bbox_mAP at 5 epoch is saved to best_coco_bbox_mAP_epoch_5.pth.
+03/12 16:59:45 - mmengine - INFO - Epoch(train)   [6][ 50/149]  lr: 2.0000e-04  eta: 1:14:41  time: 0.3133  data_time: 0.0554  memory: 5326  grad_norm: 6.0245  loss: 1.0130  loss_rpn_cls: 0.0393  loss_rpn_bbox: 0.0796  loss_cls: 0.2704  acc: 89.5508  loss_bbox: 0.4181  loss_mask: 0.2056
+03/12 16:59:59 - mmengine - INFO - Epoch(train)   [6][100/149]  lr: 2.0000e-04  eta: 1:14:04  time: 0.2925  data_time: 0.0328  memory: 5324  grad_norm: 5.8986  loss: 0.9185  loss_rpn_cls: 0.0259  loss_rpn_bbox: 0.0628  loss_cls: 0.2486  acc: 86.3281  loss_bbox: 0.3924  loss_mask: 0.1889
+03/12 17:00:13 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:00:28 - mmengine - INFO - Epoch(train)   [7][ 50/149]  lr: 2.0000e-04  eta: 1:13:00  time: 0.2990  data_time: 0.0396  memory: 5326  grad_norm: 6.0473  loss: 0.8976  loss_rpn_cls: 0.0254  loss_rpn_bbox: 0.0702  loss_cls: 0.2453  acc: 88.6719  loss_bbox: 0.3771  loss_mask: 0.1796
+03/12 17:00:44 - mmengine - INFO - Epoch(train)   [7][100/149]  lr: 2.0000e-04  eta: 1:12:38  time: 0.3059  data_time: 0.0413  memory: 5326  grad_norm: 5.5755  loss: 0.8862  loss_rpn_cls: 0.0257  loss_rpn_bbox: 0.0714  loss_cls: 0.2376  acc: 88.6719  loss_bbox: 0.3705  loss_mask: 0.1810
+03/12 17:00:45 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:00:58 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:01:13 - mmengine - INFO - Epoch(train)   [8][ 50/149]  lr: 2.0000e-04  eta: 1:11:49  time: 0.3117  data_time: 0.0459  memory: 5326  grad_norm: 5.6219  loss: 0.8277  loss_rpn_cls: 0.0288  loss_rpn_bbox: 0.0660  loss_cls: 0.2317  acc: 92.2852  loss_bbox: 0.3372  loss_mask: 0.1640
+03/12 17:01:28 - mmengine - INFO - Epoch(train)   [8][100/149]  lr: 2.0000e-04  eta: 1:11:24  time: 0.2972  data_time: 0.0428  memory: 5326  grad_norm: 5.8615  loss: 0.8172  loss_rpn_cls: 0.0214  loss_rpn_bbox: 0.0672  loss_cls: 0.2289  acc: 85.3516  loss_bbox: 0.3335  loss_mask: 0.1662
+03/12 17:01:43 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:01:57 - mmengine - INFO - Epoch(train)   [9][ 50/149]  lr: 2.0000e-04  eta: 1:10:37  time: 0.2950  data_time: 0.0437  memory: 5326  grad_norm: 5.6925  loss: 0.7740  loss_rpn_cls: 0.0198  loss_rpn_bbox: 0.0643  loss_cls: 0.2173  acc: 89.9414  loss_bbox: 0.3159  loss_mask: 0.1567
+03/12 17:02:12 - mmengine - INFO - Epoch(train)   [9][100/149]  lr: 2.0000e-04  eta: 1:10:09  time: 0.2855  data_time: 0.0462  memory: 5326  grad_norm: 5.9388  loss: 0.7894  loss_rpn_cls: 0.0183  loss_rpn_bbox: 0.0656  loss_cls: 0.2191  acc: 92.0898  loss_bbox: 0.3264  loss_mask: 0.1600
+03/12 17:02:26 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:02:41 - mmengine - INFO - Epoch(train)  [10][ 50/149]  lr: 2.0000e-04  eta: 1:09:27  time: 0.2961  data_time: 0.0381  memory: 5326  grad_norm: 5.4537  loss: 0.7136  loss_rpn_cls: 0.0161  loss_rpn_bbox: 0.0533  loss_cls: 0.1997  acc: 88.9648  loss_bbox: 0.2961  loss_mask: 0.1485
+03/12 17:02:56 - mmengine - INFO - Epoch(train)  [10][100/149]  lr: 2.0000e-04  eta: 1:09:07  time: 0.2999  data_time: 0.0404  memory: 5326  grad_norm: 5.3576  loss: 0.6998  loss_rpn_cls: 0.0180  loss_rpn_bbox: 0.0545  loss_cls: 0.1997  acc: 91.9922  loss_bbox: 0.2862  loss_mask: 0.1414
+03/12 17:03:10 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:03:10 - mmengine - INFO - Saving checkpoint at 10 epochs
+03/12 17:03:25 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.66s).
+Accumulating evaluation results...
+DONE (t=0.04s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.603
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.875
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.725
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.549
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.625
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.698
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.698
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.698
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.641
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.720
+03/12 17:03:26 - mmengine - INFO - bbox_mAP_copypaste: 0.603 0.875 0.725 -1.000 0.549 0.625
+03/12 17:03:26 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.69s).
+Accumulating evaluation results...
+DONE (t=0.04s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.642
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.876
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.750
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.539
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.679
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.729
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.729
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.729
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.667
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.753
+03/12 17:03:27 - mmengine - INFO - segm_mAP_copypaste: 0.642 0.876 0.750 -1.000 0.539 0.679
+03/12 17:03:27 - mmengine - INFO - Epoch(val) [10][17/17]    coco/bbox_mAP: 0.6030  coco/bbox_mAP_50: 0.8750  coco/bbox_mAP_75: 0.7250  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.5490  coco/bbox_mAP_l: 0.6250  coco/segm_mAP: 0.6420  coco/segm_mAP_50: 0.8760  coco/segm_mAP_75: 0.7500  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.5390  coco/segm_mAP_l: 0.6790  data_time: 0.2831  time: 0.5529
+03/12 17:03:27 - mmengine - INFO - The previous best checkpoint /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed/best_coco_bbox_mAP_epoch_5.pth is removed
+03/12 17:03:28 - mmengine - INFO - The best checkpoint with 0.6030 coco/bbox_mAP at 10 epoch is saved to best_coco_bbox_mAP_epoch_10.pth.
+03/12 17:04:00 - mmengine - INFO - Epoch(train)  [11][ 50/149]  lr: 2.0000e-04  eta: 1:08:23  time: 0.2985  data_time: 0.0480  memory: 5326  grad_norm: 5.1262  loss: 0.6577  loss_rpn_cls: 0.0135  loss_rpn_bbox: 0.0534  loss_cls: 0.1887  acc: 92.2852  loss_bbox: 0.2700  loss_mask: 0.1320
+03/12 17:04:16 - mmengine - INFO - Epoch(train)  [11][100/149]  lr: 2.0000e-04  eta: 1:08:07  time: 0.3063  data_time: 0.0436  memory: 5326  grad_norm: 5.9664  loss: 0.6762  loss_rpn_cls: 0.0140  loss_rpn_bbox: 0.0555  loss_cls: 0.1847  acc: 89.1602  loss_bbox: 0.2810  loss_mask: 0.1409
+03/12 17:04:30 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:04:44 - mmengine - INFO - Epoch(train)  [12][ 50/149]  lr: 2.0000e-04  eta: 1:07:23  time: 0.2928  data_time: 0.0390  memory: 5326  grad_norm: 4.9137  loss: 0.6478  loss_rpn_cls: 0.0134  loss_rpn_bbox: 0.0520  loss_cls: 0.1833  acc: 90.0391  loss_bbox: 0.2652  loss_mask: 0.1339
+03/12 17:04:59 - mmengine - INFO - Epoch(train)  [12][100/149]  lr: 2.0000e-04  eta: 1:07:03  time: 0.2948  data_time: 0.0421  memory: 5326  grad_norm: 5.4043  loss: 0.6583  loss_rpn_cls: 0.0148  loss_rpn_bbox: 0.0547  loss_cls: 0.1872  acc: 92.2852  loss_bbox: 0.2692  loss_mask: 0.1325
+03/12 17:05:14 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:05:30 - mmengine - INFO - Epoch(train)  [13][ 50/149]  lr: 2.0000e-04  eta: 1:06:38  time: 0.3147  data_time: 0.0619  memory: 5326  grad_norm: 5.0460  loss: 0.6240  loss_rpn_cls: 0.0134  loss_rpn_bbox: 0.0500  loss_cls: 0.1760  acc: 90.9180  loss_bbox: 0.2562  loss_mask: 0.1283
+03/12 17:05:45 - mmengine - INFO - Epoch(train)  [13][100/149]  lr: 2.0000e-04  eta: 1:06:18  time: 0.2937  data_time: 0.0439  memory: 5326  grad_norm: 5.1620  loss: 0.6435  loss_rpn_cls: 0.0132  loss_rpn_bbox: 0.0492  loss_cls: 0.1836  acc: 91.6016  loss_bbox: 0.2669  loss_mask: 0.1306
+03/12 17:05:59 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:06:14 - mmengine - INFO - Epoch(train)  [14][ 50/149]  lr: 2.0000e-04  eta: 1:05:40  time: 0.2947  data_time: 0.0419  memory: 5326  grad_norm: 4.6580  loss: 0.5862  loss_rpn_cls: 0.0104  loss_rpn_bbox: 0.0490  loss_cls: 0.1604  acc: 94.4336  loss_bbox: 0.2393  loss_mask: 0.1271
+03/12 17:06:18 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:06:29 - mmengine - INFO - Epoch(train)  [14][100/149]  lr: 2.0000e-04  eta: 1:05:22  time: 0.2961  data_time: 0.0319  memory: 5326  grad_norm: 4.5106  loss: 0.5562  loss_rpn_cls: 0.0110  loss_rpn_bbox: 0.0428  loss_cls: 0.1554  acc: 95.1172  loss_bbox: 0.2316  loss_mask: 0.1153
+03/12 17:06:42 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:06:57 - mmengine - INFO - Epoch(train)  [15][ 50/149]  lr: 2.0000e-04  eta: 1:04:44  time: 0.3007  data_time: 0.0429  memory: 5326  grad_norm: 4.8907  loss: 0.5885  loss_rpn_cls: 0.0117  loss_rpn_bbox: 0.0474  loss_cls: 0.1685  acc: 95.9961  loss_bbox: 0.2398  loss_mask: 0.1212
+03/12 17:07:12 - mmengine - INFO - Epoch(train)  [15][100/149]  lr: 2.0000e-04  eta: 1:04:27  time: 0.2994  data_time: 0.0500  memory: 5326  grad_norm: 5.0582  loss: 0.6230  loss_rpn_cls: 0.0128  loss_rpn_bbox: 0.0522  loss_cls: 0.1775  acc: 93.8477  loss_bbox: 0.2490  loss_mask: 0.1314
+03/12 17:07:27 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:07:42 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.64s).
+Accumulating evaluation results...
+DONE (t=0.04s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.628
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.905
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.759
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.574
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.649
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.717
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.717
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.717
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.659
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.739
+03/12 17:07:43 - mmengine - INFO - bbox_mAP_copypaste: 0.628 0.905 0.759 -1.000 0.574 0.649
+03/12 17:07:43 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.67s).
+Accumulating evaluation results...
+DONE (t=0.04s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.644
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.908
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.761
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.531
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.692
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.726
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.726
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.726
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.644
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.758
+03/12 17:07:44 - mmengine - INFO - segm_mAP_copypaste: 0.644 0.908 0.761 -1.000 0.531 0.692
+03/12 17:07:44 - mmengine - INFO - Epoch(val) [15][17/17]    coco/bbox_mAP: 0.6280  coco/bbox_mAP_50: 0.9050  coco/bbox_mAP_75: 0.7590  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.5740  coco/bbox_mAP_l: 0.6490  coco/segm_mAP: 0.6440  coco/segm_mAP_50: 0.9080  coco/segm_mAP_75: 0.7610  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.5310  coco/segm_mAP_l: 0.6920  data_time: 0.2775  time: 0.5336
+03/12 17:07:44 - mmengine - INFO - The previous best checkpoint /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed/best_coco_bbox_mAP_epoch_10.pth is removed
+03/12 17:07:44 - mmengine - INFO - The best checkpoint with 0.6280 coco/bbox_mAP at 15 epoch is saved to best_coco_bbox_mAP_epoch_15.pth.
+03/12 17:08:01 - mmengine - INFO - Epoch(train)  [16][ 50/149]  lr: 2.0000e-04  eta: 1:03:58  time: 0.3113  data_time: 0.0462  memory: 5326  grad_norm: 4.8360  loss: 0.5545  loss_rpn_cls: 0.0123  loss_rpn_bbox: 0.0426  loss_cls: 0.1619  acc: 94.5312  loss_bbox: 0.2237  loss_mask: 0.1140
+03/12 17:08:15 - mmengine - INFO - Epoch(train)  [16][100/149]  lr: 2.0000e-04  eta: 1:03:38  time: 0.2871  data_time: 0.0449  memory: 5326  grad_norm: 4.8821  loss: 0.5605  loss_rpn_cls: 0.0117  loss_rpn_bbox: 0.0489  loss_cls: 0.1587  acc: 96.3867  loss_bbox: 0.2256  loss_mask: 0.1156
+03/12 17:08:30 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:08:46 - mmengine - INFO - Epoch(train)  [17][ 50/149]  lr: 2.0000e-04  eta: 1:03:14  time: 0.3230  data_time: 0.0415  memory: 5326  grad_norm: 4.6048  loss: 0.5249  loss_rpn_cls: 0.0098  loss_rpn_bbox: 0.0405  loss_cls: 0.1543  acc: 92.2852  loss_bbox: 0.2145  loss_mask: 0.1059
+03/12 17:09:02 - mmengine - INFO - Epoch(train)  [17][100/149]  lr: 2.0000e-04  eta: 1:02:59  time: 0.3032  data_time: 0.0504  memory: 5326  grad_norm: 4.8459  loss: 0.5487  loss_rpn_cls: 0.0102  loss_rpn_bbox: 0.0453  loss_cls: 0.1576  acc: 92.7734  loss_bbox: 0.2223  loss_mask: 0.1133
+03/12 17:09:16 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:09:31 - mmengine - INFO - Epoch(train)  [18][ 50/149]  lr: 2.0000e-04  eta: 1:02:24  time: 0.3042  data_time: 0.0477  memory: 5326  grad_norm: 4.4670  loss: 0.5230  loss_rpn_cls: 0.0092  loss_rpn_bbox: 0.0440  loss_cls: 0.1512  acc: 95.5078  loss_bbox: 0.2132  loss_mask: 0.1054
+03/12 17:09:45 - mmengine - INFO - Epoch(train)  [18][100/149]  lr: 2.0000e-04  eta: 1:02:06  time: 0.2907  data_time: 0.0361  memory: 5326  grad_norm: 4.5969  loss: 0.5409  loss_rpn_cls: 0.0107  loss_rpn_bbox: 0.0418  loss_cls: 0.1553  acc: 91.7969  loss_bbox: 0.2218  loss_mask: 0.1113
+03/12 17:10:00 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:10:17 - mmengine - INFO - Epoch(train)  [19][ 50/149]  lr: 2.0000e-04  eta: 1:01:42  time: 0.3323  data_time: 0.0602  memory: 5326  grad_norm: 4.9918  loss: 0.4961  loss_rpn_cls: 0.0089  loss_rpn_bbox: 0.0420  loss_cls: 0.1367  acc: 94.1406  loss_bbox: 0.2043  loss_mask: 0.1043
+03/12 17:10:31 - mmengine - INFO - Epoch(train)  [19][100/149]  lr: 2.0000e-04  eta: 1:01:22  time: 0.2797  data_time: 0.0412  memory: 5324  grad_norm: 4.7044  loss: 0.5154  loss_rpn_cls: 0.0060  loss_rpn_bbox: 0.0393  loss_cls: 0.1553  acc: 93.5547  loss_bbox: 0.2095  loss_mask: 0.1053
+03/12 17:10:45 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:11:01 - mmengine - INFO - Epoch(train)  [20][ 50/149]  lr: 2.0000e-04  eta: 1:00:53  time: 0.3240  data_time: 0.0672  memory: 5326  grad_norm: 4.5620  loss: 0.5044  loss_rpn_cls: 0.0098  loss_rpn_bbox: 0.0396  loss_cls: 0.1425  acc: 91.5039  loss_bbox: 0.2073  loss_mask: 0.1051
+03/12 17:11:17 - mmengine - INFO - Epoch(train)  [20][100/149]  lr: 2.0000e-04  eta: 1:00:39  time: 0.3075  data_time: 0.0413  memory: 5326  grad_norm: 4.0524  loss: 0.4785  loss_rpn_cls: 0.0072  loss_rpn_bbox: 0.0390  loss_cls: 0.1372  acc: 94.1406  loss_bbox: 0.1933  loss_mask: 0.1018
+03/12 17:11:30 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:11:30 - mmengine - INFO - Saving checkpoint at 20 epochs
+03/12 17:11:44 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.60s).
+Accumulating evaluation results...
+DONE (t=0.04s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.689
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.927
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.823
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.643
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.708
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.752
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.752
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.752
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.698
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.773
+03/12 17:11:44 - mmengine - INFO - bbox_mAP_copypaste: 0.689 0.927 0.823 -1.000 0.643 0.708
+03/12 17:11:44 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.65s).
+Accumulating evaluation results...
+DONE (t=0.04s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.708
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.928
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.838
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.613
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.751
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.773
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.773
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.773
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.700
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.801
+03/12 17:11:45 - mmengine - INFO - segm_mAP_copypaste: 0.708 0.928 0.838 -1.000 0.613 0.751
+03/12 17:11:45 - mmengine - INFO - Epoch(val) [20][17/17]    coco/bbox_mAP: 0.6890  coco/bbox_mAP_50: 0.9270  coco/bbox_mAP_75: 0.8230  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6430  coco/bbox_mAP_l: 0.7080  coco/segm_mAP: 0.7080  coco/segm_mAP_50: 0.9280  coco/segm_mAP_75: 0.8380  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6130  coco/segm_mAP_l: 0.7510  data_time: 0.2415  time: 0.4941
+03/12 17:11:45 - mmengine - INFO - The previous best checkpoint /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed/best_coco_bbox_mAP_epoch_15.pth is removed
+03/12 17:11:46 - mmengine - INFO - The best checkpoint with 0.6890 coco/bbox_mAP at 20 epoch is saved to best_coco_bbox_mAP_epoch_20.pth.
+03/12 17:12:16 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:12:25 - mmengine - INFO - Epoch(train)  [21][ 50/149]  lr: 2.0000e-04  eta: 1:00:00  time: 0.2941  data_time: 0.0395  memory: 5326  grad_norm: 4.7570  loss: 0.4646  loss_rpn_cls: 0.0078  loss_rpn_bbox: 0.0356  loss_cls: 0.1306  acc: 96.3867  loss_bbox: 0.1931  loss_mask: 0.0975
+03/12 17:12:40 - mmengine - INFO - Epoch(train)  [21][100/149]  lr: 2.0000e-04  eta: 0:59:44  time: 0.3008  data_time: 0.0377  memory: 5326  grad_norm: 4.6085  loss: 0.4532  loss_rpn_cls: 0.0062  loss_rpn_bbox: 0.0331  loss_cls: 0.1325  acc: 94.2383  loss_bbox: 0.1855  loss_mask: 0.0959
+03/12 17:12:54 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:13:09 - mmengine - INFO - Epoch(train)  [22][ 50/149]  lr: 2.0000e-04  eta: 0:59:12  time: 0.3006  data_time: 0.0466  memory: 5326  grad_norm: 4.9802  loss: 0.4812  loss_rpn_cls: 0.0071  loss_rpn_bbox: 0.0403  loss_cls: 0.1317  acc: 94.0430  loss_bbox: 0.1999  loss_mask: 0.1022
+03/12 17:13:24 - mmengine - INFO - Epoch(train)  [22][100/149]  lr: 2.0000e-04  eta: 0:58:55  time: 0.2936  data_time: 0.0341  memory: 5324  grad_norm: 4.6169  loss: 0.4406  loss_rpn_cls: 0.0057  loss_rpn_bbox: 0.0335  loss_cls: 0.1241  acc: 95.1172  loss_bbox: 0.1849  loss_mask: 0.0924
+03/12 17:13:38 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:13:53 - mmengine - INFO - Epoch(train)  [23][ 50/149]  lr: 2.0000e-04  eta: 0:58:21  time: 0.3036  data_time: 0.0519  memory: 5326  grad_norm: 4.7882  loss: 0.4810  loss_rpn_cls: 0.0075  loss_rpn_bbox: 0.0393  loss_cls: 0.1322  acc: 95.8984  loss_bbox: 0.2009  loss_mask: 0.1011
+03/12 17:14:08 - mmengine - INFO - Epoch(train)  [23][100/149]  lr: 2.0000e-04  eta: 0:58:04  time: 0.2922  data_time: 0.0440  memory: 5326  grad_norm: 4.4304  loss: 0.4574  loss_rpn_cls: 0.0067  loss_rpn_bbox: 0.0383  loss_cls: 0.1269  acc: 96.5820  loss_bbox: 0.1880  loss_mask: 0.0975
+03/12 17:14:23 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:14:38 - mmengine - INFO - Epoch(train)  [24][ 50/149]  lr: 2.0000e-04  eta: 0:57:36  time: 0.3044  data_time: 0.0466  memory: 5326  grad_norm: 4.5822  loss: 0.4414  loss_rpn_cls: 0.0061  loss_rpn_bbox: 0.0399  loss_cls: 0.1168  acc: 94.9219  loss_bbox: 0.1806  loss_mask: 0.0979
+03/12 17:14:53 - mmengine - INFO - Epoch(train)  [24][100/149]  lr: 2.0000e-04  eta: 0:57:19  time: 0.2924  data_time: 0.0358  memory: 5326  grad_norm: 4.5136  loss: 0.4371  loss_rpn_cls: 0.0043  loss_rpn_bbox: 0.0343  loss_cls: 0.1233  acc: 96.4844  loss_bbox: 0.1817  loss_mask: 0.0934
+03/12 17:15:07 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:15:22 - mmengine - INFO - Epoch(train)  [25][ 50/149]  lr: 2.0000e-04  eta: 0:56:48  time: 0.3110  data_time: 0.0426  memory: 5326  grad_norm: 4.3000  loss: 0.4379  loss_rpn_cls: 0.0053  loss_rpn_bbox: 0.0355  loss_cls: 0.1156  acc: 96.3867  loss_bbox: 0.1830  loss_mask: 0.0984
+03/12 17:15:36 - mmengine - INFO - Epoch(train)  [25][100/149]  lr: 2.0000e-04  eta: 0:56:29  time: 0.2809  data_time: 0.0427  memory: 5326  grad_norm: 4.4666  loss: 0.4436  loss_rpn_cls: 0.0077  loss_rpn_bbox: 0.0366  loss_cls: 0.1189  acc: 96.8750  loss_bbox: 0.1811  loss_mask: 0.0992
+03/12 17:15:50 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:16:04 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.59s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.708
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.931
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.849
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.670
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.725
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.772
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.772
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.772
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.735
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.787
+03/12 17:16:05 - mmengine - INFO - bbox_mAP_copypaste: 0.708 0.931 0.849 -1.000 0.670 0.725
+03/12 17:16:05 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.63s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.725
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.931
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.860
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.646
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.772
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.792
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.792
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.792
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.732
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.816
+03/12 17:16:06 - mmengine - INFO - segm_mAP_copypaste: 0.725 0.931 0.860 -1.000 0.646 0.772
+03/12 17:16:06 - mmengine - INFO - Epoch(val) [25][17/17]    coco/bbox_mAP: 0.7080  coco/bbox_mAP_50: 0.9310  coco/bbox_mAP_75: 0.8490  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6700  coco/bbox_mAP_l: 0.7250  coco/segm_mAP: 0.7250  coco/segm_mAP_50: 0.9310  coco/segm_mAP_75: 0.8600  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6460  coco/segm_mAP_l: 0.7720  data_time: 0.2903  time: 0.5458
+03/12 17:16:06 - mmengine - INFO - The previous best checkpoint /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed/best_coco_bbox_mAP_epoch_20.pth is removed
+03/12 17:16:06 - mmengine - INFO - The best checkpoint with 0.7080 coco/bbox_mAP at 25 epoch is saved to best_coco_bbox_mAP_epoch_25.pth.
+03/12 17:16:22 - mmengine - INFO - Epoch(train)  [26][ 50/149]  lr: 2.0000e-04  eta: 0:55:55  time: 0.2904  data_time: 0.0450  memory: 5326  grad_norm: 4.4492  loss: 0.4173  loss_rpn_cls: 0.0053  loss_rpn_bbox: 0.0343  loss_cls: 0.1149  acc: 96.6797  loss_bbox: 0.1722  loss_mask: 0.0906
+03/12 17:16:37 - mmengine - INFO - Epoch(train)  [26][100/149]  lr: 2.0000e-04  eta: 0:55:40  time: 0.3000  data_time: 0.0462  memory: 5326  grad_norm: 4.1745  loss: 0.4419  loss_rpn_cls: 0.0058  loss_rpn_bbox: 0.0372  loss_cls: 0.1145  acc: 93.9453  loss_bbox: 0.1861  loss_mask: 0.0983
+03/12 17:16:51 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:17:06 - mmengine - INFO - Epoch(train)  [27][ 50/149]  lr: 2.0000e-04  eta: 0:55:09  time: 0.2940  data_time: 0.0453  memory: 5326  grad_norm: 4.3482  loss: 0.4106  loss_rpn_cls: 0.0054  loss_rpn_bbox: 0.0342  loss_cls: 0.1091  acc: 95.3125  loss_bbox: 0.1715  loss_mask: 0.0903
+03/12 17:17:20 - mmengine - INFO - Epoch(train)  [27][100/149]  lr: 2.0000e-04  eta: 0:54:52  time: 0.2887  data_time: 0.0472  memory: 5326  grad_norm: 4.3413  loss: 0.4121  loss_rpn_cls: 0.0047  loss_rpn_bbox: 0.0344  loss_cls: 0.1069  acc: 98.2422  loss_bbox: 0.1715  loss_mask: 0.0945
+03/12 17:17:28 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:17:35 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:17:50 - mmengine - INFO - Epoch(train)  [28][ 50/149]  lr: 2.0000e-04  eta: 0:54:21  time: 0.3008  data_time: 0.0397  memory: 5326  grad_norm: 4.4679  loss: 0.4105  loss_rpn_cls: 0.0048  loss_rpn_bbox: 0.0328  loss_cls: 0.1071  acc: 96.1914  loss_bbox: 0.1738  loss_mask: 0.0919
+03/12 17:18:04 - mmengine - INFO - Epoch(train)  [28][100/149]  lr: 2.0000e-04  eta: 0:54:05  time: 0.2935  data_time: 0.0382  memory: 5326  grad_norm: 4.5307  loss: 0.4020  loss_rpn_cls: 0.0061  loss_rpn_bbox: 0.0324  loss_cls: 0.1065  acc: 95.8984  loss_bbox: 0.1686  loss_mask: 0.0884
+03/12 17:18:19 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:18:33 - mmengine - INFO - Epoch(train)  [29][ 50/149]  lr: 2.0000e-04  eta: 0:53:32  time: 0.2939  data_time: 0.0405  memory: 5326  grad_norm: 4.4645  loss: 0.3956  loss_rpn_cls: 0.0046  loss_rpn_bbox: 0.0322  loss_cls: 0.1032  acc: 93.2617  loss_bbox: 0.1655  loss_mask: 0.0900
+03/12 17:18:47 - mmengine - INFO - Epoch(train)  [29][100/149]  lr: 2.0000e-04  eta: 0:53:15  time: 0.2840  data_time: 0.0364  memory: 5326  grad_norm: 4.2491  loss: 0.3956  loss_rpn_cls: 0.0038  loss_rpn_bbox: 0.0314  loss_cls: 0.1045  acc: 95.7031  loss_bbox: 0.1690  loss_mask: 0.0870
+03/12 17:19:02 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:19:18 - mmengine - INFO - Epoch(train)  [30][ 50/149]  lr: 2.0000e-04  eta: 0:52:48  time: 0.3118  data_time: 0.0377  memory: 5326  grad_norm: 4.1046  loss: 0.3885  loss_rpn_cls: 0.0058  loss_rpn_bbox: 0.0300  loss_cls: 0.1066  acc: 94.5312  loss_bbox: 0.1614  loss_mask: 0.0848
+03/12 17:19:32 - mmengine - INFO - Epoch(train)  [30][100/149]  lr: 2.0000e-04  eta: 0:52:31  time: 0.2856  data_time: 0.0431  memory: 5326  grad_norm: 4.2548  loss: 0.4146  loss_rpn_cls: 0.0039  loss_rpn_bbox: 0.0378  loss_cls: 0.1078  acc: 94.9219  loss_bbox: 0.1724  loss_mask: 0.0927
+03/12 17:19:47 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:19:47 - mmengine - INFO - Saving checkpoint at 30 epochs
+03/12 17:20:00 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.58s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.709
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.927
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.849
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.656
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.737
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.779
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.779
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.779
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.719
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.802
+03/12 17:20:00 - mmengine - INFO - bbox_mAP_copypaste: 0.709 0.927 0.849 -1.000 0.656 0.737
+03/12 17:20:00 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.62s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.726
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.929
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.863
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.646
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.781
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.794
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.794
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.794
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.715
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.825
+03/12 17:20:01 - mmengine - INFO - segm_mAP_copypaste: 0.726 0.929 0.863 -1.000 0.646 0.781
+03/12 17:20:01 - mmengine - INFO - Epoch(val) [30][17/17]    coco/bbox_mAP: 0.7090  coco/bbox_mAP_50: 0.9270  coco/bbox_mAP_75: 0.8490  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6560  coco/bbox_mAP_l: 0.7370  coco/segm_mAP: 0.7260  coco/segm_mAP_50: 0.9290  coco/segm_mAP_75: 0.8630  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6460  coco/segm_mAP_l: 0.7810  data_time: 0.2618  time: 0.5085
+03/12 17:20:01 - mmengine - INFO - The previous best checkpoint /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed/best_coco_bbox_mAP_epoch_25.pth is removed
+03/12 17:20:02 - mmengine - INFO - The best checkpoint with 0.7090 coco/bbox_mAP at 30 epoch is saved to best_coco_bbox_mAP_epoch_30.pth.
+03/12 17:20:31 - mmengine - INFO - Epoch(train)  [31][ 50/149]  lr: 2.0000e-04  eta: 0:52:00  time: 0.2960  data_time: 0.0451  memory: 5326  grad_norm: 4.3894  loss: 0.3783  loss_rpn_cls: 0.0059  loss_rpn_bbox: 0.0306  loss_cls: 0.0971  acc: 96.0938  loss_bbox: 0.1608  loss_mask: 0.0840
+03/12 17:20:45 - mmengine - INFO - Epoch(train)  [31][100/149]  lr: 2.0000e-04  eta: 0:51:44  time: 0.2956  data_time: 0.0360  memory: 5326  grad_norm: 4.4216  loss: 0.3957  loss_rpn_cls: 0.0048  loss_rpn_bbox: 0.0325  loss_cls: 0.1070  acc: 95.8984  loss_bbox: 0.1656  loss_mask: 0.0858
+03/12 17:21:00 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:21:15 - mmengine - INFO - Epoch(train)  [32][ 50/149]  lr: 2.0000e-04  eta: 0:51:14  time: 0.3054  data_time: 0.0416  memory: 5326  grad_norm: 4.1159  loss: 0.3764  loss_rpn_cls: 0.0039  loss_rpn_bbox: 0.0320  loss_cls: 0.0969  acc: 97.1680  loss_bbox: 0.1586  loss_mask: 0.0850
+03/12 17:21:30 - mmengine - INFO - Epoch(train)  [32][100/149]  lr: 2.0000e-04  eta: 0:50:58  time: 0.2944  data_time: 0.0400  memory: 5326  grad_norm: 3.9565  loss: 0.3808  loss_rpn_cls: 0.0058  loss_rpn_bbox: 0.0298  loss_cls: 0.0998  acc: 95.2148  loss_bbox: 0.1585  loss_mask: 0.0870
+03/12 17:21:44 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:21:59 - mmengine - INFO - Epoch(train)  [33][ 50/149]  lr: 2.0000e-04  eta: 0:50:27  time: 0.2960  data_time: 0.0419  memory: 5326  grad_norm: 4.0161  loss: 0.3696  loss_rpn_cls: 0.0030  loss_rpn_bbox: 0.0315  loss_cls: 0.0966  acc: 96.4844  loss_bbox: 0.1552  loss_mask: 0.0832
+03/12 17:22:14 - mmengine - INFO - Epoch(train)  [33][100/149]  lr: 2.0000e-04  eta: 0:50:12  time: 0.2968  data_time: 0.0437  memory: 5326  grad_norm: 4.1935  loss: 0.3808  loss_rpn_cls: 0.0043  loss_rpn_bbox: 0.0308  loss_cls: 0.1017  acc: 95.9961  loss_bbox: 0.1603  loss_mask: 0.0838
+03/12 17:22:29 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:22:44 - mmengine - INFO - Epoch(train)  [34][ 50/149]  lr: 2.0000e-04  eta: 0:49:43  time: 0.3065  data_time: 0.0401  memory: 5326  grad_norm: 4.1835  loss: 0.3569  loss_rpn_cls: 0.0032  loss_rpn_bbox: 0.0299  loss_cls: 0.0910  acc: 95.9961  loss_bbox: 0.1509  loss_mask: 0.0819
+03/12 17:22:55 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:23:00 - mmengine - INFO - Epoch(train)  [34][100/149]  lr: 2.0000e-04  eta: 0:49:29  time: 0.3084  data_time: 0.0502  memory: 5326  grad_norm: 4.2536  loss: 0.3962  loss_rpn_cls: 0.0043  loss_rpn_bbox: 0.0340  loss_cls: 0.1054  acc: 96.8750  loss_bbox: 0.1634  loss_mask: 0.0892
+03/12 17:23:14 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:23:30 - mmengine - INFO - Epoch(train)  [35][ 50/149]  lr: 2.0000e-04  eta: 0:49:01  time: 0.3248  data_time: 0.0678  memory: 5326  grad_norm: 4.0726  loss: 0.3618  loss_rpn_cls: 0.0035  loss_rpn_bbox: 0.0334  loss_cls: 0.0872  acc: 96.8750  loss_bbox: 0.1533  loss_mask: 0.0845
+03/12 17:23:44 - mmengine - INFO - Epoch(train)  [35][100/149]  lr: 2.0000e-04  eta: 0:48:45  time: 0.2893  data_time: 0.0440  memory: 5326  grad_norm: 3.8858  loss: 0.3566  loss_rpn_cls: 0.0035  loss_rpn_bbox: 0.0291  loss_cls: 0.0927  acc: 96.6797  loss_bbox: 0.1499  loss_mask: 0.0814
+03/12 17:23:58 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:24:10 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.56s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.671
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.882
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.802
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.673
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.673
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.730
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.730
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.730
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.721
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.733
+03/12 17:24:11 - mmengine - INFO - bbox_mAP_copypaste: 0.671 0.882 0.802 -1.000 0.673 0.673
+03/12 17:24:11 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.58s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.686
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.883
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.804
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.660
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.716
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.743
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.743
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.743
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.718
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.753
+03/12 17:24:12 - mmengine - INFO - segm_mAP_copypaste: 0.686 0.883 0.804 -1.000 0.660 0.716
+03/12 17:24:12 - mmengine - INFO - Epoch(val) [35][17/17]    coco/bbox_mAP: 0.6710  coco/bbox_mAP_50: 0.8820  coco/bbox_mAP_75: 0.8020  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6730  coco/bbox_mAP_l: 0.6730  coco/segm_mAP: 0.6860  coco/segm_mAP_50: 0.8830  coco/segm_mAP_75: 0.8040  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6600  coco/segm_mAP_l: 0.7160  data_time: 0.2698  time: 0.4920
+03/12 17:24:27 - mmengine - INFO - Epoch(train)  [36][ 50/149]  lr: 2.0000e-04  eta: 0:48:13  time: 0.3027  data_time: 0.0623  memory: 5326  grad_norm: 3.8830  loss: 0.3635  loss_rpn_cls: 0.0038  loss_rpn_bbox: 0.0326  loss_cls: 0.0900  acc: 97.5586  loss_bbox: 0.1515  loss_mask: 0.0855
+03/12 17:24:42 - mmengine - INFO - Epoch(train)  [36][100/149]  lr: 2.0000e-04  eta: 0:47:59  time: 0.3071  data_time: 0.0417  memory: 5326  grad_norm: 4.2885  loss: 0.3596  loss_rpn_cls: 0.0044  loss_rpn_bbox: 0.0306  loss_cls: 0.0903  acc: 96.2891  loss_bbox: 0.1510  loss_mask: 0.0832
+03/12 17:24:56 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:25:11 - mmengine - INFO - Epoch(train)  [37][ 50/149]  lr: 2.0000e-04  eta: 0:47:28  time: 0.3008  data_time: 0.0528  memory: 5326  grad_norm: 3.8710  loss: 0.3590  loss_rpn_cls: 0.0044  loss_rpn_bbox: 0.0305  loss_cls: 0.0920  acc: 97.2656  loss_bbox: 0.1504  loss_mask: 0.0816
+03/12 17:25:27 - mmengine - INFO - Epoch(train)  [37][100/149]  lr: 2.0000e-04  eta: 0:47:14  time: 0.3052  data_time: 0.0357  memory: 5326  grad_norm: 4.0353  loss: 0.3271  loss_rpn_cls: 0.0028  loss_rpn_bbox: 0.0276  loss_cls: 0.0797  acc: 97.9492  loss_bbox: 0.1415  loss_mask: 0.0754
+03/12 17:25:42 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:25:58 - mmengine - INFO - Epoch(train)  [38][ 50/149]  lr: 2.0000e-04  eta: 0:46:46  time: 0.3238  data_time: 0.0686  memory: 5326  grad_norm: 4.5184  loss: 0.3465  loss_rpn_cls: 0.0028  loss_rpn_bbox: 0.0312  loss_cls: 0.0783  acc: 94.3359  loss_bbox: 0.1508  loss_mask: 0.0834
+03/12 17:26:12 - mmengine - INFO - Epoch(train)  [38][100/149]  lr: 2.0000e-04  eta: 0:46:31  time: 0.2950  data_time: 0.0403  memory: 5326  grad_norm: 4.4776  loss: 0.3758  loss_rpn_cls: 0.0040  loss_rpn_bbox: 0.0312  loss_cls: 0.0991  acc: 94.4336  loss_bbox: 0.1575  loss_mask: 0.0840
+03/12 17:26:26 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:26:41 - mmengine - INFO - Epoch(train)  [39][ 50/149]  lr: 2.0000e-04  eta: 0:46:00  time: 0.3010  data_time: 0.0423  memory: 5326  grad_norm: 3.9893  loss: 0.3142  loss_rpn_cls: 0.0024  loss_rpn_bbox: 0.0255  loss_cls: 0.0755  acc: 96.3867  loss_bbox: 0.1358  loss_mask: 0.0749
+03/12 17:26:57 - mmengine - INFO - Epoch(train)  [39][100/149]  lr: 2.0000e-04  eta: 0:45:45  time: 0.3048  data_time: 0.0504  memory: 5324  grad_norm: 4.1978  loss: 0.3396  loss_rpn_cls: 0.0053  loss_rpn_bbox: 0.0287  loss_cls: 0.0822  acc: 94.2383  loss_bbox: 0.1454  loss_mask: 0.0781
+03/12 17:27:10 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:27:26 - mmengine - INFO - Epoch(train)  [40][ 50/149]  lr: 2.0000e-04  eta: 0:45:14  time: 0.3083  data_time: 0.0396  memory: 5326  grad_norm: 4.3851  loss: 0.3392  loss_rpn_cls: 0.0033  loss_rpn_bbox: 0.0277  loss_cls: 0.0815  acc: 97.4609  loss_bbox: 0.1494  loss_mask: 0.0773
+03/12 17:27:41 - mmengine - INFO - Epoch(train)  [40][100/149]  lr: 2.0000e-04  eta: 0:44:59  time: 0.2970  data_time: 0.0477  memory: 5326  grad_norm: 3.9859  loss: 0.3426  loss_rpn_cls: 0.0040  loss_rpn_bbox: 0.0285  loss_cls: 0.0830  acc: 94.1406  loss_bbox: 0.1466  loss_mask: 0.0804
+03/12 17:27:55 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:27:55 - mmengine - INFO - Saving checkpoint at 40 epochs
+03/12 17:28:09 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.59s).
+Accumulating evaluation results...
+DONE (t=0.04s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.689
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.874
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.808
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.647
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.709
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.796
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.796
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.796
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.738
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.819
+03/12 17:28:10 - mmengine - INFO - bbox_mAP_copypaste: 0.689 0.874 0.808 -1.000 0.647 0.709
+03/12 17:28:10 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.64s).
+Accumulating evaluation results...
+DONE (t=0.04s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.699
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.876
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.809
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.602
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.752
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.814
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.814
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.814
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.735
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.845
+03/12 17:28:10 - mmengine - INFO - segm_mAP_copypaste: 0.699 0.876 0.809 -1.000 0.602 0.752
+03/12 17:28:10 - mmengine - INFO - Epoch(val) [40][17/17]    coco/bbox_mAP: 0.6890  coco/bbox_mAP_50: 0.8740  coco/bbox_mAP_75: 0.8080  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6470  coco/bbox_mAP_l: 0.7090  coco/segm_mAP: 0.6990  coco/segm_mAP_50: 0.8760  coco/segm_mAP_75: 0.8090  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6020  coco/segm_mAP_l: 0.7520  data_time: 0.2093  time: 0.4546
+03/12 17:28:23 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:28:26 - mmengine - INFO - Epoch(train)  [41][ 50/149]  lr: 2.0000e-04  eta: 0:44:30  time: 0.3130  data_time: 0.0481  memory: 5326  grad_norm: 4.2750  loss: 0.3229  loss_rpn_cls: 0.0029  loss_rpn_bbox: 0.0281  loss_cls: 0.0712  acc: 97.7539  loss_bbox: 0.1420  loss_mask: 0.0786
+03/12 17:28:40 - mmengine - INFO - Epoch(train)  [41][100/149]  lr: 2.0000e-04  eta: 0:44:14  time: 0.2829  data_time: 0.0483  memory: 5326  grad_norm: 4.2869  loss: 0.3469  loss_rpn_cls: 0.0027  loss_rpn_bbox: 0.0289  loss_cls: 0.0870  acc: 96.4844  loss_bbox: 0.1490  loss_mask: 0.0794
+03/12 17:28:55 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:29:11 - mmengine - INFO - Epoch(train)  [42][ 50/149]  lr: 2.0000e-04  eta: 0:43:46  time: 0.3293  data_time: 0.0610  memory: 5326  grad_norm: 4.0100  loss: 0.3190  loss_rpn_cls: 0.0016  loss_rpn_bbox: 0.0283  loss_cls: 0.0755  acc: 97.1680  loss_bbox: 0.1372  loss_mask: 0.0765
+03/12 17:29:26 - mmengine - INFO - Epoch(train)  [42][100/149]  lr: 2.0000e-04  eta: 0:43:30  time: 0.2885  data_time: 0.0416  memory: 5326  grad_norm: 4.4977  loss: 0.3353  loss_rpn_cls: 0.0031  loss_rpn_bbox: 0.0292  loss_cls: 0.0779  acc: 96.4844  loss_bbox: 0.1448  loss_mask: 0.0803
+03/12 17:29:40 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:29:55 - mmengine - INFO - Epoch(train)  [43][ 50/149]  lr: 2.0000e-04  eta: 0:42:59  time: 0.3013  data_time: 0.0480  memory: 5326  grad_norm: 4.1431  loss: 0.3026  loss_rpn_cls: 0.0022  loss_rpn_bbox: 0.0263  loss_cls: 0.0674  acc: 98.1445  loss_bbox: 0.1337  loss_mask: 0.0731
+03/12 17:30:10 - mmengine - INFO - Epoch(train)  [43][100/149]  lr: 2.0000e-04  eta: 0:42:44  time: 0.3025  data_time: 0.0457  memory: 5326  grad_norm: 4.1476  loss: 0.3363  loss_rpn_cls: 0.0022  loss_rpn_bbox: 0.0292  loss_cls: 0.0788  acc: 94.7266  loss_bbox: 0.1456  loss_mask: 0.0805
+03/12 17:30:24 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:30:40 - mmengine - INFO - Epoch(train)  [44][ 50/149]  lr: 2.0000e-04  eta: 0:42:15  time: 0.3019  data_time: 0.0522  memory: 5326  grad_norm: 4.4356  loss: 0.3255  loss_rpn_cls: 0.0025  loss_rpn_bbox: 0.0283  loss_cls: 0.0767  acc: 97.1680  loss_bbox: 0.1435  loss_mask: 0.0745
+03/12 17:30:54 - mmengine - INFO - Epoch(train)  [44][100/149]  lr: 2.0000e-04  eta: 0:42:00  time: 0.2972  data_time: 0.0400  memory: 5326  grad_norm: 4.5038  loss: 0.3419  loss_rpn_cls: 0.0047  loss_rpn_bbox: 0.0286  loss_cls: 0.0875  acc: 95.8008  loss_bbox: 0.1432  loss_mask: 0.0778
+03/12 17:31:09 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:31:24 - mmengine - INFO - Epoch(train)  [45][ 50/149]  lr: 2.0000e-04  eta: 0:41:29  time: 0.2966  data_time: 0.0410  memory: 5326  grad_norm: 4.0359  loss: 0.3078  loss_rpn_cls: 0.0040  loss_rpn_bbox: 0.0277  loss_cls: 0.0683  acc: 96.2891  loss_bbox: 0.1347  loss_mask: 0.0732
+03/12 17:31:40 - mmengine - INFO - Epoch(train)  [45][100/149]  lr: 2.0000e-04  eta: 0:41:15  time: 0.3177  data_time: 0.0418  memory: 5326  grad_norm: 4.7929  loss: 0.3307  loss_rpn_cls: 0.0032  loss_rpn_bbox: 0.0284  loss_cls: 0.0784  acc: 96.1914  loss_bbox: 0.1414  loss_mask: 0.0792
+03/12 17:31:54 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:32:07 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.56s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.661
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.889
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.791
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.644
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.670
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.731
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.731
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.731
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.696
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.745
+03/12 17:32:08 - mmengine - INFO - bbox_mAP_copypaste: 0.661 0.889 0.791 -1.000 0.644 0.670
+03/12 17:32:08 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.61s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.688
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.890
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.811
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.647
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.717
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.755
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.755
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.755
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.709
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.773
+03/12 17:32:09 - mmengine - INFO - segm_mAP_copypaste: 0.688 0.890 0.811 -1.000 0.647 0.717
+03/12 17:32:09 - mmengine - INFO - Epoch(val) [45][17/17]    coco/bbox_mAP: 0.6610  coco/bbox_mAP_50: 0.8890  coco/bbox_mAP_75: 0.7910  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6440  coco/bbox_mAP_l: 0.6700  coco/segm_mAP: 0.6880  coco/segm_mAP_50: 0.8900  coco/segm_mAP_75: 0.8110  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6470  coco/segm_mAP_l: 0.7170  data_time: 0.2355  time: 0.4844
+03/12 17:32:24 - mmengine - INFO - Epoch(train)  [46][ 50/149]  lr: 2.0000e-04  eta: 0:40:45  time: 0.2974  data_time: 0.0489  memory: 5326  grad_norm: 3.8587  loss: 0.3274  loss_rpn_cls: 0.0024  loss_rpn_bbox: 0.0277  loss_cls: 0.0823  acc: 98.3398  loss_bbox: 0.1383  loss_mask: 0.0767
+03/12 17:32:38 - mmengine - INFO - Epoch(train)  [46][100/149]  lr: 2.0000e-04  eta: 0:40:29  time: 0.2916  data_time: 0.0319  memory: 5326  grad_norm: 3.9386  loss: 0.3101  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0236  loss_cls: 0.0788  acc: 97.1680  loss_bbox: 0.1333  loss_mask: 0.0724
+03/12 17:32:53 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:33:08 - mmengine - INFO - Epoch(train)  [47][ 50/149]  lr: 2.0000e-04  eta: 0:40:00  time: 0.3115  data_time: 0.0435  memory: 5326  grad_norm: 3.9070  loss: 0.3069  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0263  loss_cls: 0.0709  acc: 98.1445  loss_bbox: 0.1340  loss_mask: 0.0737
+03/12 17:33:22 - mmengine - INFO - Epoch(train)  [47][100/149]  lr: 2.0000e-04  eta: 0:39:44  time: 0.2828  data_time: 0.0355  memory: 5326  grad_norm: 4.0786  loss: 0.3006  loss_rpn_cls: 0.0025  loss_rpn_bbox: 0.0246  loss_cls: 0.0710  acc: 92.3828  loss_bbox: 0.1309  loss_mask: 0.0717
+03/12 17:33:36 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:33:37 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:33:52 - mmengine - INFO - Epoch(train)  [48][ 50/149]  lr: 2.0000e-04  eta: 0:39:15  time: 0.3142  data_time: 0.0471  memory: 5326  grad_norm: 4.2808  loss: 0.3066  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0279  loss_cls: 0.0660  acc: 96.3867  loss_bbox: 0.1354  loss_mask: 0.0753
+03/12 17:34:06 - mmengine - INFO - Epoch(train)  [48][100/149]  lr: 2.0000e-04  eta: 0:38:58  time: 0.2783  data_time: 0.0343  memory: 5326  grad_norm: 4.6484  loss: 0.3071  loss_rpn_cls: 0.0027  loss_rpn_bbox: 0.0250  loss_cls: 0.0731  acc: 96.7773  loss_bbox: 0.1352  loss_mask: 0.0711
+03/12 17:34:21 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:34:36 - mmengine - INFO - Epoch(train)  [49][ 50/149]  lr: 2.0000e-04  eta: 0:38:29  time: 0.3162  data_time: 0.0575  memory: 5326  grad_norm: 4.4074  loss: 0.3199  loss_rpn_cls: 0.0026  loss_rpn_bbox: 0.0293  loss_cls: 0.0742  acc: 98.3398  loss_bbox: 0.1380  loss_mask: 0.0757
+03/12 17:34:51 - mmengine - INFO - Epoch(train)  [49][100/149]  lr: 2.0000e-04  eta: 0:38:14  time: 0.3009  data_time: 0.0413  memory: 5324  grad_norm: 3.9074  loss: 0.3100  loss_rpn_cls: 0.0032  loss_rpn_bbox: 0.0266  loss_cls: 0.0668  acc: 98.4375  loss_bbox: 0.1362  loss_mask: 0.0772
+03/12 17:35:06 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:35:21 - mmengine - INFO - Epoch(train)  [50][ 50/149]  lr: 2.0000e-04  eta: 0:37:44  time: 0.3021  data_time: 0.0499  memory: 5326  grad_norm: 4.6672  loss: 0.3083  loss_rpn_cls: 0.0029  loss_rpn_bbox: 0.0289  loss_cls: 0.0647  acc: 97.7539  loss_bbox: 0.1362  loss_mask: 0.0757
+03/12 17:35:35 - mmengine - INFO - Epoch(train)  [50][100/149]  lr: 2.0000e-04  eta: 0:37:28  time: 0.2821  data_time: 0.0367  memory: 5326  grad_norm: 3.6391  loss: 0.2928  loss_rpn_cls: 0.0021  loss_rpn_bbox: 0.0243  loss_cls: 0.0710  acc: 98.0469  loss_bbox: 0.1247  loss_mask: 0.0707
+03/12 17:35:49 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:35:49 - mmengine - INFO - Saving checkpoint at 50 epochs
+03/12 17:36:02 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.52s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.631
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.835
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.750
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.645
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.631
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.698
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.698
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.698
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.693
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.700
+03/12 17:36:03 - mmengine - INFO - bbox_mAP_copypaste: 0.631 0.835 0.750 -1.000 0.645 0.631
+03/12 17:36:03 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.55s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.649
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.835
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.763
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.646
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.670
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.712
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.712
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.712
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.700
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.717
+03/12 17:36:04 - mmengine - INFO - segm_mAP_copypaste: 0.649 0.835 0.763 -1.000 0.646 0.670
+03/12 17:36:04 - mmengine - INFO - Epoch(val) [50][17/17]    coco/bbox_mAP: 0.6310  coco/bbox_mAP_50: 0.8350  coco/bbox_mAP_75: 0.7500  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6450  coco/bbox_mAP_l: 0.6310  coco/segm_mAP: 0.6490  coco/segm_mAP_50: 0.8350  coco/segm_mAP_75: 0.7630  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6460  coco/segm_mAP_l: 0.6700  data_time: 0.2450  time: 0.4602
+03/12 17:36:18 - mmengine - INFO - Epoch(train)  [51][ 50/149]  lr: 2.0000e-04  eta: 0:36:58  time: 0.2923  data_time: 0.0393  memory: 5326  grad_norm: 3.9923  loss: 0.3116  loss_rpn_cls: 0.0032  loss_rpn_bbox: 0.0265  loss_cls: 0.0744  acc: 97.7539  loss_bbox: 0.1344  loss_mask: 0.0733
+03/12 17:36:34 - mmengine - INFO - Epoch(train)  [51][100/149]  lr: 2.0000e-04  eta: 0:36:44  time: 0.3131  data_time: 0.0549  memory: 5326  grad_norm: 4.5574  loss: 0.3188  loss_rpn_cls: 0.0026  loss_rpn_bbox: 0.0291  loss_cls: 0.0711  acc: 98.7305  loss_bbox: 0.1407  loss_mask: 0.0752
+03/12 17:36:48 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:37:03 - mmengine - INFO - Epoch(train)  [52][ 50/149]  lr: 2.0000e-04  eta: 0:36:14  time: 0.3043  data_time: 0.0406  memory: 5326  grad_norm: 4.6479  loss: 0.2890  loss_rpn_cls: 0.0032  loss_rpn_bbox: 0.0241  loss_cls: 0.0631  acc: 98.8281  loss_bbox: 0.1287  loss_mask: 0.0699
+03/12 17:37:19 - mmengine - INFO - Epoch(train)  [52][100/149]  lr: 2.0000e-04  eta: 0:35:59  time: 0.3080  data_time: 0.0420  memory: 5326  grad_norm: 3.8162  loss: 0.2969  loss_rpn_cls: 0.0026  loss_rpn_bbox: 0.0268  loss_cls: 0.0663  acc: 97.6562  loss_bbox: 0.1294  loss_mask: 0.0720
+03/12 17:37:33 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:37:49 - mmengine - INFO - Epoch(train)  [53][ 50/149]  lr: 2.0000e-04  eta: 0:35:29  time: 0.3122  data_time: 0.0488  memory: 5326  grad_norm: 4.2789  loss: 0.3023  loss_rpn_cls: 0.0025  loss_rpn_bbox: 0.0260  loss_cls: 0.0693  acc: 97.0703  loss_bbox: 0.1324  loss_mask: 0.0721
+03/12 17:38:03 - mmengine - INFO - Epoch(train)  [53][100/149]  lr: 2.0000e-04  eta: 0:35:14  time: 0.2804  data_time: 0.0450  memory: 5326  grad_norm: 3.9397  loss: 0.2867  loss_rpn_cls: 0.0014  loss_rpn_bbox: 0.0251  loss_cls: 0.0612  acc: 97.8516  loss_bbox: 0.1260  loss_mask: 0.0730
+03/12 17:38:17 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:38:33 - mmengine - INFO - Epoch(train)  [54][ 50/149]  lr: 2.0000e-04  eta: 0:34:45  time: 0.3185  data_time: 0.0407  memory: 5326  grad_norm: 3.9513  loss: 0.2888  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0260  loss_cls: 0.0655  acc: 97.2656  loss_bbox: 0.1249  loss_mask: 0.0703
+03/12 17:38:47 - mmengine - INFO - Epoch(train)  [54][100/149]  lr: 2.0000e-04  eta: 0:34:29  time: 0.2806  data_time: 0.0349  memory: 5326  grad_norm: 4.1527  loss: 0.2849  loss_rpn_cls: 0.0038  loss_rpn_bbox: 0.0235  loss_cls: 0.0672  acc: 96.4844  loss_bbox: 0.1232  loss_mask: 0.0672
+03/12 17:38:48 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:39:03 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:39:18 - mmengine - INFO - Epoch(train)  [55][ 50/149]  lr: 2.0000e-04  eta: 0:34:00  time: 0.3026  data_time: 0.0440  memory: 5326  grad_norm: 4.2872  loss: 0.3052  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0273  loss_cls: 0.0706  acc: 97.1680  loss_bbox: 0.1330  loss_mask: 0.0722
+03/12 17:39:32 - mmengine - INFO - Epoch(train)  [55][100/149]  lr: 2.0000e-04  eta: 0:33:45  time: 0.2787  data_time: 0.0427  memory: 5326  grad_norm: 4.3478  loss: 0.3130  loss_rpn_cls: 0.0032  loss_rpn_bbox: 0.0285  loss_cls: 0.0692  acc: 97.1680  loss_bbox: 0.1366  loss_mask: 0.0755
+03/12 17:39:46 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:40:00 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.56s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.717
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.914
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.845
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.659
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.745
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.797
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.797
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.797
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.730
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.823
+03/12 17:40:01 - mmengine - INFO - bbox_mAP_copypaste: 0.717 0.914 0.845 -1.000 0.659 0.745
+03/12 17:40:01 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.59s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.728
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.915
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.857
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.630
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.787
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.721
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.846
+03/12 17:40:01 - mmengine - INFO - segm_mAP_copypaste: 0.728 0.915 0.857 -1.000 0.630 0.787
+03/12 17:40:01 - mmengine - INFO - Epoch(val) [55][17/17]    coco/bbox_mAP: 0.7170  coco/bbox_mAP_50: 0.9140  coco/bbox_mAP_75: 0.8450  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6590  coco/bbox_mAP_l: 0.7450  coco/segm_mAP: 0.7280  coco/segm_mAP_50: 0.9150  coco/segm_mAP_75: 0.8570  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6300  coco/segm_mAP_l: 0.7870  data_time: 0.2274  time: 0.4653
+03/12 17:40:01 - mmengine - INFO - The previous best checkpoint /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed/best_coco_bbox_mAP_epoch_30.pth is removed
+03/12 17:40:02 - mmengine - INFO - The best checkpoint with 0.7170 coco/bbox_mAP at 55 epoch is saved to best_coco_bbox_mAP_epoch_55.pth.
+03/12 17:40:18 - mmengine - INFO - Epoch(train)  [56][ 50/149]  lr: 2.0000e-04  eta: 0:33:15  time: 0.3036  data_time: 0.0557  memory: 5326  grad_norm: 3.9036  loss: 0.2867  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0267  loss_cls: 0.0603  acc: 98.1445  loss_bbox: 0.1255  loss_mask: 0.0732
+03/12 17:40:34 - mmengine - INFO - Epoch(train)  [56][100/149]  lr: 2.0000e-04  eta: 0:33:01  time: 0.3242  data_time: 0.0554  memory: 5326  grad_norm: 3.9291  loss: 0.2874  loss_rpn_cls: 0.0028  loss_rpn_bbox: 0.0251  loss_cls: 0.0654  acc: 96.8750  loss_bbox: 0.1234  loss_mask: 0.0706
+03/12 17:40:49 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:41:05 - mmengine - INFO - Epoch(train)  [57][ 50/149]  lr: 2.0000e-04  eta: 0:32:32  time: 0.3253  data_time: 0.0486  memory: 5326  grad_norm: 4.4010  loss: 0.2745  loss_rpn_cls: 0.0013  loss_rpn_bbox: 0.0237  loss_cls: 0.0567  acc: 97.8516  loss_bbox: 0.1252  loss_mask: 0.0676
+03/12 17:41:20 - mmengine - INFO - Epoch(train)  [57][100/149]  lr: 2.0000e-04  eta: 0:32:17  time: 0.3033  data_time: 0.0448  memory: 5326  grad_norm: 4.3124  loss: 0.2808  loss_rpn_cls: 0.0014  loss_rpn_bbox: 0.0247  loss_cls: 0.0648  acc: 94.9219  loss_bbox: 0.1205  loss_mask: 0.0694
+03/12 17:41:34 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:41:49 - mmengine - INFO - Epoch(train)  [58][ 50/149]  lr: 2.0000e-04  eta: 0:31:47  time: 0.3019  data_time: 0.0371  memory: 5326  grad_norm: 4.2759  loss: 0.2756  loss_rpn_cls: 0.0027  loss_rpn_bbox: 0.0236  loss_cls: 0.0587  acc: 98.1445  loss_bbox: 0.1241  loss_mask: 0.0666
+03/12 17:42:03 - mmengine - INFO - Epoch(train)  [58][100/149]  lr: 2.0000e-04  eta: 0:31:31  time: 0.2782  data_time: 0.0340  memory: 5326  grad_norm: 3.6855  loss: 0.2564  loss_rpn_cls: 0.0016  loss_rpn_bbox: 0.0218  loss_cls: 0.0559  acc: 97.3633  loss_bbox: 0.1147  loss_mask: 0.0624
+03/12 17:42:18 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:42:34 - mmengine - INFO - Epoch(train)  [59][ 50/149]  lr: 2.0000e-04  eta: 0:31:02  time: 0.3195  data_time: 0.0386  memory: 5326  grad_norm: 4.5217  loss: 0.2667  loss_rpn_cls: 0.0017  loss_rpn_bbox: 0.0228  loss_cls: 0.0597  acc: 95.4102  loss_bbox: 0.1176  loss_mask: 0.0650
+03/12 17:42:48 - mmengine - INFO - Epoch(train)  [59][100/149]  lr: 2.0000e-04  eta: 0:30:46  time: 0.2727  data_time: 0.0370  memory: 5326  grad_norm: 4.0918  loss: 0.2723  loss_rpn_cls: 0.0025  loss_rpn_bbox: 0.0243  loss_cls: 0.0606  acc: 98.2422  loss_bbox: 0.1186  loss_mask: 0.0662
+03/12 17:43:02 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:43:17 - mmengine - INFO - Epoch(train)  [60][ 50/149]  lr: 2.0000e-04  eta: 0:30:16  time: 0.2982  data_time: 0.0436  memory: 5326  grad_norm: 3.8395  loss: 0.2695  loss_rpn_cls: 0.0017  loss_rpn_bbox: 0.0235  loss_cls: 0.0552  acc: 98.2422  loss_bbox: 0.1200  loss_mask: 0.0691
+03/12 17:43:32 - mmengine - INFO - Epoch(train)  [60][100/149]  lr: 2.0000e-04  eta: 0:30:01  time: 0.2863  data_time: 0.0382  memory: 5326  grad_norm: 3.9806  loss: 0.2660  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0216  loss_cls: 0.0607  acc: 96.9727  loss_bbox: 0.1161  loss_mask: 0.0657
+03/12 17:43:46 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:43:46 - mmengine - INFO - Saving checkpoint at 60 epochs
+03/12 17:44:00 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.54s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.698
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.911
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.828
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.666
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.712
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.765
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.765
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.765
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.714
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.785
+03/12 17:44:00 - mmengine - INFO - bbox_mAP_copypaste: 0.698 0.911 0.828 -1.000 0.666 0.712
+03/12 17:44:00 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.58s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.717
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.911
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.837
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.670
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.744
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.779
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.779
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.779
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.721
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.802
+03/12 17:44:01 - mmengine - INFO - segm_mAP_copypaste: 0.717 0.911 0.837 -1.000 0.670 0.744
+03/12 17:44:01 - mmengine - INFO - Epoch(val) [60][17/17]    coco/bbox_mAP: 0.6980  coco/bbox_mAP_50: 0.9110  coco/bbox_mAP_75: 0.8280  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6660  coco/bbox_mAP_l: 0.7120  coco/segm_mAP: 0.7170  coco/segm_mAP_50: 0.9110  coco/segm_mAP_75: 0.8370  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6700  coco/segm_mAP_l: 0.7440  data_time: 0.2546  time: 0.4909
+03/12 17:44:16 - mmengine - INFO - Epoch(train)  [61][ 50/149]  lr: 2.0000e-04  eta: 0:29:31  time: 0.3099  data_time: 0.0538  memory: 5326  grad_norm: 3.9034  loss: 0.2724  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0252  loss_cls: 0.0574  acc: 99.0234  loss_bbox: 0.1205  loss_mask: 0.0683
+03/12 17:44:19 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:44:32 - mmengine - INFO - Epoch(train)  [61][100/149]  lr: 2.0000e-04  eta: 0:29:16  time: 0.3082  data_time: 0.0444  memory: 5326  grad_norm: 4.2193  loss: 0.2713  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0239  loss_cls: 0.0583  acc: 98.1445  loss_bbox: 0.1200  loss_mask: 0.0671
+03/12 17:44:45 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:45:00 - mmengine - INFO - Epoch(train)  [62][ 50/149]  lr: 2.0000e-04  eta: 0:28:46  time: 0.2975  data_time: 0.0539  memory: 5326  grad_norm: 4.4177  loss: 0.2912  loss_rpn_cls: 0.0014  loss_rpn_bbox: 0.0260  loss_cls: 0.0641  acc: 98.4375  loss_bbox: 0.1282  loss_mask: 0.0714
+03/12 17:45:16 - mmengine - INFO - Epoch(train)  [62][100/149]  lr: 2.0000e-04  eta: 0:28:32  time: 0.3109  data_time: 0.0455  memory: 5326  grad_norm: 3.8729  loss: 0.2739  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0236  loss_cls: 0.0588  acc: 97.4609  loss_bbox: 0.1209  loss_mask: 0.0685
+03/12 17:45:31 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:45:46 - mmengine - INFO - Epoch(train)  [63][ 50/149]  lr: 2.0000e-04  eta: 0:28:02  time: 0.2998  data_time: 0.0394  memory: 5326  grad_norm: 4.3247  loss: 0.2764  loss_rpn_cls: 0.0040  loss_rpn_bbox: 0.0237  loss_cls: 0.0634  acc: 97.1680  loss_bbox: 0.1213  loss_mask: 0.0640
+03/12 17:46:00 - mmengine - INFO - Epoch(train)  [63][100/149]  lr: 2.0000e-04  eta: 0:27:47  time: 0.2918  data_time: 0.0394  memory: 5326  grad_norm: 3.8727  loss: 0.2696  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0233  loss_cls: 0.0616  acc: 97.0703  loss_bbox: 0.1178  loss_mask: 0.0660
+03/12 17:46:15 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:46:30 - mmengine - INFO - Epoch(train)  [64][ 50/149]  lr: 2.0000e-04  eta: 0:27:17  time: 0.3018  data_time: 0.0498  memory: 5326  grad_norm: 4.1827  loss: 0.2696  loss_rpn_cls: 0.0025  loss_rpn_bbox: 0.0231  loss_cls: 0.0576  acc: 94.0430  loss_bbox: 0.1204  loss_mask: 0.0660
+03/12 17:46:45 - mmengine - INFO - Epoch(train)  [64][100/149]  lr: 2.0000e-04  eta: 0:27:02  time: 0.2950  data_time: 0.0417  memory: 5326  grad_norm: 3.5695  loss: 0.2717  loss_rpn_cls: 0.0013  loss_rpn_bbox: 0.0228  loss_cls: 0.0614  acc: 97.6562  loss_bbox: 0.1185  loss_mask: 0.0677
+03/12 17:46:59 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:47:15 - mmengine - INFO - Epoch(train)  [65][ 50/149]  lr: 2.0000e-04  eta: 0:26:33  time: 0.3128  data_time: 0.0424  memory: 5326  grad_norm: 3.8824  loss: 0.2702  loss_rpn_cls: 0.0022  loss_rpn_bbox: 0.0232  loss_cls: 0.0593  acc: 97.7539  loss_bbox: 0.1181  loss_mask: 0.0675
+03/12 17:47:29 - mmengine - INFO - Epoch(train)  [65][100/149]  lr: 2.0000e-04  eta: 0:26:17  time: 0.2863  data_time: 0.0397  memory: 5326  grad_norm: 4.1037  loss: 0.2719  loss_rpn_cls: 0.0028  loss_rpn_bbox: 0.0241  loss_cls: 0.0572  acc: 98.1445  loss_bbox: 0.1207  loss_mask: 0.0671
+03/12 17:47:45 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:47:57 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.54s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.728
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.919
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.870
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.686
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.750
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.798
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.798
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.798
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.750
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.816
+03/12 17:47:57 - mmengine - INFO - bbox_mAP_copypaste: 0.728 0.919 0.870 -1.000 0.686 0.750
+03/12 17:47:57 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.58s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.754
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.928
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.879
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.679
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.803
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.823
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.823
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.823
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.760
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.848
+03/12 17:47:58 - mmengine - INFO - segm_mAP_copypaste: 0.754 0.928 0.879 -1.000 0.679 0.803
+03/12 17:47:58 - mmengine - INFO - Epoch(val) [65][17/17]    coco/bbox_mAP: 0.7280  coco/bbox_mAP_50: 0.9190  coco/bbox_mAP_75: 0.8700  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6860  coco/bbox_mAP_l: 0.7500  coco/segm_mAP: 0.7540  coco/segm_mAP_50: 0.9280  coco/segm_mAP_75: 0.8790  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6790  coco/segm_mAP_l: 0.8030  data_time: 0.2323  time: 0.4484
+03/12 17:47:58 - mmengine - INFO - The previous best checkpoint /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed/best_coco_bbox_mAP_epoch_55.pth is removed
+03/12 17:47:59 - mmengine - INFO - The best checkpoint with 0.7280 coco/bbox_mAP at 65 epoch is saved to best_coco_bbox_mAP_epoch_65.pth.
+03/12 17:48:14 - mmengine - INFO - Epoch(train)  [66][ 50/149]  lr: 2.0000e-04  eta: 0:25:48  time: 0.2944  data_time: 0.0458  memory: 5326  grad_norm: 4.1319  loss: 0.2561  loss_rpn_cls: 0.0013  loss_rpn_bbox: 0.0237  loss_cls: 0.0518  acc: 96.6797  loss_bbox: 0.1140  loss_mask: 0.0653
+03/12 17:48:29 - mmengine - INFO - Epoch(train)  [66][100/149]  lr: 2.0000e-04  eta: 0:25:33  time: 0.3035  data_time: 0.0435  memory: 5326  grad_norm: 4.3726  loss: 0.2411  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0216  loss_cls: 0.0447  acc: 97.7539  loss_bbox: 0.1094  loss_mask: 0.0648
+03/12 17:48:44 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:49:00 - mmengine - INFO - Epoch(train)  [67][ 50/149]  lr: 2.0000e-04  eta: 0:25:04  time: 0.3178  data_time: 0.0350  memory: 5326  grad_norm: 3.8307  loss: 0.2549  loss_rpn_cls: 0.0021  loss_rpn_bbox: 0.0207  loss_cls: 0.0534  acc: 96.9727  loss_bbox: 0.1125  loss_mask: 0.0662
+03/12 17:49:15 - mmengine - INFO - Epoch(train)  [67][100/149]  lr: 2.0000e-04  eta: 0:24:48  time: 0.2972  data_time: 0.0412  memory: 5326  grad_norm: 4.1169  loss: 0.2717  loss_rpn_cls: 0.0022  loss_rpn_bbox: 0.0235  loss_cls: 0.0609  acc: 98.1445  loss_bbox: 0.1193  loss_mask: 0.0659
+03/12 17:49:29 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:49:35 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:49:45 - mmengine - INFO - Epoch(train)  [68][ 50/149]  lr: 2.0000e-04  eta: 0:24:19  time: 0.3139  data_time: 0.0436  memory: 5326  grad_norm: 4.6883  loss: 0.2798  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0240  loss_cls: 0.0630  acc: 98.0469  loss_bbox: 0.1253  loss_mask: 0.0664
+03/12 17:49:58 - mmengine - INFO - Epoch(train)  [68][100/149]  lr: 2.0000e-04  eta: 0:24:03  time: 0.2752  data_time: 0.0445  memory: 5326  grad_norm: 4.7843  loss: 0.2646  loss_rpn_cls: 0.0016  loss_rpn_bbox: 0.0239  loss_cls: 0.0542  acc: 98.2422  loss_bbox: 0.1191  loss_mask: 0.0658
+03/12 17:50:13 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:50:28 - mmengine - INFO - Epoch(train)  [69][ 50/149]  lr: 2.0000e-04  eta: 0:23:34  time: 0.3169  data_time: 0.0377  memory: 5326  grad_norm: 3.7436  loss: 0.2430  loss_rpn_cls: 0.0018  loss_rpn_bbox: 0.0221  loss_cls: 0.0444  acc: 98.1445  loss_bbox: 0.1110  loss_mask: 0.0636
+03/12 17:50:43 - mmengine - INFO - Epoch(train)  [69][100/149]  lr: 2.0000e-04  eta: 0:23:19  time: 0.2972  data_time: 0.0362  memory: 5326  grad_norm: 3.4146  loss: 0.2538  loss_rpn_cls: 0.0016  loss_rpn_bbox: 0.0204  loss_cls: 0.0576  acc: 98.1445  loss_bbox: 0.1098  loss_mask: 0.0643
+03/12 17:50:57 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:51:12 - mmengine - INFO - Epoch(train)  [70][ 50/149]  lr: 2.0000e-04  eta: 0:22:49  time: 0.2971  data_time: 0.0405  memory: 5326  grad_norm: 4.4376  loss: 0.2452  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0215  loss_cls: 0.0501  acc: 96.4844  loss_bbox: 0.1084  loss_mask: 0.0642
+03/12 17:51:26 - mmengine - INFO - Epoch(train)  [70][100/149]  lr: 2.0000e-04  eta: 0:22:33  time: 0.2826  data_time: 0.0350  memory: 5326  grad_norm: 3.9544  loss: 0.2394  loss_rpn_cls: 0.0015  loss_rpn_bbox: 0.0210  loss_cls: 0.0479  acc: 96.3867  loss_bbox: 0.1070  loss_mask: 0.0620
+03/12 17:51:41 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:51:41 - mmengine - INFO - Saving checkpoint at 70 epochs
+03/12 17:51:54 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.53s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.737
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.912
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.857
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.690
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.762
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.803
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.803
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.803
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.745
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.826
+03/12 17:51:54 - mmengine - INFO - bbox_mAP_copypaste: 0.737 0.912 0.857 -1.000 0.690 0.762
+03/12 17:51:54 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.57s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.755
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.904
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.866
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.682
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.804
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.822
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.822
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.822
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.751
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.849
+03/12 17:51:55 - mmengine - INFO - segm_mAP_copypaste: 0.755 0.904 0.866 -1.000 0.682 0.804
+03/12 17:51:55 - mmengine - INFO - Epoch(val) [70][17/17]    coco/bbox_mAP: 0.7370  coco/bbox_mAP_50: 0.9120  coco/bbox_mAP_75: 0.8570  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6900  coco/bbox_mAP_l: 0.7620  coco/segm_mAP: 0.7550  coco/segm_mAP_50: 0.9040  coco/segm_mAP_75: 0.8660  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6820  coco/segm_mAP_l: 0.8040  data_time: 0.2237  time: 0.4476
+03/12 17:51:55 - mmengine - INFO - The previous best checkpoint /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_legnet_unsealed/best_coco_bbox_mAP_epoch_65.pth is removed
+03/12 17:51:56 - mmengine - INFO - The best checkpoint with 0.7370 coco/bbox_mAP at 70 epoch is saved to best_coco_bbox_mAP_epoch_70.pth.
+03/12 17:52:26 - mmengine - INFO - Epoch(train)  [71][ 50/149]  lr: 2.0000e-05  eta: 0:22:04  time: 0.3074  data_time: 0.0613  memory: 5326  grad_norm: 2.5816  loss: 0.2272  loss_rpn_cls: 0.0014  loss_rpn_bbox: 0.0201  loss_cls: 0.0441  acc: 98.6328  loss_bbox: 0.0990  loss_mask: 0.0626
+03/12 17:52:41 - mmengine - INFO - Epoch(train)  [71][100/149]  lr: 2.0000e-05  eta: 0:21:49  time: 0.3050  data_time: 0.0394  memory: 5326  grad_norm: 2.4678  loss: 0.2190  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0193  loss_cls: 0.0432  acc: 98.7305  loss_bbox: 0.0958  loss_mask: 0.0600
+03/12 17:52:55 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:53:11 - mmengine - INFO - Epoch(train)  [72][ 50/149]  lr: 2.0000e-05  eta: 0:21:19  time: 0.3163  data_time: 0.0512  memory: 5326  grad_norm: 2.2832  loss: 0.2184  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0190  loss_cls: 0.0423  acc: 98.6328  loss_bbox: 0.0945  loss_mask: 0.0620
+03/12 17:53:26 - mmengine - INFO - Epoch(train)  [72][100/149]  lr: 2.0000e-05  eta: 0:21:04  time: 0.2935  data_time: 0.0353  memory: 5326  grad_norm: 2.3361  loss: 0.2019  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0168  loss_cls: 0.0388  acc: 98.2422  loss_bbox: 0.0884  loss_mask: 0.0573
+03/12 17:53:40 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:53:55 - mmengine - INFO - Epoch(train)  [73][ 50/149]  lr: 2.0000e-05  eta: 0:20:35  time: 0.3099  data_time: 0.0465  memory: 5326  grad_norm: 2.2665  loss: 0.2020  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0185  loss_cls: 0.0372  acc: 98.7305  loss_bbox: 0.0881  loss_mask: 0.0575
+03/12 17:54:10 - mmengine - INFO - Epoch(train)  [73][100/149]  lr: 2.0000e-05  eta: 0:20:19  time: 0.2914  data_time: 0.0475  memory: 5326  grad_norm: 2.2974  loss: 0.2175  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0189  loss_cls: 0.0428  acc: 96.9727  loss_bbox: 0.0934  loss_mask: 0.0612
+03/12 17:54:25 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:54:40 - mmengine - INFO - Epoch(train)  [74][ 50/149]  lr: 2.0000e-05  eta: 0:19:50  time: 0.3063  data_time: 0.0572  memory: 5326  grad_norm: 2.4212  loss: 0.2117  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0186  loss_cls: 0.0403  acc: 99.0234  loss_bbox: 0.0923  loss_mask: 0.0599
+03/12 17:54:55 - mmengine - INFO - Epoch(train)  [74][100/149]  lr: 2.0000e-05  eta: 0:19:35  time: 0.2940  data_time: 0.0432  memory: 5326  grad_norm: 2.4376  loss: 0.1905  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0162  loss_cls: 0.0355  acc: 97.9492  loss_bbox: 0.0830  loss_mask: 0.0552
+03/12 17:55:02 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:55:10 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:55:24 - mmengine - INFO - Epoch(train)  [75][ 50/149]  lr: 2.0000e-05  eta: 0:19:05  time: 0.2846  data_time: 0.0404  memory: 5326  grad_norm: 2.4402  loss: 0.1969  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0170  loss_cls: 0.0372  acc: 99.1211  loss_bbox: 0.0858  loss_mask: 0.0564
+03/12 17:55:39 - mmengine - INFO - Epoch(train)  [75][100/149]  lr: 2.0000e-05  eta: 0:18:50  time: 0.3000  data_time: 0.0497  memory: 5326  grad_norm: 2.4137  loss: 0.2003  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0170  loss_cls: 0.0389  acc: 99.2188  loss_bbox: 0.0868  loss_mask: 0.0570
+03/12 17:55:53 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:56:06 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.50s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.736
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.903
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.854
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.693
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.758
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.792
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.792
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.792
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.739
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.813
+03/12 17:56:07 - mmengine - INFO - bbox_mAP_copypaste: 0.736 0.903 0.854 -1.000 0.693 0.758
+03/12 17:56:07 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.53s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.751
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.903
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.866
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.684
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.794
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.805
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.805
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.805
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.740
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.830
+03/12 17:56:07 - mmengine - INFO - segm_mAP_copypaste: 0.751 0.903 0.866 -1.000 0.684 0.794
+03/12 17:56:07 - mmengine - INFO - Epoch(val) [75][17/17]    coco/bbox_mAP: 0.7360  coco/bbox_mAP_50: 0.9030  coco/bbox_mAP_75: 0.8540  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6930  coco/bbox_mAP_l: 0.7580  coco/segm_mAP: 0.7510  coco/segm_mAP_50: 0.9030  coco/segm_mAP_75: 0.8660  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6840  coco/segm_mAP_l: 0.7940  data_time: 0.2477  time: 0.4545
+03/12 17:56:23 - mmengine - INFO - Epoch(train)  [76][ 50/149]  lr: 2.0000e-05  eta: 0:18:21  time: 0.3123  data_time: 0.0406  memory: 5326  grad_norm: 2.3469  loss: 0.1923  loss_rpn_cls: 0.0004  loss_rpn_bbox: 0.0160  loss_cls: 0.0357  acc: 98.6328  loss_bbox: 0.0835  loss_mask: 0.0568
+03/12 17:56:38 - mmengine - INFO - Epoch(train)  [76][100/149]  lr: 2.0000e-05  eta: 0:18:05  time: 0.2882  data_time: 0.0376  memory: 5326  grad_norm: 2.4051  loss: 0.2075  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0169  loss_cls: 0.0429  acc: 99.5117  loss_bbox: 0.0883  loss_mask: 0.0583
+03/12 17:56:51 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:57:08 - mmengine - INFO - Epoch(train)  [77][ 50/149]  lr: 2.0000e-05  eta: 0:17:36  time: 0.3250  data_time: 0.0468  memory: 5326  grad_norm: 2.3871  loss: 0.1927  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0176  loss_cls: 0.0354  acc: 99.3164  loss_bbox: 0.0822  loss_mask: 0.0569
+03/12 17:57:22 - mmengine - INFO - Epoch(train)  [77][100/149]  lr: 2.0000e-05  eta: 0:17:21  time: 0.2855  data_time: 0.0406  memory: 5326  grad_norm: 2.3750  loss: 0.1978  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0163  loss_cls: 0.0351  acc: 99.0234  loss_bbox: 0.0861  loss_mask: 0.0598
+03/12 17:57:36 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:57:51 - mmengine - INFO - Epoch(train)  [78][ 50/149]  lr: 2.0000e-05  eta: 0:16:51  time: 0.3120  data_time: 0.0391  memory: 5326  grad_norm: 2.3513  loss: 0.1866  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0155  loss_cls: 0.0329  acc: 98.7305  loss_bbox: 0.0804  loss_mask: 0.0571
+03/12 17:58:06 - mmengine - INFO - Epoch(train)  [78][100/149]  lr: 2.0000e-05  eta: 0:16:36  time: 0.2904  data_time: 0.0384  memory: 5326  grad_norm: 2.5492  loss: 0.2026  loss_rpn_cls: 0.0013  loss_rpn_bbox: 0.0181  loss_cls: 0.0383  acc: 98.9258  loss_bbox: 0.0881  loss_mask: 0.0568
+03/12 17:58:20 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:58:35 - mmengine - INFO - Epoch(train)  [79][ 50/149]  lr: 2.0000e-05  eta: 0:16:06  time: 0.2880  data_time: 0.0454  memory: 5326  grad_norm: 2.5626  loss: 0.1964  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0178  loss_cls: 0.0356  acc: 99.2188  loss_bbox: 0.0839  loss_mask: 0.0586
+03/12 17:58:50 - mmengine - INFO - Epoch(train)  [79][100/149]  lr: 2.0000e-05  eta: 0:15:51  time: 0.3049  data_time: 0.0417  memory: 5326  grad_norm: 2.3796  loss: 0.1993  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0164  loss_cls: 0.0407  acc: 97.2656  loss_bbox: 0.0844  loss_mask: 0.0573
+03/12 17:59:05 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:59:20 - mmengine - INFO - Epoch(train)  [80][ 50/149]  lr: 2.0000e-05  eta: 0:15:22  time: 0.3071  data_time: 0.0403  memory: 5326  grad_norm: 2.5201  loss: 0.1967  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0170  loss_cls: 0.0350  acc: 98.0469  loss_bbox: 0.0854  loss_mask: 0.0590
+03/12 17:59:34 - mmengine - INFO - Epoch(train)  [80][100/149]  lr: 2.0000e-05  eta: 0:15:06  time: 0.2866  data_time: 0.0359  memory: 5326  grad_norm: 2.4150  loss: 0.1825  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0146  loss_cls: 0.0335  acc: 98.0469  loss_bbox: 0.0799  loss_mask: 0.0542
+03/12 17:59:49 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 17:59:49 - mmengine - INFO - Saving checkpoint at 80 epochs
+03/12 18:00:02 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.50s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.716
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.888
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.839
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.669
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.738
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.778
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.778
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.778
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.722
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.799
+03/12 18:00:02 - mmengine - INFO - bbox_mAP_copypaste: 0.716 0.888 0.839 -1.000 0.669 0.738
+03/12 18:00:02 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.53s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.733
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.889
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.851
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.665
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.776
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.791
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.791
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.791
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.725
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.817
+03/12 18:00:03 - mmengine - INFO - segm_mAP_copypaste: 0.733 0.889 0.851 -1.000 0.665 0.776
+03/12 18:00:03 - mmengine - INFO - Epoch(val) [80][17/17]    coco/bbox_mAP: 0.7160  coco/bbox_mAP_50: 0.8880  coco/bbox_mAP_75: 0.8390  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6690  coco/bbox_mAP_l: 0.7380  coco/segm_mAP: 0.7330  coco/segm_mAP_50: 0.8890  coco/segm_mAP_75: 0.8510  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6650  coco/segm_mAP_l: 0.7760  data_time: 0.2511  time: 0.4618
+03/12 18:00:18 - mmengine - INFO - Epoch(train)  [81][ 50/149]  lr: 2.0000e-05  eta: 0:14:37  time: 0.3000  data_time: 0.0499  memory: 5326  grad_norm: 2.5320  loss: 0.1875  loss_rpn_cls: 0.0004  loss_rpn_bbox: 0.0161  loss_cls: 0.0328  acc: 99.2188  loss_bbox: 0.0811  loss_mask: 0.0572
+03/12 18:00:27 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:00:33 - mmengine - INFO - Epoch(train)  [81][100/149]  lr: 2.0000e-05  eta: 0:14:22  time: 0.3051  data_time: 0.0525  memory: 5326  grad_norm: 2.5600  loss: 0.2028  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0179  loss_cls: 0.0370  acc: 99.2188  loss_bbox: 0.0875  loss_mask: 0.0600
+03/12 18:00:47 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:01:01 - mmengine - INFO - Epoch(train)  [82][ 50/149]  lr: 2.0000e-05  eta: 0:13:52  time: 0.2925  data_time: 0.0457  memory: 5326  grad_norm: 2.4993  loss: 0.1960  loss_rpn_cls: 0.0004  loss_rpn_bbox: 0.0180  loss_cls: 0.0342  acc: 98.1445  loss_bbox: 0.0847  loss_mask: 0.0586
+03/12 18:01:16 - mmengine - INFO - Epoch(train)  [82][100/149]  lr: 2.0000e-05  eta: 0:13:37  time: 0.2832  data_time: 0.0365  memory: 5326  grad_norm: 2.4229  loss: 0.1783  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0141  loss_cls: 0.0328  acc: 99.1211  loss_bbox: 0.0770  loss_mask: 0.0541
+03/12 18:01:31 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:01:47 - mmengine - INFO - Epoch(train)  [83][ 50/149]  lr: 2.0000e-05  eta: 0:13:07  time: 0.3140  data_time: 0.0501  memory: 5326  grad_norm: 2.5014  loss: 0.1929  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0176  loss_cls: 0.0356  acc: 98.8281  loss_bbox: 0.0827  loss_mask: 0.0561
+03/12 18:02:02 - mmengine - INFO - Epoch(train)  [83][100/149]  lr: 2.0000e-05  eta: 0:12:53  time: 0.2994  data_time: 0.0437  memory: 5326  grad_norm: 2.5195  loss: 0.1813  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0157  loss_cls: 0.0322  acc: 99.0234  loss_bbox: 0.0795  loss_mask: 0.0530
+03/12 18:02:16 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:02:32 - mmengine - INFO - Epoch(train)  [84][ 50/149]  lr: 2.0000e-05  eta: 0:12:23  time: 0.3186  data_time: 0.0425  memory: 5326  grad_norm: 2.7474  loss: 0.1829  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0157  loss_cls: 0.0333  acc: 97.9492  loss_bbox: 0.0781  loss_mask: 0.0553
+03/12 18:02:47 - mmengine - INFO - Epoch(train)  [84][100/149]  lr: 2.0000e-05  eta: 0:12:08  time: 0.3118  data_time: 0.0401  memory: 5326  grad_norm: 2.4910  loss: 0.1849  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0157  loss_cls: 0.0336  acc: 97.2656  loss_bbox: 0.0798  loss_mask: 0.0555
+03/12 18:03:01 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:03:16 - mmengine - INFO - Epoch(train)  [85][ 50/149]  lr: 2.0000e-05  eta: 0:11:38  time: 0.3080  data_time: 0.0406  memory: 5326  grad_norm: 2.7290  loss: 0.1855  loss_rpn_cls: 0.0013  loss_rpn_bbox: 0.0158  loss_cls: 0.0334  acc: 98.7305  loss_bbox: 0.0806  loss_mask: 0.0545
+03/12 18:03:32 - mmengine - INFO - Epoch(train)  [85][100/149]  lr: 2.0000e-05  eta: 0:11:24  time: 0.3123  data_time: 0.0576  memory: 5326  grad_norm: 2.5572  loss: 0.1944  loss_rpn_cls: 0.0004  loss_rpn_bbox: 0.0181  loss_cls: 0.0332  acc: 98.5352  loss_bbox: 0.0834  loss_mask: 0.0593
+03/12 18:03:46 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:03:59 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.50s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.733
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.896
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.857
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.674
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.761
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.797
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.797
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.797
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.730
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.823
+03/12 18:03:59 - mmengine - INFO - bbox_mAP_copypaste: 0.733 0.896 0.857 -1.000 0.674 0.761
+03/12 18:03:59 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.54s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.746
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.896
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.859
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.665
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.796
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.732
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.842
+03/12 18:04:00 - mmengine - INFO - segm_mAP_copypaste: 0.746 0.896 0.859 -1.000 0.665 0.796
+03/12 18:04:00 - mmengine - INFO - Epoch(val) [85][17/17]    coco/bbox_mAP: 0.7330  coco/bbox_mAP_50: 0.8960  coco/bbox_mAP_75: 0.8570  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6740  coco/bbox_mAP_l: 0.7610  coco/segm_mAP: 0.7460  coco/segm_mAP_50: 0.8960  coco/segm_mAP_75: 0.8590  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6650  coco/segm_mAP_l: 0.7960  data_time: 0.2456  time: 0.4577
+03/12 18:04:16 - mmengine - INFO - Epoch(train)  [86][ 50/149]  lr: 2.0000e-05  eta: 0:10:54  time: 0.3145  data_time: 0.0450  memory: 5326  grad_norm: 2.4150  loss: 0.1691  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0137  loss_cls: 0.0290  acc: 97.6562  loss_bbox: 0.0739  loss_mask: 0.0522
+03/12 18:04:31 - mmengine - INFO - Epoch(train)  [86][100/149]  lr: 2.0000e-05  eta: 0:10:39  time: 0.3060  data_time: 0.0418  memory: 5326  grad_norm: 2.5128  loss: 0.1853  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0158  loss_cls: 0.0333  acc: 99.3164  loss_bbox: 0.0787  loss_mask: 0.0566
+03/12 18:04:45 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:05:01 - mmengine - INFO - Epoch(train)  [87][ 50/149]  lr: 2.0000e-05  eta: 0:10:09  time: 0.3117  data_time: 0.0383  memory: 5326  grad_norm: 2.7465  loss: 0.1745  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0148  loss_cls: 0.0308  acc: 98.9258  loss_bbox: 0.0747  loss_mask: 0.0536
+03/12 18:05:16 - mmengine - INFO - Epoch(train)  [87][100/149]  lr: 2.0000e-05  eta: 0:09:54  time: 0.3080  data_time: 0.0380  memory: 5326  grad_norm: 2.5739  loss: 0.1783  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0150  loss_cls: 0.0320  acc: 95.8984  loss_bbox: 0.0761  loss_mask: 0.0545
+03/12 18:05:30 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:05:42 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:05:46 - mmengine - INFO - Epoch(train)  [88][ 50/149]  lr: 2.0000e-05  eta: 0:09:25  time: 0.3060  data_time: 0.0639  memory: 5326  grad_norm: 2.5608  loss: 0.1846  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0169  loss_cls: 0.0320  acc: 98.6328  loss_bbox: 0.0777  loss_mask: 0.0573
+03/12 18:06:01 - mmengine - INFO - Epoch(train)  [88][100/149]  lr: 2.0000e-05  eta: 0:09:10  time: 0.3066  data_time: 0.0374  memory: 5326  grad_norm: 2.6173  loss: 0.1819  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0157  loss_cls: 0.0318  acc: 96.5820  loss_bbox: 0.0780  loss_mask: 0.0561
+03/12 18:06:15 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:06:30 - mmengine - INFO - Epoch(train)  [89][ 50/149]  lr: 2.0000e-05  eta: 0:08:40  time: 0.3010  data_time: 0.0395  memory: 5326  grad_norm: 2.5428  loss: 0.1719  loss_rpn_cls: 0.0004  loss_rpn_bbox: 0.0148  loss_cls: 0.0288  acc: 99.3164  loss_bbox: 0.0745  loss_mask: 0.0535
+03/12 18:06:45 - mmengine - INFO - Epoch(train)  [89][100/149]  lr: 2.0000e-05  eta: 0:08:25  time: 0.2862  data_time: 0.0492  memory: 5326  grad_norm: 2.5748  loss: 0.2048  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0193  loss_cls: 0.0380  acc: 97.3633  loss_bbox: 0.0847  loss_mask: 0.0623
+03/12 18:06:59 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:07:14 - mmengine - INFO - Epoch(train)  [90][ 50/149]  lr: 2.0000e-05  eta: 0:07:55  time: 0.3090  data_time: 0.0356  memory: 5326  grad_norm: 2.6735  loss: 0.1695  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0141  loss_cls: 0.0275  acc: 97.4609  loss_bbox: 0.0739  loss_mask: 0.0538
+03/12 18:07:29 - mmengine - INFO - Epoch(train)  [90][100/149]  lr: 2.0000e-05  eta: 0:07:40  time: 0.3069  data_time: 0.0438  memory: 5326  grad_norm: 2.5621  loss: 0.1909  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0169  loss_cls: 0.0328  acc: 98.2422  loss_bbox: 0.0816  loss_mask: 0.0590
+03/12 18:07:43 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:07:43 - mmengine - INFO - Saving checkpoint at 90 epochs
+03/12 18:07:56 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.50s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.721
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.882
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.839
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.684
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.743
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.782
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.782
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.782
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.732
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.801
+03/12 18:07:56 - mmengine - INFO - bbox_mAP_copypaste: 0.721 0.882 0.839 -1.000 0.684 0.743
+03/12 18:07:56 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.52s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.732
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.882
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.852
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.671
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.774
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.790
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.790
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.790
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.726
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.814
+03/12 18:07:57 - mmengine - INFO - segm_mAP_copypaste: 0.732 0.882 0.852 -1.000 0.671 0.774
+03/12 18:07:57 - mmengine - INFO - Epoch(val) [90][17/17]    coco/bbox_mAP: 0.7210  coco/bbox_mAP_50: 0.8820  coco/bbox_mAP_75: 0.8390  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6840  coco/bbox_mAP_l: 0.7430  coco/segm_mAP: 0.7320  coco/segm_mAP_50: 0.8820  coco/segm_mAP_75: 0.8520  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6710  coco/segm_mAP_l: 0.7740  data_time: 0.2500  time: 0.4602
+03/12 18:08:12 - mmengine - INFO - Epoch(train)  [91][ 50/149]  lr: 2.0000e-06  eta: 0:07:11  time: 0.2994  data_time: 0.0385  memory: 5326  grad_norm: 2.2595  loss: 0.1779  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0145  loss_cls: 0.0310  acc: 96.2891  loss_bbox: 0.0775  loss_mask: 0.0539
+03/12 18:08:26 - mmengine - INFO - Epoch(train)  [91][100/149]  lr: 2.0000e-06  eta: 0:06:56  time: 0.2953  data_time: 0.0435  memory: 5326  grad_norm: 2.2384  loss: 0.1818  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0160  loss_cls: 0.0317  acc: 98.3398  loss_bbox: 0.0769  loss_mask: 0.0564
+03/12 18:08:41 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:08:58 - mmengine - INFO - Epoch(train)  [92][ 50/149]  lr: 2.0000e-06  eta: 0:06:26  time: 0.3230  data_time: 0.0426  memory: 5326  grad_norm: 2.2178  loss: 0.1741  loss_rpn_cls: 0.0004  loss_rpn_bbox: 0.0148  loss_cls: 0.0292  acc: 98.8281  loss_bbox: 0.0750  loss_mask: 0.0547
+03/12 18:09:12 - mmengine - INFO - Epoch(train)  [92][100/149]  lr: 2.0000e-06  eta: 0:06:11  time: 0.2863  data_time: 0.0383  memory: 5326  grad_norm: 2.0034  loss: 0.1628  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0137  loss_cls: 0.0270  acc: 98.2422  loss_bbox: 0.0698  loss_mask: 0.0520
+03/12 18:09:26 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:09:42 - mmengine - INFO - Epoch(train)  [93][ 50/149]  lr: 2.0000e-06  eta: 0:05:42  time: 0.3102  data_time: 0.0451  memory: 5326  grad_norm: 2.0791  loss: 0.1793  loss_rpn_cls: 0.0002  loss_rpn_bbox: 0.0157  loss_cls: 0.0292  acc: 98.9258  loss_bbox: 0.0770  loss_mask: 0.0572
+03/12 18:09:56 - mmengine - INFO - Epoch(train)  [93][100/149]  lr: 2.0000e-06  eta: 0:05:27  time: 0.2977  data_time: 0.0550  memory: 5326  grad_norm: 2.1144  loss: 0.1855  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0172  loss_cls: 0.0308  acc: 97.4609  loss_bbox: 0.0784  loss_mask: 0.0583
+03/12 18:10:10 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:10:26 - mmengine - INFO - Epoch(train)  [94][ 50/149]  lr: 2.0000e-06  eta: 0:04:57  time: 0.3040  data_time: 0.0502  memory: 5326  grad_norm: 2.2278  loss: 0.1799  loss_rpn_cls: 0.0002  loss_rpn_bbox: 0.0154  loss_cls: 0.0297  acc: 98.5352  loss_bbox: 0.0773  loss_mask: 0.0574
+03/12 18:10:41 - mmengine - INFO - Epoch(train)  [94][100/149]  lr: 2.0000e-06  eta: 0:04:42  time: 0.3070  data_time: 0.0507  memory: 5326  grad_norm: 2.1355  loss: 0.1762  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0151  loss_cls: 0.0294  acc: 98.9258  loss_bbox: 0.0767  loss_mask: 0.0543
+03/12 18:10:54 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:10:56 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:11:12 - mmengine - INFO - Epoch(train)  [95][ 50/149]  lr: 2.0000e-06  eta: 0:04:12  time: 0.3261  data_time: 0.0667  memory: 5326  grad_norm: 2.1539  loss: 0.1763  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0155  loss_cls: 0.0306  acc: 99.2188  loss_bbox: 0.0750  loss_mask: 0.0549
+03/12 18:11:27 - mmengine - INFO - Epoch(train)  [95][100/149]  lr: 2.0000e-06  eta: 0:03:57  time: 0.3053  data_time: 0.0365  memory: 5326  grad_norm: 2.2068  loss: 0.1724  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0146  loss_cls: 0.0287  acc: 98.1445  loss_bbox: 0.0737  loss_mask: 0.0552
+03/12 18:11:41 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:11:53 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.50s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.730
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.893
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.854
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.697
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.748
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.787
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.787
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.787
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.746
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.802
+03/12 18:11:53 - mmengine - INFO - bbox_mAP_copypaste: 0.730 0.893 0.854 -1.000 0.697 0.748
+03/12 18:11:53 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.53s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.739
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.893
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.855
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.687
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.780
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.796
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.796
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.796
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.743
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.816
+03/12 18:11:54 - mmengine - INFO - segm_mAP_copypaste: 0.739 0.893 0.855 -1.000 0.687 0.780
+03/12 18:11:54 - mmengine - INFO - Epoch(val) [95][17/17]    coco/bbox_mAP: 0.7300  coco/bbox_mAP_50: 0.8930  coco/bbox_mAP_75: 0.8540  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6970  coco/bbox_mAP_l: 0.7480  coco/segm_mAP: 0.7390  coco/segm_mAP_50: 0.8930  coco/segm_mAP_75: 0.8550  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6870  coco/segm_mAP_l: 0.7800  data_time: 0.2270  time: 0.4367
+03/12 18:12:09 - mmengine - INFO - Epoch(train)  [96][ 50/149]  lr: 2.0000e-06  eta: 0:03:28  time: 0.3112  data_time: 0.0617  memory: 5326  grad_norm: 2.1310  loss: 0.1879  loss_rpn_cls: 0.0004  loss_rpn_bbox: 0.0174  loss_cls: 0.0320  acc: 98.4375  loss_bbox: 0.0794  loss_mask: 0.0586
+03/12 18:12:24 - mmengine - INFO - Epoch(train)  [96][100/149]  lr: 2.0000e-06  eta: 0:03:13  time: 0.3006  data_time: 0.0466  memory: 5326  grad_norm: 2.0713  loss: 0.1822  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0161  loss_cls: 0.0302  acc: 99.2188  loss_bbox: 0.0767  loss_mask: 0.0587
+03/12 18:12:40 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:12:56 - mmengine - INFO - Epoch(train)  [97][ 50/149]  lr: 2.0000e-06  eta: 0:02:43  time: 0.3301  data_time: 0.0403  memory: 5326  grad_norm: 2.1675  loss: 0.1691  loss_rpn_cls: 0.0002  loss_rpn_bbox: 0.0143  loss_cls: 0.0296  acc: 99.0234  loss_bbox: 0.0734  loss_mask: 0.0516
+03/12 18:13:11 - mmengine - INFO - Epoch(train)  [97][100/149]  lr: 2.0000e-06  eta: 0:02:28  time: 0.2929  data_time: 0.0379  memory: 5326  grad_norm: 2.1365  loss: 0.1730  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0148  loss_cls: 0.0301  acc: 97.9492  loss_bbox: 0.0729  loss_mask: 0.0549
+03/12 18:13:26 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:13:41 - mmengine - INFO - Epoch(train)  [98][ 50/149]  lr: 2.0000e-06  eta: 0:01:58  time: 0.3024  data_time: 0.0586  memory: 5326  grad_norm: 2.1535  loss: 0.1858  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0167  loss_cls: 0.0311  acc: 99.5117  loss_bbox: 0.0782  loss_mask: 0.0594
+03/12 18:13:56 - mmengine - INFO - Epoch(train)  [98][100/149]  lr: 2.0000e-06  eta: 0:01:43  time: 0.2932  data_time: 0.0349  memory: 5326  grad_norm: 2.0317  loss: 0.1602  loss_rpn_cls: 0.0002  loss_rpn_bbox: 0.0132  loss_cls: 0.0263  acc: 98.8281  loss_bbox: 0.0682  loss_mask: 0.0524
+03/12 18:14:10 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:14:26 - mmengine - INFO - Epoch(train)  [99][ 50/149]  lr: 2.0000e-06  eta: 0:01:14  time: 0.3061  data_time: 0.0586  memory: 5326  grad_norm: 2.1569  loss: 0.1763  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0152  loss_cls: 0.0321  acc: 99.2188  loss_bbox: 0.0734  loss_mask: 0.0546
+03/12 18:14:41 - mmengine - INFO - Epoch(train)  [99][100/149]  lr: 2.0000e-06  eta: 0:00:59  time: 0.2972  data_time: 0.0432  memory: 5326  grad_norm: 2.1359  loss: 0.1699  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0136  loss_cls: 0.0278  acc: 99.3164  loss_bbox: 0.0726  loss_mask: 0.0555
+03/12 18:14:56 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:15:12 - mmengine - INFO - Epoch(train) [100][ 50/149]  lr: 2.0000e-06  eta: 0:00:29  time: 0.3334  data_time: 0.0485  memory: 5326  grad_norm: 2.1444  loss: 0.1859  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0173  loss_cls: 0.0328  acc: 99.2188  loss_bbox: 0.0771  loss_mask: 0.0581
+03/12 18:15:26 - mmengine - INFO - Epoch(train) [100][100/149]  lr: 2.0000e-06  eta: 0:00:14  time: 0.2781  data_time: 0.0471  memory: 5326  grad_norm: 2.1674  loss: 0.1759  loss_rpn_cls: 0.0003  loss_rpn_bbox: 0.0162  loss_cls: 0.0305  acc: 98.7305  loss_bbox: 0.0745  loss_mask: 0.0544
+03/12 18:15:40 - mmengine - INFO - Exp name: mask_rcnn_legnet_24e_20260312_165458
+03/12 18:15:40 - mmengine - INFO - Saving checkpoint at 100 epochs
+03/12 18:15:54 - mmengine - INFO - Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.13s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.51s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.725
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.883
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.841
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.680
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.748
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.790
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.790
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.790
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.733
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.813
+03/12 18:15:54 - mmengine - INFO - bbox_mAP_copypaste: 0.725 0.883 0.841 -1.000 0.680 0.748
+03/12 18:15:55 - mmengine - INFO - Evaluating segm...
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=0.53s).
+Accumulating evaluation results...
+DONE (t=0.03s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.735
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.883
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.843
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.667
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.780
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.802
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.802
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.802
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.731
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.830
+03/12 18:15:56 - mmengine - INFO - segm_mAP_copypaste: 0.735 0.883 0.843 -1.000 0.667 0.780
+03/12 18:15:56 - mmengine - INFO - Epoch(val) [100][17/17]    coco/bbox_mAP: 0.7250  coco/bbox_mAP_50: 0.8830  coco/bbox_mAP_75: 0.8410  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6800  coco/bbox_mAP_l: 0.7480  coco/segm_mAP: 0.7350  coco/segm_mAP_50: 0.8830  coco/segm_mAP_75: 0.8430  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6670  coco/segm_mAP_l: 0.7800  data_time: 0.2661  time: 0.4792

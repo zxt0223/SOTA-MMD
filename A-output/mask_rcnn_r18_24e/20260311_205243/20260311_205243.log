@@ -1,0 +1,1259 @@
+2026/03/11 20:52:46 - mmengine - INFO - 
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.8.20 (default, Oct  3 2024, 15:24:27) [GCC 11.2.0]
+    CUDA available: True
+    MUSA available: False
+    numpy_random_seed: 1783606853
+    GPU 0,1,2,3: NVIDIA GeForce RTX 4090
+    CUDA_HOME: /cuda_alls/cuda-12.6
+    NVCC: Cuda compilation tools, release 12.6, V12.6.85
+    GCC: gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+    PyTorch: 2.1.2
+    PyTorch compiling details: PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201703
+  - Intel(R) oneAPI Math Kernel Library Version 2023.1-Product Build 20230303 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v3.1.1 (Git Hash 64f6bcbcbab628e96f33a62c3e975f8535a7bde4)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 12.1
+  - NVCC architecture flags: -gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_61,code=sm_61;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_90,code=sm_90
+  - CuDNN 8.9.2
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=12.1, CUDNN_VERSION=8.9.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -D_GLIBCXX_USE_CXX11_ABI=0 -fabi-version=11 -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=old-style-cast -Wno-invalid-partial-specialization -Wno-unused-private-field -Wno-aligned-allocation-unavailable -Wno-missing-braces -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_DISABLE_GPU_ASSERTS=ON, TORCH_VERSION=2.1.2, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+    TorchVision: 0.16.2
+    OpenCV: 4.13.0
+    MMEngine: 0.10.7
+
+Runtime environment:
+    cudnn_benchmark: False
+    mp_cfg: {'mp_start_method': 'fork', 'opencv_num_threads': 0}
+    dist_cfg: {'backend': 'nccl'}
+    seed: 1783606853
+    Distributed launcher: pytorch
+    Distributed training: True
+    GPU number: 4
+------------------------------------------------------------
+
+2026/03/11 20:52:46 - mmengine - INFO - Config:
+auto_scale_lr = dict(base_batch_size=16, enable=False)
+backend_args = None
+data_root = 'A-datas/'
+dataset_type = 'CocoDataset'
+default_hooks = dict(
+    checkpoint=dict(interval=10, max_keep_ckpts=3, type='CheckpointHook'),
+    logger=dict(interval=50, type='LoggerHook'),
+    param_scheduler=dict(type='ParamSchedulerHook'),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    timer=dict(type='IterTimerHook'),
+    visualization=dict(type='DetVisualizationHook'))
+default_scope = 'mmdet'
+env_cfg = dict(
+    cudnn_benchmark=False,
+    dist_cfg=dict(backend='nccl'),
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
+launcher = 'pytorch'
+load_from = None
+log_level = 'INFO'
+log_processor = dict(by_epoch=True, type='LogProcessor', window_size=50)
+metainfo = dict(
+    classes=('stone', ), palette=[
+        (
+            20,
+            220,
+            20,
+        ),
+    ])
+model = dict(
+    backbone=dict(
+        depth=18,
+        frozen_stages=1,
+        init_cfg=dict(checkpoint='torchvision://resnet18', type='Pretrained'),
+        norm_cfg=dict(requires_grad=True, type='BN'),
+        norm_eval=True,
+        num_stages=4,
+        out_indices=(
+            0,
+            1,
+            2,
+            3,
+        ),
+        style='pytorch',
+        type='ResNet'),
+    data_preprocessor=dict(
+        bgr_to_rgb=True,
+        mean=[
+            123.675,
+            116.28,
+            103.53,
+        ],
+        pad_mask=True,
+        pad_size_divisor=32,
+        std=[
+            58.395,
+            57.12,
+            57.375,
+        ],
+        type='DetDataPreprocessor'),
+    neck=dict(
+        in_channels=[
+            64,
+            128,
+            256,
+            512,
+        ],
+        num_outs=5,
+        out_channels=256,
+        type='FPN'),
+    roi_head=dict(
+        bbox_head=dict(
+            bbox_coder=dict(
+                target_means=[
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                ],
+                target_stds=[
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.2,
+                ],
+                type='DeltaXYWHBBoxCoder'),
+            fc_out_channels=1024,
+            in_channels=256,
+            loss_bbox=dict(loss_weight=1.0, type='L1Loss'),
+            loss_cls=dict(
+                loss_weight=1.0, type='CrossEntropyLoss', use_sigmoid=False),
+            num_classes=1,
+            reg_class_agnostic=False,
+            roi_feat_size=7,
+            type='Shared2FCBBoxHead'),
+        bbox_roi_extractor=dict(
+            featmap_strides=[
+                4,
+                8,
+                16,
+                32,
+            ],
+            out_channels=256,
+            roi_layer=dict(output_size=7, sampling_ratio=0, type='RoIAlign'),
+            type='SingleRoIExtractor'),
+        mask_head=dict(
+            conv_out_channels=256,
+            in_channels=256,
+            loss_mask=dict(
+                loss_weight=1.0, type='CrossEntropyLoss', use_mask=True),
+            num_classes=1,
+            num_convs=4,
+            type='FCNMaskHead'),
+        mask_roi_extractor=dict(
+            featmap_strides=[
+                4,
+                8,
+                16,
+                32,
+            ],
+            out_channels=256,
+            roi_layer=dict(output_size=14, sampling_ratio=0, type='RoIAlign'),
+            type='SingleRoIExtractor'),
+        type='StandardRoIHead'),
+    rpn_head=dict(
+        anchor_generator=dict(
+            ratios=[
+                0.5,
+                1.0,
+                2.0,
+            ],
+            scales=[
+                8,
+            ],
+            strides=[
+                4,
+                8,
+                16,
+                32,
+                64,
+            ],
+            type='AnchorGenerator'),
+        bbox_coder=dict(
+            target_means=[
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+            ],
+            target_stds=[
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+            ],
+            type='DeltaXYWHBBoxCoder'),
+        feat_channels=256,
+        in_channels=256,
+        loss_bbox=dict(loss_weight=1.0, type='L1Loss'),
+        loss_cls=dict(
+            loss_weight=1.0, type='CrossEntropyLoss', use_sigmoid=True),
+        type='RPNHead'),
+    test_cfg=dict(
+        rcnn=dict(
+            mask_thr_binary=0.5,
+            max_per_img=100,
+            nms=dict(iou_threshold=0.5, type='nms'),
+            score_thr=0.05),
+        rpn=dict(
+            max_per_img=1000,
+            min_bbox_size=0,
+            nms=dict(iou_threshold=0.7, type='nms'),
+            nms_pre=1000)),
+    train_cfg=dict(
+        rcnn=dict(
+            assigner=dict(
+                ignore_iof_thr=-1,
+                match_low_quality=True,
+                min_pos_iou=0.5,
+                neg_iou_thr=0.5,
+                pos_iou_thr=0.5,
+                type='MaxIoUAssigner'),
+            debug=False,
+            mask_size=28,
+            pos_weight=-1,
+            sampler=dict(
+                add_gt_as_proposals=True,
+                neg_pos_ub=-1,
+                num=512,
+                pos_fraction=0.25,
+                type='RandomSampler')),
+        rpn=dict(
+            allowed_border=-1,
+            assigner=dict(
+                ignore_iof_thr=-1,
+                match_low_quality=True,
+                min_pos_iou=0.3,
+                neg_iou_thr=0.3,
+                pos_iou_thr=0.7,
+                type='MaxIoUAssigner'),
+            debug=False,
+            pos_weight=-1,
+            sampler=dict(
+                add_gt_as_proposals=False,
+                neg_pos_ub=-1,
+                num=256,
+                pos_fraction=0.5,
+                type='RandomSampler')),
+        rpn_proposal=dict(
+            max_per_img=1000,
+            min_bbox_size=0,
+            nms=dict(iou_threshold=0.7, type='nms'),
+            nms_pre=2000)),
+    type='MaskRCNN')
+optim_wrapper = dict(
+    optimizer=dict(lr=0.01, momentum=0.9, type='SGD', weight_decay=0.0001),
+    type='OptimWrapper')
+param_scheduler = [
+    dict(
+        begin=0, by_epoch=False, end=500, start_factor=0.001, type='LinearLR'),
+    dict(
+        begin=0,
+        by_epoch=True,
+        end=100,
+        gamma=0.1,
+        milestones=[
+            70,
+            90,
+        ],
+        type='MultiStepLR'),
+]
+resume = False
+test_cfg = dict(type='TestLoop')
+test_dataloader = dict(
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_val2017.json',
+        backend_args=None,
+        data_prefix=dict(img='val2017/'),
+        data_root='A-datas/',
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                1333,
+                800,
+            ), type='Resize'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(
+                meta_keys=(
+                    'img_id',
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackDetInputs'),
+        ],
+        test_mode=True,
+        type='CocoDataset'),
+    drop_last=False,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+test_evaluator = dict(
+    ann_file='A-datas/annotations/instances_val2017.json',
+    backend_args=None,
+    format_only=False,
+    metric=[
+        'bbox',
+        'segm',
+    ],
+    type='CocoMetric')
+test_pipeline = [
+    dict(backend_args=None, type='LoadImageFromFile'),
+    dict(keep_ratio=True, scale=(
+        1333,
+        800,
+    ), type='Resize'),
+    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    dict(
+        meta_keys=(
+            'img_id',
+            'img_path',
+            'ori_shape',
+            'img_shape',
+            'scale_factor',
+        ),
+        type='PackDetInputs'),
+]
+train_cfg = dict(max_epochs=100, type='EpochBasedTrainLoop', val_interval=5)
+train_dataloader = dict(
+    batch_sampler=dict(type='AspectRatioBatchSampler'),
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_train2017.json',
+        backend_args=None,
+        data_prefix=dict(img='train2017/'),
+        data_root='A-datas/',
+        filter_cfg=dict(filter_empty_gt=True, min_size=32),
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(keep_ratio=True, scale=(
+                1333,
+                800,
+            ), type='Resize'),
+            dict(prob=0.5, type='RandomFlip'),
+            dict(type='PackDetInputs'),
+        ],
+        type='CocoDataset'),
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=True, type='DefaultSampler'))
+train_pipeline = [
+    dict(backend_args=None, type='LoadImageFromFile'),
+    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    dict(keep_ratio=True, scale=(
+        1333,
+        800,
+    ), type='Resize'),
+    dict(prob=0.5, type='RandomFlip'),
+    dict(type='PackDetInputs'),
+]
+val_cfg = dict(type='ValLoop')
+val_dataloader = dict(
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_val2017.json',
+        backend_args=None,
+        data_prefix=dict(img='val2017/'),
+        data_root='A-datas/',
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                1333,
+                800,
+            ), type='Resize'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(
+                meta_keys=(
+                    'img_id',
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackDetInputs'),
+        ],
+        test_mode=True,
+        type='CocoDataset'),
+    drop_last=False,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+val_evaluator = dict(
+    ann_file='A-datas/annotations/instances_val2017.json',
+    backend_args=None,
+    format_only=False,
+    metric=[
+        'bbox',
+        'segm',
+    ],
+    type='CocoMetric')
+vis_backends = [
+    dict(type='LocalVisBackend'),
+]
+visualizer = dict(
+    name='visualizer',
+    type='DetLocalVisualizer',
+    vis_backends=[
+        dict(type='LocalVisBackend'),
+        dict(type='TensorboardVisBackend'),
+    ])
+work_dir = '/group/chenjinming/SOTA_MMD/A-output/mask_rcnn_r18_24e'
+
+2026/03/11 20:52:48 - mmengine - INFO - Hooks will be executed in the following order:
+before_run:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+before_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_train_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DistSamplerSeedHook                
+ -------------------- 
+before_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_train_epoch:
+(NORMAL      ) IterTimerHook                      
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_val_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_val_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_val_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DetVisualizationHook               
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_val_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_test_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_test_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_test_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DetVisualizationHook               
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_run:
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+2026/03/11 20:52:49 - mmengine - INFO - load model from: torchvision://resnet18
+2026/03/11 20:52:49 - mmengine - INFO - Loads checkpoint by torchvision backend from path: torchvision://resnet18
+2026/03/11 20:52:49 - mmengine - WARNING - The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: fc.weight, fc.bias
+
+Name of parameter - Initialization information
+
+backbone.conv1.weight - torch.Size([64, 3, 7, 7]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.bn1.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.bn1.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.0.conv1.weight - torch.Size([64, 64, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.0.bn1.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.0.bn1.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.0.conv2.weight - torch.Size([64, 64, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.0.bn2.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.0.bn2.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.1.conv1.weight - torch.Size([64, 64, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.1.bn1.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.1.bn1.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.1.conv2.weight - torch.Size([64, 64, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.1.bn2.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer1.1.bn2.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.conv1.weight - torch.Size([128, 64, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.bn1.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.bn1.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.conv2.weight - torch.Size([128, 128, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.bn2.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.bn2.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.downsample.0.weight - torch.Size([128, 64, 1, 1]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.downsample.1.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.0.downsample.1.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.1.conv1.weight - torch.Size([128, 128, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.1.bn1.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.1.bn1.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.1.conv2.weight - torch.Size([128, 128, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.1.bn2.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer2.1.bn2.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.conv1.weight - torch.Size([256, 128, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.bn1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.bn1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.conv2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.bn2.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.bn2.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.downsample.0.weight - torch.Size([256, 128, 1, 1]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.downsample.1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.0.downsample.1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.1.conv1.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.1.bn1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.1.bn1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.1.conv2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.1.bn2.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer3.1.bn2.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.conv1.weight - torch.Size([512, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.bn1.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.bn1.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.conv2.weight - torch.Size([512, 512, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.bn2.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.bn2.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.downsample.0.weight - torch.Size([512, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.downsample.1.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.0.downsample.1.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.1.conv1.weight - torch.Size([512, 512, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.1.bn1.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.1.bn1.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.1.conv2.weight - torch.Size([512, 512, 3, 3]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.1.bn2.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+backbone.layer4.1.bn2.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet18 
+
+neck.lateral_convs.0.conv.weight - torch.Size([256, 64, 1, 1]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.lateral_convs.0.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+neck.lateral_convs.1.conv.weight - torch.Size([256, 128, 1, 1]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.lateral_convs.1.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+neck.lateral_convs.2.conv.weight - torch.Size([256, 256, 1, 1]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.lateral_convs.2.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+neck.lateral_convs.3.conv.weight - torch.Size([256, 512, 1, 1]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.lateral_convs.3.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+neck.fpn_convs.0.conv.weight - torch.Size([256, 256, 3, 3]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.fpn_convs.0.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+neck.fpn_convs.1.conv.weight - torch.Size([256, 256, 3, 3]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.fpn_convs.1.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+neck.fpn_convs.2.conv.weight - torch.Size([256, 256, 3, 3]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.fpn_convs.2.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+neck.fpn_convs.3.conv.weight - torch.Size([256, 256, 3, 3]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.fpn_convs.3.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+rpn_head.rpn_conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+rpn_head.rpn_conv.bias - torch.Size([256]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+rpn_head.rpn_cls.weight - torch.Size([3, 256, 1, 1]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+rpn_head.rpn_cls.bias - torch.Size([3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+rpn_head.rpn_reg.weight - torch.Size([12, 256, 1, 1]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+rpn_head.rpn_reg.bias - torch.Size([12]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+roi_head.bbox_head.fc_cls.weight - torch.Size([2, 1024]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+roi_head.bbox_head.fc_cls.bias - torch.Size([2]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+roi_head.bbox_head.fc_reg.weight - torch.Size([4, 1024]): 
+NormalInit: mean=0, std=0.001, bias=0 
+
+roi_head.bbox_head.fc_reg.bias - torch.Size([4]): 
+NormalInit: mean=0, std=0.001, bias=0 
+
+roi_head.bbox_head.shared_fcs.0.weight - torch.Size([1024, 12544]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+roi_head.bbox_head.shared_fcs.0.bias - torch.Size([1024]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+roi_head.bbox_head.shared_fcs.1.weight - torch.Size([1024, 1024]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+roi_head.bbox_head.shared_fcs.1.bias - torch.Size([1024]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+roi_head.mask_head.convs.0.conv.weight - torch.Size([256, 256, 3, 3]): 
+Initialized by user-defined `init_weights` in ConvModule  
+
+roi_head.mask_head.convs.0.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+roi_head.mask_head.convs.1.conv.weight - torch.Size([256, 256, 3, 3]): 
+Initialized by user-defined `init_weights` in ConvModule  
+
+roi_head.mask_head.convs.1.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+roi_head.mask_head.convs.2.conv.weight - torch.Size([256, 256, 3, 3]): 
+Initialized by user-defined `init_weights` in ConvModule  
+
+roi_head.mask_head.convs.2.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+roi_head.mask_head.convs.3.conv.weight - torch.Size([256, 256, 3, 3]): 
+Initialized by user-defined `init_weights` in ConvModule  
+
+roi_head.mask_head.convs.3.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of MaskRCNN  
+
+roi_head.mask_head.upsample.weight - torch.Size([256, 256, 2, 2]): 
+Initialized by user-defined `init_weights` in FCNMaskHead  
+
+roi_head.mask_head.upsample.bias - torch.Size([256]): 
+Initialized by user-defined `init_weights` in FCNMaskHead  
+
+roi_head.mask_head.conv_logits.weight - torch.Size([1, 256, 1, 1]): 
+Initialized by user-defined `init_weights` in FCNMaskHead  
+
+roi_head.mask_head.conv_logits.bias - torch.Size([1]): 
+Initialized by user-defined `init_weights` in FCNMaskHead  
+2026/03/11 20:52:49 - mmengine - WARNING - "FileClient" will be deprecated in future. Please use io functions in https://mmengine.readthedocs.io/en/latest/api/fileio.html#file-io
+2026/03/11 20:52:49 - mmengine - WARNING - "HardDiskBackend" is the alias of "LocalBackend" and the former will be deprecated in future.
+2026/03/11 20:52:49 - mmengine - INFO - Checkpoints will be saved to /group/chenjinming/SOTA_MMD/A-output/mask_rcnn_r18_24e.
+2026/03/11 20:53:09 - mmengine - INFO - Epoch(train)   [1][ 50/112]  lr: 9.9098e-04  eta: 1:13:00  time: 0.3929  data_time: 0.0730  memory: 2157  loss: 2.1462  loss_rpn_cls: 0.6745  loss_rpn_bbox: 0.1541  loss_cls: 0.2669  acc: 84.6680  loss_bbox: 0.1553  loss_mask: 0.8953
+2026/03/11 20:53:23 - mmengine - INFO - Epoch(train)   [1][100/112]  lr: 1.9920e-03  eta: 1:02:09  time: 0.2790  data_time: 0.0557  memory: 2241  loss: 1.9214  loss_rpn_cls: 0.4321  loss_rpn_bbox: 0.1407  loss_cls: 0.3800  acc: 77.5391  loss_bbox: 0.4828  loss_mask: 0.4858
+2026/03/11 20:53:27 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:53:44 - mmengine - INFO - Epoch(train)   [2][ 50/112]  lr: 3.2332e-03  eta: 1:01:43  time: 0.3263  data_time: 0.0569  memory: 2242  loss: 1.7810  loss_rpn_cls: 0.2082  loss_rpn_bbox: 0.1119  loss_cls: 0.3750  acc: 80.6641  loss_bbox: 0.6829  loss_mask: 0.4030
+2026/03/11 20:53:58 - mmengine - INFO - Epoch(train)   [2][100/112]  lr: 4.2342e-03  eta: 0:59:46  time: 0.2967  data_time: 0.0474  memory: 2241  loss: 1.6355  loss_rpn_cls: 0.0968  loss_rpn_bbox: 0.1052  loss_cls: 0.3564  acc: 82.4219  loss_bbox: 0.7243  loss_mask: 0.3529
+2026/03/11 20:54:02 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:54:19 - mmengine - INFO - Epoch(train)   [3][ 50/112]  lr: 5.4755e-03  eta: 0:59:48  time: 0.3394  data_time: 0.0811  memory: 2242  loss: 1.3439  loss_rpn_cls: 0.0586  loss_rpn_bbox: 0.0987  loss_cls: 0.3315  acc: 90.0391  loss_bbox: 0.5890  loss_mask: 0.2661
+2026/03/11 20:54:34 - mmengine - INFO - Epoch(train)   [3][100/112]  lr: 6.4765e-03  eta: 0:58:42  time: 0.2988  data_time: 0.0601  memory: 2242  loss: 1.1806  loss_rpn_cls: 0.0451  loss_rpn_bbox: 0.1076  loss_cls: 0.3075  acc: 88.2812  loss_bbox: 0.4991  loss_mask: 0.2213
+2026/03/11 20:54:37 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:54:54 - mmengine - INFO - Epoch(train)   [4][ 50/112]  lr: 7.7177e-03  eta: 0:58:03  time: 0.3244  data_time: 0.0680  memory: 2242  loss: 1.1263  loss_rpn_cls: 0.0415  loss_rpn_bbox: 0.0982  loss_cls: 0.3051  acc: 85.9375  loss_bbox: 0.4700  loss_mask: 0.2115
+2026/03/11 20:55:09 - mmengine - INFO - Epoch(train)   [4][100/112]  lr: 8.7187e-03  eta: 0:57:24  time: 0.3038  data_time: 0.0508  memory: 2242  loss: 0.9958  loss_rpn_cls: 0.0330  loss_rpn_bbox: 0.0803  loss_cls: 0.2794  acc: 85.9375  loss_bbox: 0.4213  loss_mask: 0.1818
+2026/03/11 20:55:12 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:55:27 - mmengine - INFO - Epoch(train)   [5][ 50/112]  lr: 9.9600e-03  eta: 0:56:26  time: 0.2970  data_time: 0.0596  memory: 2242  loss: 0.9237  loss_rpn_cls: 0.0296  loss_rpn_bbox: 0.0733  loss_cls: 0.2638  acc: 90.6250  loss_bbox: 0.3841  loss_mask: 0.1728
+2026/03/11 20:55:41 - mmengine - INFO - Epoch(train)   [5][100/112]  lr: 1.0000e-02  eta: 0:55:43  time: 0.2893  data_time: 0.0540  memory: 2242  loss: 0.8318  loss_rpn_cls: 0.0220  loss_rpn_bbox: 0.0661  loss_cls: 0.2323  acc: 94.1406  loss_bbox: 0.3502  loss_mask: 0.1611
+2026/03/11 20:55:45 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:55:59 - mmengine - INFO - Evaluating bbox...
+2026/03/11 20:56:00 - mmengine - INFO - bbox_mAP_copypaste: 0.681 0.956 0.851 -1.000 0.645 0.698
+2026/03/11 20:56:00 - mmengine - INFO - Evaluating segm...
+2026/03/11 20:56:01 - mmengine - INFO - segm_mAP_copypaste: 0.747 0.957 0.890 -1.000 0.675 0.780
+2026/03/11 20:56:01 - mmengine - INFO - Epoch(val) [5][13/13]    coco/bbox_mAP: 0.6810  coco/bbox_mAP_50: 0.9560  coco/bbox_mAP_75: 0.8510  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.6450  coco/bbox_mAP_l: 0.6980  coco/segm_mAP: 0.7470  coco/segm_mAP_50: 0.9570  coco/segm_mAP_75: 0.8900  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.6750  coco/segm_mAP_l: 0.7800  data_time: 0.2017  time: 0.4548
+2026/03/11 20:56:17 - mmengine - INFO - Epoch(train)   [6][ 50/112]  lr: 1.0000e-02  eta: 0:55:40  time: 0.3270  data_time: 0.0666  memory: 2326  loss: 0.7706  loss_rpn_cls: 0.0196  loss_rpn_bbox: 0.0586  loss_cls: 0.2222  acc: 90.8203  loss_bbox: 0.3227  loss_mask: 0.1475
+2026/03/11 20:56:32 - mmengine - INFO - Epoch(train)   [6][100/112]  lr: 1.0000e-02  eta: 0:55:15  time: 0.3047  data_time: 0.0909  memory: 2242  loss: 0.7755  loss_rpn_cls: 0.0224  loss_rpn_bbox: 0.0652  loss_cls: 0.2242  acc: 93.9453  loss_bbox: 0.3153  loss_mask: 0.1484
+2026/03/11 20:56:35 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:56:49 - mmengine - INFO - Epoch(train)   [7][ 50/112]  lr: 1.0000e-02  eta: 0:54:11  time: 0.2724  data_time: 0.0483  memory: 2242  loss: 0.6948  loss_rpn_cls: 0.0190  loss_rpn_bbox: 0.0524  loss_cls: 0.2029  acc: 90.7227  loss_bbox: 0.2893  loss_mask: 0.1313
+2026/03/11 20:57:06 - mmengine - INFO - Epoch(train)   [7][100/112]  lr: 1.0000e-02  eta: 0:54:19  time: 0.3444  data_time: 0.0916  memory: 2242  loss: 0.6895  loss_rpn_cls: 0.0170  loss_rpn_bbox: 0.0628  loss_cls: 0.1859  acc: 93.2617  loss_bbox: 0.2832  loss_mask: 0.1407
+2026/03/11 20:57:09 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:57:25 - mmengine - INFO - Epoch(train)   [8][ 50/112]  lr: 1.0000e-02  eta: 0:53:48  time: 0.3083  data_time: 0.0802  memory: 2242  loss: 0.6726  loss_rpn_cls: 0.0153  loss_rpn_bbox: 0.0583  loss_cls: 0.1860  acc: 94.6289  loss_bbox: 0.2755  loss_mask: 0.1375
+2026/03/11 20:57:40 - mmengine - INFO - Epoch(train)   [8][100/112]  lr: 1.0000e-02  eta: 0:53:34  time: 0.3147  data_time: 0.0724  memory: 2242  loss: 0.6375  loss_rpn_cls: 0.0157  loss_rpn_bbox: 0.0504  loss_cls: 0.1784  acc: 93.1641  loss_bbox: 0.2639  loss_mask: 0.1292
+2026/03/11 20:57:43 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:57:58 - mmengine - INFO - Epoch(train)   [9][ 50/112]  lr: 1.0000e-02  eta: 0:52:54  time: 0.2856  data_time: 0.0590  memory: 2242  loss: 0.6187  loss_rpn_cls: 0.0155  loss_rpn_bbox: 0.0495  loss_cls: 0.1828  acc: 92.4805  loss_bbox: 0.2492  loss_mask: 0.1218
+2026/03/11 20:58:13 - mmengine - INFO - Epoch(train)   [9][100/112]  lr: 1.0000e-02  eta: 0:52:34  time: 0.3024  data_time: 0.0738  memory: 2242  loss: 0.6265  loss_rpn_cls: 0.0138  loss_rpn_bbox: 0.0494  loss_cls: 0.1767  acc: 93.8477  loss_bbox: 0.2567  loss_mask: 0.1299
+2026/03/11 20:58:14 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:58:16 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:58:32 - mmengine - INFO - Epoch(train)  [10][ 50/112]  lr: 1.0000e-02  eta: 0:52:20  time: 0.3314  data_time: 0.0773  memory: 2242  loss: 0.5732  loss_rpn_cls: 0.0145  loss_rpn_bbox: 0.0468  loss_cls: 0.1560  acc: 94.8242  loss_bbox: 0.2352  loss_mask: 0.1207
+2026/03/11 20:58:47 - mmengine - INFO - Epoch(train)  [10][100/112]  lr: 1.0000e-02  eta: 0:51:54  time: 0.2883  data_time: 0.0584  memory: 2242  loss: 0.5774  loss_rpn_cls: 0.0124  loss_rpn_bbox: 0.0460  loss_cls: 0.1671  acc: 90.4297  loss_bbox: 0.2326  loss_mask: 0.1194
+2026/03/11 20:58:50 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:58:50 - mmengine - INFO - Saving checkpoint at 10 epochs
+2026/03/11 20:59:03 - mmengine - INFO - Evaluating bbox...
+2026/03/11 20:59:04 - mmengine - INFO - bbox_mAP_copypaste: 0.744 0.975 0.907 -1.000 0.705 0.763
+2026/03/11 20:59:04 - mmengine - INFO - Evaluating segm...
+2026/03/11 20:59:05 - mmengine - INFO - segm_mAP_copypaste: 0.796 0.967 0.931 -1.000 0.727 0.831
+2026/03/11 20:59:05 - mmengine - INFO - Epoch(val) [10][13/13]    coco/bbox_mAP: 0.7440  coco/bbox_mAP_50: 0.9750  coco/bbox_mAP_75: 0.9070  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7050  coco/bbox_mAP_l: 0.7630  coco/segm_mAP: 0.7960  coco/segm_mAP_50: 0.9670  coco/segm_mAP_75: 0.9310  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7270  coco/segm_mAP_l: 0.8310  data_time: 0.2028  time: 0.3981
+2026/03/11 20:59:22 - mmengine - INFO - Epoch(train)  [11][ 50/112]  lr: 1.0000e-02  eta: 0:51:48  time: 0.3452  data_time: 0.0506  memory: 2243  loss: 0.5700  loss_rpn_cls: 0.0137  loss_rpn_bbox: 0.0479  loss_cls: 0.1597  acc: 94.1406  loss_bbox: 0.2313  loss_mask: 0.1175
+2026/03/11 20:59:36 - mmengine - INFO - Epoch(train)  [11][100/112]  lr: 1.0000e-02  eta: 0:51:18  time: 0.2749  data_time: 0.0478  memory: 2242  loss: 0.5332  loss_rpn_cls: 0.0101  loss_rpn_bbox: 0.0410  loss_cls: 0.1541  acc: 90.8203  loss_bbox: 0.2178  loss_mask: 0.1103
+2026/03/11 20:59:39 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 20:59:55 - mmengine - INFO - Epoch(train)  [12][ 50/112]  lr: 1.0000e-02  eta: 0:51:00  time: 0.3197  data_time: 0.0697  memory: 2242  loss: 0.5190  loss_rpn_cls: 0.0090  loss_rpn_bbox: 0.0407  loss_cls: 0.1401  acc: 93.8477  loss_bbox: 0.2160  loss_mask: 0.1132
+2026/03/11 21:00:10 - mmengine - INFO - Epoch(train)  [12][100/112]  lr: 1.0000e-02  eta: 0:50:43  time: 0.3063  data_time: 0.0528  memory: 2242  loss: 0.5351  loss_rpn_cls: 0.0119  loss_rpn_bbox: 0.0424  loss_cls: 0.1510  acc: 95.6055  loss_bbox: 0.2178  loss_mask: 0.1120
+2026/03/11 21:00:14 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:00:29 - mmengine - INFO - Epoch(train)  [13][ 50/112]  lr: 1.0000e-02  eta: 0:50:22  time: 0.3060  data_time: 0.0802  memory: 2242  loss: 0.5240  loss_rpn_cls: 0.0115  loss_rpn_bbox: 0.0417  loss_cls: 0.1419  acc: 90.5273  loss_bbox: 0.2157  loss_mask: 0.1131
+2026/03/11 21:00:43 - mmengine - INFO - Epoch(train)  [13][100/112]  lr: 1.0000e-02  eta: 0:49:55  time: 0.2715  data_time: 0.0509  memory: 2242  loss: 0.5051  loss_rpn_cls: 0.0100  loss_rpn_bbox: 0.0403  loss_cls: 0.1377  acc: 97.4609  loss_bbox: 0.2066  loss_mask: 0.1106
+2026/03/11 21:00:46 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:01:01 - mmengine - INFO - Epoch(train)  [14][ 50/112]  lr: 1.0000e-02  eta: 0:49:31  time: 0.3085  data_time: 0.0544  memory: 2242  loss: 0.5025  loss_rpn_cls: 0.0109  loss_rpn_bbox: 0.0446  loss_cls: 0.1342  acc: 95.7031  loss_bbox: 0.2071  loss_mask: 0.1057
+2026/03/11 21:01:16 - mmengine - INFO - Epoch(train)  [14][100/112]  lr: 1.0000e-02  eta: 0:49:10  time: 0.2882  data_time: 0.0539  memory: 2242  loss: 0.5058  loss_rpn_cls: 0.0113  loss_rpn_bbox: 0.0410  loss_cls: 0.1391  acc: 94.0430  loss_bbox: 0.2064  loss_mask: 0.1079
+2026/03/11 21:01:19 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:01:35 - mmengine - INFO - Epoch(train)  [15][ 50/112]  lr: 1.0000e-02  eta: 0:48:55  time: 0.3242  data_time: 0.0716  memory: 2242  loss: 0.4853  loss_rpn_cls: 0.0092  loss_rpn_bbox: 0.0391  loss_cls: 0.1339  acc: 94.1406  loss_bbox: 0.1976  loss_mask: 0.1056
+2026/03/11 21:01:50 - mmengine - INFO - Epoch(train)  [15][100/112]  lr: 1.0000e-02  eta: 0:48:37  time: 0.2975  data_time: 0.0667  memory: 2242  loss: 0.4943  loss_rpn_cls: 0.0082  loss_rpn_bbox: 0.0425  loss_cls: 0.1322  acc: 89.1602  loss_bbox: 0.2062  loss_mask: 0.1052
+2026/03/11 21:01:53 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:02:06 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:02:07 - mmengine - INFO - bbox_mAP_copypaste: 0.795 0.977 0.943 -1.000 0.748 0.814
+2026/03/11 21:02:07 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:02:08 - mmengine - INFO - segm_mAP_copypaste: 0.820 0.977 0.946 -1.000 0.746 0.855
+2026/03/11 21:02:08 - mmengine - INFO - Epoch(val) [15][13/13]    coco/bbox_mAP: 0.7950  coco/bbox_mAP_50: 0.9770  coco/bbox_mAP_75: 0.9430  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7480  coco/bbox_mAP_l: 0.8140  coco/segm_mAP: 0.8200  coco/segm_mAP_50: 0.9770  coco/segm_mAP_75: 0.9460  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7460  coco/segm_mAP_l: 0.8550  data_time: 0.1850  time: 0.3737
+2026/03/11 21:02:22 - mmengine - INFO - Epoch(train)  [16][ 50/112]  lr: 1.0000e-02  eta: 0:48:13  time: 0.2955  data_time: 0.0624  memory: 2242  loss: 0.4819  loss_rpn_cls: 0.0086  loss_rpn_bbox: 0.0393  loss_cls: 0.1308  acc: 96.0938  loss_bbox: 0.1968  loss_mask: 0.1065
+2026/03/11 21:02:38 - mmengine - INFO - Epoch(train)  [16][100/112]  lr: 1.0000e-02  eta: 0:47:59  time: 0.3096  data_time: 0.0397  memory: 2242  loss: 0.4631  loss_rpn_cls: 0.0089  loss_rpn_bbox: 0.0374  loss_cls: 0.1248  acc: 94.9219  loss_bbox: 0.1907  loss_mask: 0.1013
+2026/03/11 21:02:41 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:02:57 - mmengine - INFO - Epoch(train)  [17][ 50/112]  lr: 1.0000e-02  eta: 0:47:42  time: 0.3268  data_time: 0.0310  memory: 2242  loss: 0.4330  loss_rpn_cls: 0.0077  loss_rpn_bbox: 0.0310  loss_cls: 0.1209  acc: 95.7031  loss_bbox: 0.1821  loss_mask: 0.0913
+2026/03/11 21:03:12 - mmengine - INFO - Epoch(train)  [17][100/112]  lr: 1.0000e-02  eta: 0:47:26  time: 0.3033  data_time: 0.0592  memory: 2242  loss: 0.4550  loss_rpn_cls: 0.0069  loss_rpn_bbox: 0.0384  loss_cls: 0.1224  acc: 95.6055  loss_bbox: 0.1858  loss_mask: 0.1014
+2026/03/11 21:03:15 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:03:31 - mmengine - INFO - Epoch(train)  [18][ 50/112]  lr: 1.0000e-02  eta: 0:47:04  time: 0.3067  data_time: 0.0441  memory: 2242  loss: 0.4491  loss_rpn_cls: 0.0087  loss_rpn_bbox: 0.0368  loss_cls: 0.1189  acc: 96.1914  loss_bbox: 0.1843  loss_mask: 0.1004
+2026/03/11 21:03:45 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:03:45 - mmengine - INFO - Epoch(train)  [18][100/112]  lr: 1.0000e-02  eta: 0:46:46  time: 0.2920  data_time: 0.0475  memory: 2242  loss: 0.4319  loss_rpn_cls: 0.0073  loss_rpn_bbox: 0.0336  loss_cls: 0.1206  acc: 93.1641  loss_bbox: 0.1743  loss_mask: 0.0961
+2026/03/11 21:03:48 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:04:03 - mmengine - INFO - Epoch(train)  [19][ 50/112]  lr: 1.0000e-02  eta: 0:46:21  time: 0.2932  data_time: 0.0674  memory: 2242  loss: 0.4640  loss_rpn_cls: 0.0079  loss_rpn_bbox: 0.0403  loss_cls: 0.1262  acc: 93.8477  loss_bbox: 0.1853  loss_mask: 0.1043
+2026/03/11 21:04:18 - mmengine - INFO - Epoch(train)  [19][100/112]  lr: 1.0000e-02  eta: 0:46:07  time: 0.3107  data_time: 0.0700  memory: 2242  loss: 0.4436  loss_rpn_cls: 0.0084  loss_rpn_bbox: 0.0332  loss_cls: 0.1237  acc: 97.4609  loss_bbox: 0.1777  loss_mask: 0.1004
+2026/03/11 21:04:22 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:04:38 - mmengine - INFO - Epoch(train)  [20][ 50/112]  lr: 1.0000e-02  eta: 0:45:49  time: 0.3124  data_time: 0.0754  memory: 2242  loss: 0.4320  loss_rpn_cls: 0.0088  loss_rpn_bbox: 0.0353  loss_cls: 0.1184  acc: 94.8242  loss_bbox: 0.1740  loss_mask: 0.0955
+2026/03/11 21:04:53 - mmengine - INFO - Epoch(train)  [20][100/112]  lr: 1.0000e-02  eta: 0:45:36  time: 0.3150  data_time: 0.0849  memory: 2242  loss: 0.4362  loss_rpn_cls: 0.0096  loss_rpn_bbox: 0.0369  loss_cls: 0.1184  acc: 96.1914  loss_bbox: 0.1731  loss_mask: 0.0982
+2026/03/11 21:04:57 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:04:57 - mmengine - INFO - Saving checkpoint at 20 epochs
+2026/03/11 21:05:10 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:05:11 - mmengine - INFO - bbox_mAP_copypaste: 0.797 0.971 0.933 -1.000 0.753 0.815
+2026/03/11 21:05:11 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:05:11 - mmengine - INFO - segm_mAP_copypaste: 0.819 0.970 0.945 -1.000 0.751 0.858
+2026/03/11 21:05:11 - mmengine - INFO - Epoch(val) [20][13/13]    coco/bbox_mAP: 0.7970  coco/bbox_mAP_50: 0.9710  coco/bbox_mAP_75: 0.9330  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7530  coco/bbox_mAP_l: 0.8150  coco/segm_mAP: 0.8190  coco/segm_mAP_50: 0.9700  coco/segm_mAP_75: 0.9450  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7510  coco/segm_mAP_l: 0.8580  data_time: 0.2208  time: 0.4081
+2026/03/11 21:05:27 - mmengine - INFO - Epoch(train)  [21][ 50/112]  lr: 1.0000e-02  eta: 0:45:15  time: 0.3013  data_time: 0.0812  memory: 2242  loss: 0.4302  loss_rpn_cls: 0.0076  loss_rpn_bbox: 0.0363  loss_cls: 0.1163  acc: 96.8750  loss_bbox: 0.1724  loss_mask: 0.0976
+2026/03/11 21:05:41 - mmengine - INFO - Epoch(train)  [21][100/112]  lr: 1.0000e-02  eta: 0:44:58  time: 0.2930  data_time: 0.0436  memory: 2242  loss: 0.4238  loss_rpn_cls: 0.0082  loss_rpn_bbox: 0.0332  loss_cls: 0.1216  acc: 96.8750  loss_bbox: 0.1669  loss_mask: 0.0939
+2026/03/11 21:05:45 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:06:00 - mmengine - INFO - Epoch(train)  [22][ 50/112]  lr: 1.0000e-02  eta: 0:44:38  time: 0.3009  data_time: 0.0633  memory: 2241  loss: 0.4209  loss_rpn_cls: 0.0067  loss_rpn_bbox: 0.0346  loss_cls: 0.1133  acc: 91.6992  loss_bbox: 0.1678  loss_mask: 0.0984
+2026/03/11 21:06:16 - mmengine - INFO - Epoch(train)  [22][100/112]  lr: 1.0000e-02  eta: 0:44:25  time: 0.3141  data_time: 0.0614  memory: 2242  loss: 0.4122  loss_rpn_cls: 0.0064  loss_rpn_bbox: 0.0348  loss_cls: 0.1105  acc: 95.5078  loss_bbox: 0.1649  loss_mask: 0.0956
+2026/03/11 21:06:19 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:06:34 - mmengine - INFO - Epoch(train)  [23][ 50/112]  lr: 1.0000e-02  eta: 0:44:05  time: 0.3002  data_time: 0.0622  memory: 2242  loss: 0.4188  loss_rpn_cls: 0.0064  loss_rpn_bbox: 0.0343  loss_cls: 0.1136  acc: 95.5078  loss_bbox: 0.1691  loss_mask: 0.0954
+2026/03/11 21:06:49 - mmengine - INFO - Epoch(train)  [23][100/112]  lr: 1.0000e-02  eta: 0:43:49  time: 0.3008  data_time: 0.0777  memory: 2242  loss: 0.4126  loss_rpn_cls: 0.0065  loss_rpn_bbox: 0.0357  loss_cls: 0.1049  acc: 94.1406  loss_bbox: 0.1682  loss_mask: 0.0973
+2026/03/11 21:06:53 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:07:08 - mmengine - INFO - Epoch(train)  [24][ 50/112]  lr: 1.0000e-02  eta: 0:43:30  time: 0.3116  data_time: 0.0903  memory: 2242  loss: 0.3997  loss_rpn_cls: 0.0072  loss_rpn_bbox: 0.0347  loss_cls: 0.1039  acc: 94.7266  loss_bbox: 0.1599  loss_mask: 0.0939
+2026/03/11 21:07:23 - mmengine - INFO - Epoch(train)  [24][100/112]  lr: 1.0000e-02  eta: 0:43:12  time: 0.2859  data_time: 0.0463  memory: 2242  loss: 0.3899  loss_rpn_cls: 0.0065  loss_rpn_bbox: 0.0296  loss_cls: 0.1078  acc: 96.3867  loss_bbox: 0.1566  loss_mask: 0.0894
+2026/03/11 21:07:26 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:07:41 - mmengine - INFO - Epoch(train)  [25][ 50/112]  lr: 1.0000e-02  eta: 0:42:52  time: 0.3038  data_time: 0.0877  memory: 2242  loss: 0.3867  loss_rpn_cls: 0.0061  loss_rpn_bbox: 0.0328  loss_cls: 0.0967  acc: 97.2656  loss_bbox: 0.1567  loss_mask: 0.0945
+2026/03/11 21:07:56 - mmengine - INFO - Epoch(train)  [25][100/112]  lr: 1.0000e-02  eta: 0:42:37  time: 0.3056  data_time: 0.0500  memory: 2242  loss: 0.3772  loss_rpn_cls: 0.0063  loss_rpn_bbox: 0.0281  loss_cls: 0.1057  acc: 96.6797  loss_bbox: 0.1502  loss_mask: 0.0869
+2026/03/11 21:07:59 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:08:12 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:08:12 - mmengine - INFO - bbox_mAP_copypaste: 0.789 0.970 0.934 -1.000 0.730 0.818
+2026/03/11 21:08:12 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:08:13 - mmengine - INFO - segm_mAP_copypaste: 0.825 0.971 0.948 -1.000 0.750 0.866
+2026/03/11 21:08:13 - mmengine - INFO - Epoch(val) [25][13/13]    coco/bbox_mAP: 0.7890  coco/bbox_mAP_50: 0.9700  coco/bbox_mAP_75: 0.9340  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7300  coco/bbox_mAP_l: 0.8180  coco/segm_mAP: 0.8250  coco/segm_mAP_50: 0.9710  coco/segm_mAP_75: 0.9480  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7500  coco/segm_mAP_l: 0.8660  data_time: 0.2007  time: 0.3851
+2026/03/11 21:08:29 - mmengine - INFO - Epoch(train)  [26][ 50/112]  lr: 1.0000e-02  eta: 0:42:20  time: 0.3221  data_time: 0.0800  memory: 2241  loss: 0.3979  loss_rpn_cls: 0.0049  loss_rpn_bbox: 0.0333  loss_cls: 0.0998  acc: 98.1445  loss_bbox: 0.1650  loss_mask: 0.0949
+2026/03/11 21:08:43 - mmengine - INFO - Epoch(train)  [26][100/112]  lr: 1.0000e-02  eta: 0:42:00  time: 0.2762  data_time: 0.0422  memory: 2242  loss: 0.3722  loss_rpn_cls: 0.0059  loss_rpn_bbox: 0.0304  loss_cls: 0.0991  acc: 95.9961  loss_bbox: 0.1516  loss_mask: 0.0852
+2026/03/11 21:08:46 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:09:01 - mmengine - INFO - Epoch(train)  [27][ 50/112]  lr: 1.0000e-02  eta: 0:41:38  time: 0.2933  data_time: 0.0717  memory: 2242  loss: 0.3869  loss_rpn_cls: 0.0072  loss_rpn_bbox: 0.0314  loss_cls: 0.1100  acc: 95.6055  loss_bbox: 0.1525  loss_mask: 0.0858
+2026/03/11 21:09:11 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:09:15 - mmengine - INFO - Epoch(train)  [27][100/112]  lr: 1.0000e-02  eta: 0:41:21  time: 0.2892  data_time: 0.0465  memory: 2242  loss: 0.3739  loss_rpn_cls: 0.0054  loss_rpn_bbox: 0.0299  loss_cls: 0.0992  acc: 97.0703  loss_bbox: 0.1526  loss_mask: 0.0869
+2026/03/11 21:09:18 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:09:34 - mmengine - INFO - Epoch(train)  [28][ 50/112]  lr: 1.0000e-02  eta: 0:41:02  time: 0.3104  data_time: 0.0727  memory: 2242  loss: 0.3626  loss_rpn_cls: 0.0059  loss_rpn_bbox: 0.0277  loss_cls: 0.1020  acc: 97.1680  loss_bbox: 0.1438  loss_mask: 0.0832
+2026/03/11 21:09:47 - mmengine - INFO - Epoch(train)  [28][100/112]  lr: 1.0000e-02  eta: 0:40:43  time: 0.2751  data_time: 0.0662  memory: 2242  loss: 0.3874  loss_rpn_cls: 0.0050  loss_rpn_bbox: 0.0344  loss_cls: 0.0994  acc: 98.3398  loss_bbox: 0.1576  loss_mask: 0.0910
+2026/03/11 21:09:52 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:10:08 - mmengine - INFO - Epoch(train)  [29][ 50/112]  lr: 1.0000e-02  eta: 0:40:28  time: 0.3140  data_time: 0.0644  memory: 2242  loss: 0.3701  loss_rpn_cls: 0.0046  loss_rpn_bbox: 0.0309  loss_cls: 0.0933  acc: 94.7266  loss_bbox: 0.1528  loss_mask: 0.0885
+2026/03/11 21:10:24 - mmengine - INFO - Epoch(train)  [29][100/112]  lr: 1.0000e-02  eta: 0:40:16  time: 0.3316  data_time: 0.0486  memory: 2242  loss: 0.3648  loss_rpn_cls: 0.0065  loss_rpn_bbox: 0.0303  loss_cls: 0.0974  acc: 94.2383  loss_bbox: 0.1474  loss_mask: 0.0833
+2026/03/11 21:10:28 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:10:42 - mmengine - INFO - Epoch(train)  [30][ 50/112]  lr: 1.0000e-02  eta: 0:39:55  time: 0.2866  data_time: 0.0592  memory: 2242  loss: 0.3471  loss_rpn_cls: 0.0054  loss_rpn_bbox: 0.0278  loss_cls: 0.0848  acc: 98.0469  loss_bbox: 0.1440  loss_mask: 0.0851
+2026/03/11 21:10:57 - mmengine - INFO - Epoch(train)  [30][100/112]  lr: 1.0000e-02  eta: 0:39:40  time: 0.2984  data_time: 0.0613  memory: 2242  loss: 0.3694  loss_rpn_cls: 0.0057  loss_rpn_bbox: 0.0310  loss_cls: 0.0967  acc: 94.1406  loss_bbox: 0.1494  loss_mask: 0.0867
+2026/03/11 21:11:00 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:11:00 - mmengine - INFO - Saving checkpoint at 30 epochs
+2026/03/11 21:11:13 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:11:14 - mmengine - INFO - bbox_mAP_copypaste: 0.804 0.976 0.944 -1.000 0.752 0.827
+2026/03/11 21:11:14 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:11:14 - mmengine - INFO - segm_mAP_copypaste: 0.846 0.977 0.955 -1.000 0.773 0.879
+2026/03/11 21:11:14 - mmengine - INFO - Epoch(val) [30][13/13]    coco/bbox_mAP: 0.8040  coco/bbox_mAP_50: 0.9760  coco/bbox_mAP_75: 0.9440  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7520  coco/bbox_mAP_l: 0.8270  coco/segm_mAP: 0.8460  coco/segm_mAP_50: 0.9770  coco/segm_mAP_75: 0.9550  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7730  coco/segm_mAP_l: 0.8790  data_time: 0.1920  time: 0.3790
+2026/03/11 21:11:29 - mmengine - INFO - Epoch(train)  [31][ 50/112]  lr: 1.0000e-02  eta: 0:39:18  time: 0.2925  data_time: 0.0633  memory: 2242  loss: 0.3619  loss_rpn_cls: 0.0049  loss_rpn_bbox: 0.0288  loss_cls: 0.0984  acc: 96.1914  loss_bbox: 0.1462  loss_mask: 0.0835
+2026/03/11 21:11:44 - mmengine - INFO - Epoch(train)  [31][100/112]  lr: 1.0000e-02  eta: 0:39:04  time: 0.3093  data_time: 0.0559  memory: 2242  loss: 0.3608  loss_rpn_cls: 0.0050  loss_rpn_bbox: 0.0315  loss_cls: 0.0877  acc: 98.0469  loss_bbox: 0.1482  loss_mask: 0.0883
+2026/03/11 21:11:47 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:12:05 - mmengine - INFO - Epoch(train)  [32][ 50/112]  lr: 1.0000e-02  eta: 0:38:49  time: 0.3549  data_time: 0.0853  memory: 2242  loss: 0.3374  loss_rpn_cls: 0.0038  loss_rpn_bbox: 0.0291  loss_cls: 0.0797  acc: 96.1914  loss_bbox: 0.1404  loss_mask: 0.0843
+2026/03/11 21:12:20 - mmengine - INFO - Epoch(train)  [32][100/112]  lr: 1.0000e-02  eta: 0:38:33  time: 0.2920  data_time: 0.0641  memory: 2242  loss: 0.3461  loss_rpn_cls: 0.0055  loss_rpn_bbox: 0.0314  loss_cls: 0.0817  acc: 97.9492  loss_bbox: 0.1407  loss_mask: 0.0869
+2026/03/11 21:12:23 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:12:40 - mmengine - INFO - Epoch(train)  [33][ 50/112]  lr: 1.0000e-02  eta: 0:38:17  time: 0.3272  data_time: 0.0678  memory: 2242  loss: 0.3440  loss_rpn_cls: 0.0051  loss_rpn_bbox: 0.0285  loss_cls: 0.0853  acc: 97.1680  loss_bbox: 0.1430  loss_mask: 0.0821
+2026/03/11 21:12:55 - mmengine - INFO - Epoch(train)  [33][100/112]  lr: 1.0000e-02  eta: 0:38:02  time: 0.3073  data_time: 0.0703  memory: 2242  loss: 0.3307  loss_rpn_cls: 0.0041  loss_rpn_bbox: 0.0257  loss_cls: 0.0768  acc: 97.2656  loss_bbox: 0.1383  loss_mask: 0.0858
+2026/03/11 21:12:58 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:13:14 - mmengine - INFO - Epoch(train)  [34][ 50/112]  lr: 1.0000e-02  eta: 0:37:44  time: 0.3274  data_time: 0.0622  memory: 2242  loss: 0.3237  loss_rpn_cls: 0.0038  loss_rpn_bbox: 0.0265  loss_cls: 0.0797  acc: 97.8516  loss_bbox: 0.1333  loss_mask: 0.0804
+2026/03/11 21:13:28 - mmengine - INFO - Epoch(train)  [34][100/112]  lr: 1.0000e-02  eta: 0:37:27  time: 0.2807  data_time: 0.0547  memory: 2242  loss: 0.3429  loss_rpn_cls: 0.0036  loss_rpn_bbox: 0.0286  loss_cls: 0.0809  acc: 97.8516  loss_bbox: 0.1427  loss_mask: 0.0870
+2026/03/11 21:13:32 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:13:47 - mmengine - INFO - Epoch(train)  [35][ 50/112]  lr: 1.0000e-02  eta: 0:37:07  time: 0.3027  data_time: 0.0819  memory: 2242  loss: 0.3367  loss_rpn_cls: 0.0034  loss_rpn_bbox: 0.0299  loss_cls: 0.0795  acc: 96.1914  loss_bbox: 0.1399  loss_mask: 0.0840
+2026/03/11 21:14:01 - mmengine - INFO - Epoch(train)  [35][100/112]  lr: 1.0000e-02  eta: 0:36:51  time: 0.2880  data_time: 0.0548  memory: 2242  loss: 0.3529  loss_rpn_cls: 0.0047  loss_rpn_bbox: 0.0274  loss_cls: 0.0956  acc: 95.8008  loss_bbox: 0.1420  loss_mask: 0.0832
+2026/03/11 21:14:04 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:14:17 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:14:18 - mmengine - INFO - bbox_mAP_copypaste: 0.820 0.970 0.937 -1.000 0.774 0.839
+2026/03/11 21:14:18 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:14:18 - mmengine - INFO - segm_mAP_copypaste: 0.838 0.970 0.948 -1.000 0.763 0.876
+2026/03/11 21:14:18 - mmengine - INFO - Epoch(val) [35][13/13]    coco/bbox_mAP: 0.8200  coco/bbox_mAP_50: 0.9700  coco/bbox_mAP_75: 0.9370  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7740  coco/bbox_mAP_l: 0.8390  coco/segm_mAP: 0.8380  coco/segm_mAP_50: 0.9700  coco/segm_mAP_75: 0.9480  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7630  coco/segm_mAP_l: 0.8760  data_time: 0.2013  time: 0.3841
+2026/03/11 21:14:34 - mmengine - INFO - Epoch(train)  [36][ 50/112]  lr: 1.0000e-02  eta: 0:36:31  time: 0.3091  data_time: 0.0634  memory: 2242  loss: 0.3431  loss_rpn_cls: 0.0044  loss_rpn_bbox: 0.0319  loss_cls: 0.0824  acc: 95.1172  loss_bbox: 0.1396  loss_mask: 0.0848
+2026/03/11 21:14:42 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:14:48 - mmengine - INFO - Epoch(train)  [36][100/112]  lr: 1.0000e-02  eta: 0:36:15  time: 0.2860  data_time: 0.0514  memory: 2242  loss: 0.3576  loss_rpn_cls: 0.0047  loss_rpn_bbox: 0.0315  loss_cls: 0.0845  acc: 97.3633  loss_bbox: 0.1514  loss_mask: 0.0855
+2026/03/11 21:14:51 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:15:07 - mmengine - INFO - Epoch(train)  [37][ 50/112]  lr: 1.0000e-02  eta: 0:35:56  time: 0.3084  data_time: 0.0622  memory: 2242  loss: 0.3322  loss_rpn_cls: 0.0044  loss_rpn_bbox: 0.0289  loss_cls: 0.0795  acc: 97.9492  loss_bbox: 0.1373  loss_mask: 0.0820
+2026/03/11 21:15:21 - mmengine - INFO - Epoch(train)  [37][100/112]  lr: 1.0000e-02  eta: 0:35:40  time: 0.2952  data_time: 0.0507  memory: 2242  loss: 0.3218  loss_rpn_cls: 0.0045  loss_rpn_bbox: 0.0268  loss_cls: 0.0800  acc: 97.2656  loss_bbox: 0.1319  loss_mask: 0.0786
+2026/03/11 21:15:25 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:15:39 - mmengine - INFO - Epoch(train)  [38][ 50/112]  lr: 1.0000e-02  eta: 0:35:19  time: 0.2901  data_time: 0.0690  memory: 2242  loss: 0.2972  loss_rpn_cls: 0.0035  loss_rpn_bbox: 0.0246  loss_cls: 0.0689  acc: 98.1445  loss_bbox: 0.1243  loss_mask: 0.0759
+2026/03/11 21:15:53 - mmengine - INFO - Epoch(train)  [38][100/112]  lr: 1.0000e-02  eta: 0:35:03  time: 0.2885  data_time: 0.0691  memory: 2242  loss: 0.3470  loss_rpn_cls: 0.0037  loss_rpn_bbox: 0.0326  loss_cls: 0.0770  acc: 97.3633  loss_bbox: 0.1468  loss_mask: 0.0868
+2026/03/11 21:15:57 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:16:12 - mmengine - INFO - Epoch(train)  [39][ 50/112]  lr: 1.0000e-02  eta: 0:34:43  time: 0.3041  data_time: 0.0644  memory: 2242  loss: 0.3136  loss_rpn_cls: 0.0033  loss_rpn_bbox: 0.0290  loss_cls: 0.0672  acc: 97.4609  loss_bbox: 0.1339  loss_mask: 0.0801
+2026/03/11 21:16:27 - mmengine - INFO - Epoch(train)  [39][100/112]  lr: 1.0000e-02  eta: 0:34:28  time: 0.2954  data_time: 0.0736  memory: 2242  loss: 0.3630  loss_rpn_cls: 0.0053  loss_rpn_bbox: 0.0320  loss_cls: 0.0950  acc: 96.5820  loss_bbox: 0.1499  loss_mask: 0.0807
+2026/03/11 21:16:31 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:16:45 - mmengine - INFO - Epoch(train)  [40][ 50/112]  lr: 1.0000e-02  eta: 0:34:09  time: 0.2913  data_time: 0.0758  memory: 2242  loss: 0.3036  loss_rpn_cls: 0.0035  loss_rpn_bbox: 0.0269  loss_cls: 0.0674  acc: 97.6562  loss_bbox: 0.1291  loss_mask: 0.0767
+2026/03/11 21:16:59 - mmengine - INFO - Epoch(train)  [40][100/112]  lr: 1.0000e-02  eta: 0:33:53  time: 0.2849  data_time: 0.0601  memory: 2242  loss: 0.3283  loss_rpn_cls: 0.0034  loss_rpn_bbox: 0.0297  loss_cls: 0.0744  acc: 98.0469  loss_bbox: 0.1360  loss_mask: 0.0849
+2026/03/11 21:17:03 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:17:03 - mmengine - INFO - Saving checkpoint at 40 epochs
+2026/03/11 21:17:15 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:17:16 - mmengine - INFO - bbox_mAP_copypaste: 0.814 0.969 0.938 -1.000 0.762 0.837
+2026/03/11 21:17:16 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:17:17 - mmengine - INFO - segm_mAP_copypaste: 0.837 0.969 0.947 -1.000 0.759 0.875
+2026/03/11 21:17:18 - mmengine - INFO - Epoch(val) [40][13/13]    coco/bbox_mAP: 0.8140  coco/bbox_mAP_50: 0.9690  coco/bbox_mAP_75: 0.9380  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7620  coco/bbox_mAP_l: 0.8370  coco/segm_mAP: 0.8370  coco/segm_mAP_50: 0.9690  coco/segm_mAP_75: 0.9470  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7590  coco/segm_mAP_l: 0.8750  data_time: 0.2023  time: 0.3852
+2026/03/11 21:17:32 - mmengine - INFO - Epoch(train)  [41][ 50/112]  lr: 1.0000e-02  eta: 0:33:33  time: 0.2987  data_time: 0.0647  memory: 2242  loss: 0.2929  loss_rpn_cls: 0.0031  loss_rpn_bbox: 0.0263  loss_cls: 0.0608  acc: 98.4375  loss_bbox: 0.1254  loss_mask: 0.0773
+2026/03/11 21:17:47 - mmengine - INFO - Epoch(train)  [41][100/112]  lr: 1.0000e-02  eta: 0:33:17  time: 0.2948  data_time: 0.0591  memory: 2242  loss: 0.3201  loss_rpn_cls: 0.0038  loss_rpn_bbox: 0.0281  loss_cls: 0.0766  acc: 97.4609  loss_bbox: 0.1322  loss_mask: 0.0794
+2026/03/11 21:17:50 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:18:06 - mmengine - INFO - Epoch(train)  [42][ 50/112]  lr: 1.0000e-02  eta: 0:32:59  time: 0.3176  data_time: 0.0719  memory: 2242  loss: 0.2946  loss_rpn_cls: 0.0036  loss_rpn_bbox: 0.0247  loss_cls: 0.0647  acc: 97.7539  loss_bbox: 0.1262  loss_mask: 0.0755
+2026/03/11 21:18:21 - mmengine - INFO - Epoch(train)  [42][100/112]  lr: 1.0000e-02  eta: 0:32:43  time: 0.2927  data_time: 0.0593  memory: 2242  loss: 0.3057  loss_rpn_cls: 0.0032  loss_rpn_bbox: 0.0273  loss_cls: 0.0663  acc: 96.9727  loss_bbox: 0.1309  loss_mask: 0.0780
+2026/03/11 21:18:24 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:18:41 - mmengine - INFO - Epoch(train)  [43][ 50/112]  lr: 1.0000e-02  eta: 0:32:26  time: 0.3298  data_time: 0.0945  memory: 2242  loss: 0.3132  loss_rpn_cls: 0.0046  loss_rpn_bbox: 0.0305  loss_cls: 0.0692  acc: 98.4375  loss_bbox: 0.1316  loss_mask: 0.0773
+2026/03/11 21:18:56 - mmengine - INFO - Epoch(train)  [43][100/112]  lr: 1.0000e-02  eta: 0:32:11  time: 0.3014  data_time: 0.0450  memory: 2242  loss: 0.2809  loss_rpn_cls: 0.0026  loss_rpn_bbox: 0.0246  loss_cls: 0.0571  acc: 97.3633  loss_bbox: 0.1217  loss_mask: 0.0750
+2026/03/11 21:18:59 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:19:15 - mmengine - INFO - Epoch(train)  [44][ 50/112]  lr: 1.0000e-02  eta: 0:31:53  time: 0.3114  data_time: 0.0759  memory: 2242  loss: 0.2904  loss_rpn_cls: 0.0031  loss_rpn_bbox: 0.0269  loss_cls: 0.0571  acc: 96.8750  loss_bbox: 0.1258  loss_mask: 0.0775
+2026/03/11 21:19:29 - mmengine - INFO - Epoch(train)  [44][100/112]  lr: 1.0000e-02  eta: 0:31:36  time: 0.2751  data_time: 0.0520  memory: 2242  loss: 0.2871  loss_rpn_cls: 0.0032  loss_rpn_bbox: 0.0265  loss_cls: 0.0591  acc: 98.7305  loss_bbox: 0.1211  loss_mask: 0.0771
+2026/03/11 21:19:32 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:19:48 - mmengine - INFO - Epoch(train)  [45][ 50/112]  lr: 1.0000e-02  eta: 0:31:18  time: 0.3196  data_time: 0.0515  memory: 2242  loss: 0.2948  loss_rpn_cls: 0.0027  loss_rpn_bbox: 0.0258  loss_cls: 0.0636  acc: 95.6055  loss_bbox: 0.1264  loss_mask: 0.0764
+2026/03/11 21:19:55 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:20:03 - mmengine - INFO - Epoch(train)  [45][100/112]  lr: 1.0000e-02  eta: 0:31:03  time: 0.2878  data_time: 0.0746  memory: 2242  loss: 0.2966  loss_rpn_cls: 0.0042  loss_rpn_bbox: 0.0274  loss_cls: 0.0622  acc: 99.2188  loss_bbox: 0.1255  loss_mask: 0.0773
+2026/03/11 21:20:06 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:20:18 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:20:19 - mmengine - INFO - bbox_mAP_copypaste: 0.814 0.958 0.927 -1.000 0.758 0.835
+2026/03/11 21:20:19 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:20:19 - mmengine - INFO - segm_mAP_copypaste: 0.824 0.958 0.936 -1.000 0.743 0.860
+2026/03/11 21:20:19 - mmengine - INFO - Epoch(val) [45][13/13]    coco/bbox_mAP: 0.8140  coco/bbox_mAP_50: 0.9580  coco/bbox_mAP_75: 0.9270  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7580  coco/bbox_mAP_l: 0.8350  coco/segm_mAP: 0.8240  coco/segm_mAP_50: 0.9580  coco/segm_mAP_75: 0.9360  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7430  coco/segm_mAP_l: 0.8600  data_time: 0.2203  time: 0.4010
+2026/03/11 21:20:35 - mmengine - INFO - Epoch(train)  [46][ 50/112]  lr: 1.0000e-02  eta: 0:30:43  time: 0.3108  data_time: 0.0815  memory: 2242  loss: 0.2923  loss_rpn_cls: 0.0040  loss_rpn_bbox: 0.0268  loss_cls: 0.0569  acc: 97.2656  loss_bbox: 0.1276  loss_mask: 0.0770
+2026/03/11 21:20:50 - mmengine - INFO - Epoch(train)  [46][100/112]  lr: 1.0000e-02  eta: 0:30:28  time: 0.3019  data_time: 0.0659  memory: 2242  loss: 0.2911  loss_rpn_cls: 0.0027  loss_rpn_bbox: 0.0258  loss_cls: 0.0604  acc: 97.6562  loss_bbox: 0.1243  loss_mask: 0.0780
+2026/03/11 21:20:54 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:21:08 - mmengine - INFO - Epoch(train)  [47][ 50/112]  lr: 1.0000e-02  eta: 0:30:09  time: 0.2952  data_time: 0.0608  memory: 2242  loss: 0.2952  loss_rpn_cls: 0.0027  loss_rpn_bbox: 0.0276  loss_cls: 0.0613  acc: 97.1680  loss_bbox: 0.1274  loss_mask: 0.0763
+2026/03/11 21:21:23 - mmengine - INFO - Epoch(train)  [47][100/112]  lr: 1.0000e-02  eta: 0:29:53  time: 0.2908  data_time: 0.0556  memory: 2242  loss: 0.3046  loss_rpn_cls: 0.0035  loss_rpn_bbox: 0.0278  loss_cls: 0.0620  acc: 97.4609  loss_bbox: 0.1323  loss_mask: 0.0790
+2026/03/11 21:21:27 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:21:43 - mmengine - INFO - Epoch(train)  [48][ 50/112]  lr: 1.0000e-02  eta: 0:29:37  time: 0.3351  data_time: 0.0952  memory: 2242  loss: 0.2931  loss_rpn_cls: 0.0021  loss_rpn_bbox: 0.0268  loss_cls: 0.0584  acc: 97.7539  loss_bbox: 0.1255  loss_mask: 0.0803
+2026/03/11 21:21:58 - mmengine - INFO - Epoch(train)  [48][100/112]  lr: 1.0000e-02  eta: 0:29:21  time: 0.2940  data_time: 0.0523  memory: 2242  loss: 0.2811  loss_rpn_cls: 0.0029  loss_rpn_bbox: 0.0240  loss_cls: 0.0573  acc: 95.7031  loss_bbox: 0.1252  loss_mask: 0.0717
+2026/03/11 21:22:01 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:22:17 - mmengine - INFO - Epoch(train)  [49][ 50/112]  lr: 1.0000e-02  eta: 0:29:03  time: 0.3243  data_time: 0.0682  memory: 2242  loss: 0.2817  loss_rpn_cls: 0.0030  loss_rpn_bbox: 0.0247  loss_cls: 0.0576  acc: 97.6562  loss_bbox: 0.1200  loss_mask: 0.0763
+2026/03/11 21:22:32 - mmengine - INFO - Epoch(train)  [49][100/112]  lr: 1.0000e-02  eta: 0:28:48  time: 0.2976  data_time: 0.0633  memory: 2242  loss: 0.2788  loss_rpn_cls: 0.0028  loss_rpn_bbox: 0.0257  loss_cls: 0.0547  acc: 97.2656  loss_bbox: 0.1187  loss_mask: 0.0770
+2026/03/11 21:22:36 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:22:50 - mmengine - INFO - Epoch(train)  [50][ 50/112]  lr: 1.0000e-02  eta: 0:28:28  time: 0.2937  data_time: 0.0601  memory: 2241  loss: 0.2520  loss_rpn_cls: 0.0022  loss_rpn_bbox: 0.0214  loss_cls: 0.0466  acc: 97.3633  loss_bbox: 0.1105  loss_mask: 0.0713
+2026/03/11 21:23:07 - mmengine - INFO - Epoch(train)  [50][100/112]  lr: 1.0000e-02  eta: 0:28:15  time: 0.3401  data_time: 0.0589  memory: 2242  loss: 0.2764  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0264  loss_cls: 0.0537  acc: 98.3398  loss_bbox: 0.1203  loss_mask: 0.0742
+2026/03/11 21:23:11 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:23:11 - mmengine - INFO - Saving checkpoint at 50 epochs
+2026/03/11 21:23:23 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:23:24 - mmengine - INFO - bbox_mAP_copypaste: 0.820 0.959 0.927 -1.000 0.769 0.842
+2026/03/11 21:23:24 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:23:24 - mmengine - INFO - segm_mAP_copypaste: 0.836 0.959 0.937 -1.000 0.756 0.870
+2026/03/11 21:23:24 - mmengine - INFO - Epoch(val) [50][13/13]    coco/bbox_mAP: 0.8200  coco/bbox_mAP_50: 0.9590  coco/bbox_mAP_75: 0.9270  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7690  coco/bbox_mAP_l: 0.8420  coco/segm_mAP: 0.8360  coco/segm_mAP_50: 0.9590  coco/segm_mAP_75: 0.9370  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7560  coco/segm_mAP_l: 0.8700  data_time: 0.1824  time: 0.3638
+2026/03/11 21:23:40 - mmengine - INFO - Epoch(train)  [51][ 50/112]  lr: 1.0000e-02  eta: 0:27:57  time: 0.3062  data_time: 0.0695  memory: 2242  loss: 0.2891  loss_rpn_cls: 0.0026  loss_rpn_bbox: 0.0265  loss_cls: 0.0579  acc: 97.6562  loss_bbox: 0.1222  loss_mask: 0.0799
+2026/03/11 21:23:53 - mmengine - INFO - Epoch(train)  [51][100/112]  lr: 1.0000e-02  eta: 0:27:40  time: 0.2699  data_time: 0.0471  memory: 2242  loss: 0.2540  loss_rpn_cls: 0.0029  loss_rpn_bbox: 0.0234  loss_cls: 0.0515  acc: 96.0938  loss_bbox: 0.1067  loss_mask: 0.0695
+2026/03/11 21:23:56 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:24:12 - mmengine - INFO - Epoch(train)  [52][ 50/112]  lr: 1.0000e-02  eta: 0:27:22  time: 0.3245  data_time: 0.0823  memory: 2242  loss: 0.2582  loss_rpn_cls: 0.0025  loss_rpn_bbox: 0.0247  loss_cls: 0.0451  acc: 97.9492  loss_bbox: 0.1153  loss_mask: 0.0705
+2026/03/11 21:24:27 - mmengine - INFO - Epoch(train)  [52][100/112]  lr: 1.0000e-02  eta: 0:27:06  time: 0.2866  data_time: 0.0496  memory: 2242  loss: 0.2647  loss_rpn_cls: 0.0022  loss_rpn_bbox: 0.0229  loss_cls: 0.0475  acc: 98.0469  loss_bbox: 0.1176  loss_mask: 0.0745
+2026/03/11 21:24:30 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:24:46 - mmengine - INFO - Epoch(train)  [53][ 50/112]  lr: 1.0000e-02  eta: 0:26:48  time: 0.3204  data_time: 0.0674  memory: 2242  loss: 0.2699  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0238  loss_cls: 0.0567  acc: 95.9961  loss_bbox: 0.1156  loss_mask: 0.0718
+2026/03/11 21:25:01 - mmengine - INFO - Epoch(train)  [53][100/112]  lr: 1.0000e-02  eta: 0:26:32  time: 0.2939  data_time: 0.0552  memory: 2242  loss: 0.2566  loss_rpn_cls: 0.0022  loss_rpn_bbox: 0.0242  loss_cls: 0.0487  acc: 99.3164  loss_bbox: 0.1105  loss_mask: 0.0710
+2026/03/11 21:25:04 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:25:19 - mmengine - INFO - Epoch(train)  [54][ 50/112]  lr: 1.0000e-02  eta: 0:26:13  time: 0.3011  data_time: 0.0535  memory: 2242  loss: 0.2538  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0248  loss_cls: 0.0457  acc: 98.0469  loss_bbox: 0.1100  loss_mask: 0.0713
+2026/03/11 21:25:24 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:25:34 - mmengine - INFO - Epoch(train)  [54][100/112]  lr: 1.0000e-02  eta: 0:25:58  time: 0.3029  data_time: 0.0563  memory: 2241  loss: 0.2431  loss_rpn_cls: 0.0018  loss_rpn_bbox: 0.0213  loss_cls: 0.0439  acc: 96.4844  loss_bbox: 0.1073  loss_mask: 0.0688
+2026/03/11 21:25:39 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:25:54 - mmengine - INFO - Epoch(train)  [55][ 50/112]  lr: 1.0000e-02  eta: 0:25:40  time: 0.3007  data_time: 0.0756  memory: 2242  loss: 0.2678  loss_rpn_cls: 0.0022  loss_rpn_bbox: 0.0249  loss_cls: 0.0496  acc: 97.7539  loss_bbox: 0.1170  loss_mask: 0.0742
+2026/03/11 21:26:09 - mmengine - INFO - Epoch(train)  [55][100/112]  lr: 1.0000e-02  eta: 0:25:25  time: 0.2908  data_time: 0.0523  memory: 2242  loss: 0.2588  loss_rpn_cls: 0.0026  loss_rpn_bbox: 0.0235  loss_cls: 0.0473  acc: 95.8984  loss_bbox: 0.1151  loss_mask: 0.0704
+2026/03/11 21:26:12 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:26:24 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:26:24 - mmengine - INFO - bbox_mAP_copypaste: 0.797 0.940 0.916 -1.000 0.748 0.818
+2026/03/11 21:26:24 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:26:25 - mmengine - INFO - segm_mAP_copypaste: 0.817 0.940 0.927 -1.000 0.743 0.859
+2026/03/11 21:26:25 - mmengine - INFO - Epoch(val) [55][13/13]    coco/bbox_mAP: 0.7970  coco/bbox_mAP_50: 0.9400  coco/bbox_mAP_75: 0.9160  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7480  coco/bbox_mAP_l: 0.8180  coco/segm_mAP: 0.8170  coco/segm_mAP_50: 0.9400  coco/segm_mAP_75: 0.9270  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7430  coco/segm_mAP_l: 0.8590  data_time: 0.1869  time: 0.3613
+2026/03/11 21:26:41 - mmengine - INFO - Epoch(train)  [56][ 50/112]  lr: 1.0000e-02  eta: 0:25:06  time: 0.3178  data_time: 0.0532  memory: 2242  loss: 0.2525  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0241  loss_cls: 0.0509  acc: 98.4375  loss_bbox: 0.1053  loss_mask: 0.0702
+2026/03/11 21:26:55 - mmengine - INFO - Epoch(train)  [56][100/112]  lr: 1.0000e-02  eta: 0:24:51  time: 0.2855  data_time: 0.0635  memory: 2242  loss: 0.2515  loss_rpn_cls: 0.0021  loss_rpn_bbox: 0.0238  loss_cls: 0.0463  acc: 98.2422  loss_bbox: 0.1071  loss_mask: 0.0722
+2026/03/11 21:26:59 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:27:14 - mmengine - INFO - Epoch(train)  [57][ 50/112]  lr: 1.0000e-02  eta: 0:24:32  time: 0.3070  data_time: 0.0495  memory: 2242  loss: 0.2450  loss_rpn_cls: 0.0018  loss_rpn_bbox: 0.0231  loss_cls: 0.0427  acc: 97.7539  loss_bbox: 0.1076  loss_mask: 0.0699
+2026/03/11 21:27:30 - mmengine - INFO - Epoch(train)  [57][100/112]  lr: 1.0000e-02  eta: 0:24:17  time: 0.3088  data_time: 0.0734  memory: 2242  loss: 0.2820  loss_rpn_cls: 0.0023  loss_rpn_bbox: 0.0250  loss_cls: 0.0609  acc: 95.8984  loss_bbox: 0.1174  loss_mask: 0.0764
+2026/03/11 21:27:33 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:27:48 - mmengine - INFO - Epoch(train)  [58][ 50/112]  lr: 1.0000e-02  eta: 0:23:58  time: 0.2938  data_time: 0.0702  memory: 2242  loss: 0.2595  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0263  loss_cls: 0.0450  acc: 98.3398  loss_bbox: 0.1127  loss_mask: 0.0735
+2026/03/11 21:28:03 - mmengine - INFO - Epoch(train)  [58][100/112]  lr: 1.0000e-02  eta: 0:23:43  time: 0.2923  data_time: 0.0715  memory: 2242  loss: 0.2515  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0235  loss_cls: 0.0457  acc: 98.2422  loss_bbox: 0.1090  loss_mask: 0.0713
+2026/03/11 21:28:06 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:28:22 - mmengine - INFO - Epoch(train)  [59][ 50/112]  lr: 1.0000e-02  eta: 0:23:24  time: 0.3080  data_time: 0.0794  memory: 2242  loss: 0.2761  loss_rpn_cls: 0.0034  loss_rpn_bbox: 0.0273  loss_cls: 0.0516  acc: 98.3398  loss_bbox: 0.1180  loss_mask: 0.0759
+2026/03/11 21:28:37 - mmengine - INFO - Epoch(train)  [59][100/112]  lr: 1.0000e-02  eta: 0:23:09  time: 0.3080  data_time: 0.0569  memory: 2242  loss: 0.2421  loss_rpn_cls: 0.0015  loss_rpn_bbox: 0.0231  loss_cls: 0.0434  acc: 98.0469  loss_bbox: 0.1041  loss_mask: 0.0700
+2026/03/11 21:28:40 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:28:56 - mmengine - INFO - Epoch(train)  [60][ 50/112]  lr: 1.0000e-02  eta: 0:22:51  time: 0.3268  data_time: 0.0855  memory: 2242  loss: 0.2377  loss_rpn_cls: 0.0025  loss_rpn_bbox: 0.0226  loss_cls: 0.0436  acc: 97.8516  loss_bbox: 0.1031  loss_mask: 0.0659
+2026/03/11 21:29:11 - mmengine - INFO - Epoch(train)  [60][100/112]  lr: 1.0000e-02  eta: 0:22:36  time: 0.3031  data_time: 0.0609  memory: 2242  loss: 0.2368  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0230  loss_cls: 0.0412  acc: 97.8516  loss_bbox: 0.1041  loss_mask: 0.0666
+2026/03/11 21:29:15 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:29:15 - mmengine - INFO - Saving checkpoint at 60 epochs
+2026/03/11 21:29:26 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:29:27 - mmengine - INFO - bbox_mAP_copypaste: 0.810 0.957 0.926 -1.000 0.756 0.832
+2026/03/11 21:29:27 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:29:28 - mmengine - INFO - segm_mAP_copypaste: 0.837 0.957 0.935 -1.000 0.745 0.877
+2026/03/11 21:29:28 - mmengine - INFO - Epoch(val) [60][13/13]    coco/bbox_mAP: 0.8100  coco/bbox_mAP_50: 0.9570  coco/bbox_mAP_75: 0.9260  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7560  coco/bbox_mAP_l: 0.8320  coco/segm_mAP: 0.8370  coco/segm_mAP_50: 0.9570  coco/segm_mAP_75: 0.9350  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7450  coco/segm_mAP_l: 0.8770  data_time: 0.1940  time: 0.3716
+2026/03/11 21:29:43 - mmengine - INFO - Epoch(train)  [61][ 50/112]  lr: 1.0000e-02  eta: 0:22:17  time: 0.3153  data_time: 0.0601  memory: 2242  loss: 0.2535  loss_rpn_cls: 0.0024  loss_rpn_bbox: 0.0257  loss_cls: 0.0439  acc: 98.5352  loss_bbox: 0.1102  loss_mask: 0.0712
+2026/03/11 21:29:58 - mmengine - INFO - Epoch(train)  [61][100/112]  lr: 1.0000e-02  eta: 0:22:02  time: 0.2923  data_time: 0.0502  memory: 2242  loss: 0.2455  loss_rpn_cls: 0.0018  loss_rpn_bbox: 0.0236  loss_cls: 0.0438  acc: 99.5117  loss_bbox: 0.1092  loss_mask: 0.0672
+2026/03/11 21:30:02 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:30:17 - mmengine - INFO - Epoch(train)  [62][ 50/112]  lr: 1.0000e-02  eta: 0:21:43  time: 0.3095  data_time: 0.0549  memory: 2242  loss: 0.2400  loss_rpn_cls: 0.0024  loss_rpn_bbox: 0.0238  loss_cls: 0.0391  acc: 98.9258  loss_bbox: 0.1042  loss_mask: 0.0706
+2026/03/11 21:30:31 - mmengine - INFO - Epoch(train)  [62][100/112]  lr: 1.0000e-02  eta: 0:21:28  time: 0.2862  data_time: 0.0625  memory: 2242  loss: 0.2300  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0208  loss_cls: 0.0406  acc: 96.5820  loss_bbox: 0.0997  loss_mask: 0.0672
+2026/03/11 21:30:35 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:30:52 - mmengine - INFO - Epoch(train)  [63][ 50/112]  lr: 1.0000e-02  eta: 0:21:10  time: 0.3448  data_time: 0.0761  memory: 2242  loss: 0.2468  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0236  loss_cls: 0.0416  acc: 97.3633  loss_bbox: 0.1074  loss_mask: 0.0723
+2026/03/11 21:30:54 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:31:06 - mmengine - INFO - Epoch(train)  [63][100/112]  lr: 1.0000e-02  eta: 0:20:55  time: 0.2822  data_time: 0.0555  memory: 2242  loss: 0.2228  loss_rpn_cls: 0.0017  loss_rpn_bbox: 0.0201  loss_cls: 0.0375  acc: 99.5117  loss_bbox: 0.0986  loss_mask: 0.0649
+2026/03/11 21:31:10 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:31:24 - mmengine - INFO - Epoch(train)  [64][ 50/112]  lr: 1.0000e-02  eta: 0:20:36  time: 0.2940  data_time: 0.0702  memory: 2242  loss: 0.2389  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0233  loss_cls: 0.0410  acc: 99.4141  loss_bbox: 0.1032  loss_mask: 0.0694
+2026/03/11 21:31:39 - mmengine - INFO - Epoch(train)  [64][100/112]  lr: 1.0000e-02  eta: 0:20:20  time: 0.2961  data_time: 0.0688  memory: 2242  loss: 0.2387  loss_rpn_cls: 0.0015  loss_rpn_bbox: 0.0207  loss_cls: 0.0451  acc: 98.7305  loss_bbox: 0.1035  loss_mask: 0.0679
+2026/03/11 21:31:43 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:31:57 - mmengine - INFO - Epoch(train)  [65][ 50/112]  lr: 1.0000e-02  eta: 0:20:01  time: 0.2920  data_time: 0.0525  memory: 2242  loss: 0.2200  loss_rpn_cls: 0.0014  loss_rpn_bbox: 0.0198  loss_cls: 0.0373  acc: 98.5352  loss_bbox: 0.0960  loss_mask: 0.0655
+2026/03/11 21:32:13 - mmengine - INFO - Epoch(train)  [65][100/112]  lr: 1.0000e-02  eta: 0:19:47  time: 0.3173  data_time: 0.0587  memory: 2242  loss: 0.2425  loss_rpn_cls: 0.0018  loss_rpn_bbox: 0.0226  loss_cls: 0.0427  acc: 99.5117  loss_bbox: 0.1048  loss_mask: 0.0706
+2026/03/11 21:32:17 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:32:29 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:32:30 - mmengine - INFO - bbox_mAP_copypaste: 0.808 0.945 0.911 -1.000 0.737 0.836
+2026/03/11 21:32:30 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:32:30 - mmengine - INFO - segm_mAP_copypaste: 0.825 0.945 0.922 -1.000 0.731 0.870
+2026/03/11 21:32:30 - mmengine - INFO - Epoch(val) [65][13/13]    coco/bbox_mAP: 0.8080  coco/bbox_mAP_50: 0.9450  coco/bbox_mAP_75: 0.9110  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7370  coco/bbox_mAP_l: 0.8360  coco/segm_mAP: 0.8250  coco/segm_mAP_50: 0.9450  coco/segm_mAP_75: 0.9220  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7310  coco/segm_mAP_l: 0.8700  data_time: 0.1883  time: 0.3650
+2026/03/11 21:32:46 - mmengine - INFO - Epoch(train)  [66][ 50/112]  lr: 1.0000e-02  eta: 0:19:28  time: 0.3126  data_time: 0.0725  memory: 2242  loss: 0.2259  loss_rpn_cls: 0.0017  loss_rpn_bbox: 0.0224  loss_cls: 0.0345  acc: 98.4375  loss_bbox: 0.0989  loss_mask: 0.0684
+2026/03/11 21:33:00 - mmengine - INFO - Epoch(train)  [66][100/112]  lr: 1.0000e-02  eta: 0:19:13  time: 0.2815  data_time: 0.0522  memory: 2242  loss: 0.2201  loss_rpn_cls: 0.0023  loss_rpn_bbox: 0.0206  loss_cls: 0.0359  acc: 98.8281  loss_bbox: 0.0965  loss_mask: 0.0647
+2026/03/11 21:33:03 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:33:17 - mmengine - INFO - Epoch(train)  [67][ 50/112]  lr: 1.0000e-02  eta: 0:18:53  time: 0.2809  data_time: 0.0575  memory: 2242  loss: 0.2159  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0191  loss_cls: 0.0356  acc: 98.3398  loss_bbox: 0.0938  loss_mask: 0.0653
+2026/03/11 21:33:32 - mmengine - INFO - Epoch(train)  [67][100/112]  lr: 1.0000e-02  eta: 0:18:38  time: 0.3030  data_time: 0.0653  memory: 2242  loss: 0.2265  loss_rpn_cls: 0.0016  loss_rpn_bbox: 0.0216  loss_cls: 0.0405  acc: 97.7539  loss_bbox: 0.0951  loss_mask: 0.0677
+2026/03/11 21:33:36 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:33:52 - mmengine - INFO - Epoch(train)  [68][ 50/112]  lr: 1.0000e-02  eta: 0:18:20  time: 0.3149  data_time: 0.0735  memory: 2241  loss: 0.2209  loss_rpn_cls: 0.0015  loss_rpn_bbox: 0.0208  loss_cls: 0.0350  acc: 98.6328  loss_bbox: 0.0960  loss_mask: 0.0676
+2026/03/11 21:34:06 - mmengine - INFO - Epoch(train)  [68][100/112]  lr: 1.0000e-02  eta: 0:18:04  time: 0.2935  data_time: 0.0377  memory: 2241  loss: 0.1980  loss_rpn_cls: 0.0012  loss_rpn_bbox: 0.0160  loss_cls: 0.0318  acc: 98.4375  loss_bbox: 0.0868  loss_mask: 0.0623
+2026/03/11 21:34:09 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:34:26 - mmengine - INFO - Epoch(train)  [69][ 50/112]  lr: 1.0000e-02  eta: 0:17:46  time: 0.3387  data_time: 0.0663  memory: 2242  loss: 0.2218  loss_rpn_cls: 0.0013  loss_rpn_bbox: 0.0219  loss_cls: 0.0350  acc: 98.5352  loss_bbox: 0.0991  loss_mask: 0.0646
+2026/03/11 21:34:41 - mmengine - INFO - Epoch(train)  [69][100/112]  lr: 1.0000e-02  eta: 0:17:31  time: 0.2893  data_time: 0.0534  memory: 2242  loss: 0.2251  loss_rpn_cls: 0.0015  loss_rpn_bbox: 0.0210  loss_cls: 0.0377  acc: 98.4375  loss_bbox: 0.0982  loss_mask: 0.0667
+2026/03/11 21:34:44 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:34:58 - mmengine - INFO - Epoch(train)  [70][ 50/112]  lr: 1.0000e-02  eta: 0:17:12  time: 0.2926  data_time: 0.0625  memory: 2242  loss: 0.2253  loss_rpn_cls: 0.0019  loss_rpn_bbox: 0.0207  loss_cls: 0.0396  acc: 99.0234  loss_bbox: 0.0978  loss_mask: 0.0652
+2026/03/11 21:35:13 - mmengine - INFO - Epoch(train)  [70][100/112]  lr: 1.0000e-02  eta: 0:16:57  time: 0.2996  data_time: 0.0770  memory: 2242  loss: 0.2482  loss_rpn_cls: 0.0020  loss_rpn_bbox: 0.0251  loss_cls: 0.0395  acc: 96.8750  loss_bbox: 0.1109  loss_mask: 0.0707
+2026/03/11 21:35:17 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:35:17 - mmengine - INFO - Saving checkpoint at 70 epochs
+2026/03/11 21:35:30 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:35:31 - mmengine - INFO - bbox_mAP_copypaste: 0.805 0.943 0.919 -1.000 0.747 0.832
+2026/03/11 21:35:31 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:35:31 - mmengine - INFO - segm_mAP_copypaste: 0.825 0.952 0.930 -1.000 0.733 0.870
+2026/03/11 21:35:31 - mmengine - INFO - Epoch(val) [70][13/13]    coco/bbox_mAP: 0.8050  coco/bbox_mAP_50: 0.9430  coco/bbox_mAP_75: 0.9190  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7470  coco/bbox_mAP_l: 0.8320  coco/segm_mAP: 0.8250  coco/segm_mAP_50: 0.9520  coco/segm_mAP_75: 0.9300  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7330  coco/segm_mAP_l: 0.8700  data_time: 0.1770  time: 0.3523
+2026/03/11 21:35:46 - mmengine - INFO - Epoch(train)  [71][ 50/112]  lr: 1.0000e-03  eta: 0:16:38  time: 0.2896  data_time: 0.0619  memory: 2242  loss: 0.2043  loss_rpn_cls: 0.0013  loss_rpn_bbox: 0.0190  loss_cls: 0.0317  acc: 98.8281  loss_bbox: 0.0878  loss_mask: 0.0646
+2026/03/11 21:36:00 - mmengine - INFO - Epoch(train)  [71][100/112]  lr: 1.0000e-03  eta: 0:16:22  time: 0.2953  data_time: 0.0515  memory: 2242  loss: 0.1906  loss_rpn_cls: 0.0015  loss_rpn_bbox: 0.0167  loss_cls: 0.0298  acc: 98.8281  loss_bbox: 0.0789  loss_mask: 0.0637
+2026/03/11 21:36:03 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:36:19 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:36:20 - mmengine - INFO - Epoch(train)  [72][ 50/112]  lr: 1.0000e-03  eta: 0:16:04  time: 0.3366  data_time: 0.0922  memory: 2242  loss: 0.2102  loss_rpn_cls: 0.0015  loss_rpn_bbox: 0.0194  loss_cls: 0.0323  acc: 98.9258  loss_bbox: 0.0865  loss_mask: 0.0706
+2026/03/11 21:36:36 - mmengine - INFO - Epoch(train)  [72][100/112]  lr: 1.0000e-03  eta: 0:15:49  time: 0.3142  data_time: 0.0396  memory: 2242  loss: 0.1675  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0123  loss_cls: 0.0267  acc: 98.9258  loss_bbox: 0.0698  loss_mask: 0.0578
+2026/03/11 21:36:40 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:36:54 - mmengine - INFO - Epoch(train)  [73][ 50/112]  lr: 1.0000e-03  eta: 0:15:30  time: 0.2810  data_time: 0.0441  memory: 2242  loss: 0.1853  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0149  loss_cls: 0.0270  acc: 98.5352  loss_bbox: 0.0778  loss_mask: 0.0646
+2026/03/11 21:37:10 - mmengine - INFO - Epoch(train)  [73][100/112]  lr: 1.0000e-03  eta: 0:15:15  time: 0.3153  data_time: 0.0725  memory: 2242  loss: 0.2024  loss_rpn_cls: 0.0012  loss_rpn_bbox: 0.0188  loss_cls: 0.0305  acc: 98.7305  loss_bbox: 0.0835  loss_mask: 0.0683
+2026/03/11 21:37:13 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:37:29 - mmengine - INFO - Epoch(train)  [74][ 50/112]  lr: 1.0000e-03  eta: 0:14:57  time: 0.3235  data_time: 0.0731  memory: 2242  loss: 0.1958  loss_rpn_cls: 0.0013  loss_rpn_bbox: 0.0175  loss_cls: 0.0290  acc: 97.2656  loss_bbox: 0.0800  loss_mask: 0.0680
+2026/03/11 21:37:44 - mmengine - INFO - Epoch(train)  [74][100/112]  lr: 1.0000e-03  eta: 0:14:42  time: 0.2980  data_time: 0.0681  memory: 2242  loss: 0.1978  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0173  loss_cls: 0.0282  acc: 98.9258  loss_bbox: 0.0814  loss_mask: 0.0699
+2026/03/11 21:37:47 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:38:03 - mmengine - INFO - Epoch(train)  [75][ 50/112]  lr: 1.0000e-03  eta: 0:14:23  time: 0.3079  data_time: 0.0637  memory: 2242  loss: 0.1943  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0173  loss_cls: 0.0302  acc: 98.7305  loss_bbox: 0.0796  loss_mask: 0.0662
+2026/03/11 21:38:17 - mmengine - INFO - Epoch(train)  [75][100/112]  lr: 1.0000e-03  eta: 0:14:08  time: 0.2760  data_time: 0.0571  memory: 2242  loss: 0.1779  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0150  loss_cls: 0.0269  acc: 99.0234  loss_bbox: 0.0741  loss_mask: 0.0610
+2026/03/11 21:38:20 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:38:32 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:38:33 - mmengine - INFO - bbox_mAP_copypaste: 0.822 0.944 0.923 -1.000 0.748 0.851
+2026/03/11 21:38:33 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:38:34 - mmengine - INFO - segm_mAP_copypaste: 0.831 0.944 0.931 -1.000 0.741 0.875
+2026/03/11 21:38:34 - mmengine - INFO - Epoch(val) [75][13/13]    coco/bbox_mAP: 0.8220  coco/bbox_mAP_50: 0.9440  coco/bbox_mAP_75: 0.9230  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7480  coco/bbox_mAP_l: 0.8510  coco/segm_mAP: 0.8310  coco/segm_mAP_50: 0.9440  coco/segm_mAP_75: 0.9310  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7410  coco/segm_mAP_l: 0.8750  data_time: 0.1880  time: 0.3692
+2026/03/11 21:38:49 - mmengine - INFO - Epoch(train)  [76][ 50/112]  lr: 1.0000e-03  eta: 0:13:49  time: 0.2998  data_time: 0.0695  memory: 2242  loss: 0.1859  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0165  loss_cls: 0.0274  acc: 99.0234  loss_bbox: 0.0766  loss_mask: 0.0644
+2026/03/11 21:39:03 - mmengine - INFO - Epoch(train)  [76][100/112]  lr: 1.0000e-03  eta: 0:13:33  time: 0.2740  data_time: 0.0464  memory: 2242  loss: 0.1780  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0143  loss_cls: 0.0289  acc: 99.2188  loss_bbox: 0.0724  loss_mask: 0.0613
+2026/03/11 21:39:06 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:39:23 - mmengine - INFO - Epoch(train)  [77][ 50/112]  lr: 1.0000e-03  eta: 0:13:15  time: 0.3377  data_time: 0.0735  memory: 2242  loss: 0.1914  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0172  loss_cls: 0.0275  acc: 99.7070  loss_bbox: 0.0797  loss_mask: 0.0659
+2026/03/11 21:39:37 - mmengine - INFO - Epoch(train)  [77][100/112]  lr: 1.0000e-03  eta: 0:13:00  time: 0.2866  data_time: 0.0475  memory: 2242  loss: 0.1843  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0152  loss_cls: 0.0282  acc: 99.3164  loss_bbox: 0.0757  loss_mask: 0.0644
+2026/03/11 21:39:40 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:39:56 - mmengine - INFO - Epoch(train)  [78][ 50/112]  lr: 1.0000e-03  eta: 0:12:41  time: 0.3090  data_time: 0.0851  memory: 2242  loss: 0.2043  loss_rpn_cls: 0.0014  loss_rpn_bbox: 0.0184  loss_cls: 0.0365  acc: 99.1211  loss_bbox: 0.0803  loss_mask: 0.0677
+2026/03/11 21:40:10 - mmengine - INFO - Epoch(train)  [78][100/112]  lr: 1.0000e-03  eta: 0:12:26  time: 0.2814  data_time: 0.0449  memory: 2242  loss: 0.1777  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0144  loss_cls: 0.0271  acc: 99.2188  loss_bbox: 0.0725  loss_mask: 0.0628
+2026/03/11 21:40:13 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:40:28 - mmengine - INFO - Epoch(train)  [79][ 50/112]  lr: 1.0000e-03  eta: 0:12:07  time: 0.3015  data_time: 0.0495  memory: 2242  loss: 0.1767  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0142  loss_cls: 0.0268  acc: 98.9258  loss_bbox: 0.0731  loss_mask: 0.0619
+2026/03/11 21:40:43 - mmengine - INFO - Epoch(train)  [79][100/112]  lr: 1.0000e-03  eta: 0:11:52  time: 0.3019  data_time: 0.0481  memory: 2242  loss: 0.1794  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0160  loss_cls: 0.0266  acc: 99.3164  loss_bbox: 0.0737  loss_mask: 0.0622
+2026/03/11 21:40:47 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:41:01 - mmengine - INFO - Epoch(train)  [80][ 50/112]  lr: 1.0000e-03  eta: 0:11:33  time: 0.2859  data_time: 0.0530  memory: 2242  loss: 0.1879  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0165  loss_cls: 0.0283  acc: 99.1211  loss_bbox: 0.0759  loss_mask: 0.0661
+2026/03/11 21:41:15 - mmengine - INFO - Epoch(train)  [80][100/112]  lr: 1.0000e-03  eta: 0:11:18  time: 0.2839  data_time: 0.0505  memory: 2242  loss: 0.1886  loss_rpn_cls: 0.0011  loss_rpn_bbox: 0.0154  loss_cls: 0.0311  acc: 99.1211  loss_bbox: 0.0757  loss_mask: 0.0653
+2026/03/11 21:41:18 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:41:18 - mmengine - INFO - Saving checkpoint at 80 epochs
+2026/03/11 21:41:31 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:41:32 - mmengine - INFO - bbox_mAP_copypaste: 0.820 0.944 0.922 -1.000 0.745 0.851
+2026/03/11 21:41:32 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:41:32 - mmengine - INFO - segm_mAP_copypaste: 0.833 0.944 0.931 -1.000 0.742 0.875
+2026/03/11 21:41:32 - mmengine - INFO - Epoch(val) [80][13/13]    coco/bbox_mAP: 0.8200  coco/bbox_mAP_50: 0.9440  coco/bbox_mAP_75: 0.9220  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7450  coco/bbox_mAP_l: 0.8510  coco/segm_mAP: 0.8330  coco/segm_mAP_50: 0.9440  coco/segm_mAP_75: 0.9310  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7420  coco/segm_mAP_l: 0.8750  data_time: 0.2022  time: 0.3821
+2026/03/11 21:41:44 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:41:47 - mmengine - INFO - Epoch(train)  [81][ 50/112]  lr: 1.0000e-03  eta: 0:10:59  time: 0.2859  data_time: 0.0610  memory: 2242  loss: 0.1788  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0159  loss_cls: 0.0272  acc: 99.1211  loss_bbox: 0.0727  loss_mask: 0.0623
+2026/03/11 21:42:01 - mmengine - INFO - Epoch(train)  [81][100/112]  lr: 1.0000e-03  eta: 0:10:44  time: 0.2951  data_time: 0.0430  memory: 2242  loss: 0.1869  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0164  loss_cls: 0.0280  acc: 98.9258  loss_bbox: 0.0757  loss_mask: 0.0659
+2026/03/11 21:42:04 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:42:19 - mmengine - INFO - Epoch(train)  [82][ 50/112]  lr: 1.0000e-03  eta: 0:10:25  time: 0.2931  data_time: 0.0689  memory: 2242  loss: 0.1798  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0157  loss_cls: 0.0266  acc: 98.6328  loss_bbox: 0.0730  loss_mask: 0.0635
+2026/03/11 21:42:34 - mmengine - INFO - Epoch(train)  [82][100/112]  lr: 1.0000e-03  eta: 0:10:10  time: 0.2922  data_time: 0.0444  memory: 2242  loss: 0.1795  loss_rpn_cls: 0.0012  loss_rpn_bbox: 0.0153  loss_cls: 0.0268  acc: 99.4141  loss_bbox: 0.0738  loss_mask: 0.0624
+2026/03/11 21:42:37 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:42:53 - mmengine - INFO - Epoch(train)  [83][ 50/112]  lr: 1.0000e-03  eta: 0:09:51  time: 0.3148  data_time: 0.0921  memory: 2242  loss: 0.1883  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0177  loss_cls: 0.0269  acc: 98.5352  loss_bbox: 0.0777  loss_mask: 0.0654
+2026/03/11 21:43:08 - mmengine - INFO - Epoch(train)  [83][100/112]  lr: 1.0000e-03  eta: 0:09:36  time: 0.2982  data_time: 0.0532  memory: 2242  loss: 0.1786  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0154  loss_cls: 0.0252  acc: 99.2188  loss_bbox: 0.0733  loss_mask: 0.0639
+2026/03/11 21:43:12 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:43:28 - mmengine - INFO - Epoch(train)  [84][ 50/112]  lr: 1.0000e-03  eta: 0:09:18  time: 0.3297  data_time: 0.0765  memory: 2242  loss: 0.1832  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0166  loss_cls: 0.0252  acc: 98.9258  loss_bbox: 0.0750  loss_mask: 0.0657
+2026/03/11 21:43:43 - mmengine - INFO - Epoch(train)  [84][100/112]  lr: 1.0000e-03  eta: 0:09:03  time: 0.3001  data_time: 0.0648  memory: 2242  loss: 0.1703  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0140  loss_cls: 0.0256  acc: 99.3164  loss_bbox: 0.0697  loss_mask: 0.0603
+2026/03/11 21:43:47 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:44:01 - mmengine - INFO - Epoch(train)  [85][ 50/112]  lr: 1.0000e-03  eta: 0:08:44  time: 0.2957  data_time: 0.0672  memory: 2242  loss: 0.1846  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0163  loss_cls: 0.0294  acc: 98.3398  loss_bbox: 0.0734  loss_mask: 0.0646
+2026/03/11 21:44:17 - mmengine - INFO - Epoch(train)  [85][100/112]  lr: 1.0000e-03  eta: 0:08:29  time: 0.3039  data_time: 0.0373  memory: 2242  loss: 0.1732  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0136  loss_cls: 0.0263  acc: 98.2422  loss_bbox: 0.0711  loss_mask: 0.0616
+2026/03/11 21:44:20 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:44:32 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:44:33 - mmengine - INFO - bbox_mAP_copypaste: 0.820 0.944 0.921 -1.000 0.748 0.850
+2026/03/11 21:44:33 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:44:34 - mmengine - INFO - segm_mAP_copypaste: 0.832 0.944 0.930 -1.000 0.740 0.874
+2026/03/11 21:44:34 - mmengine - INFO - Epoch(val) [85][13/13]    coco/bbox_mAP: 0.8200  coco/bbox_mAP_50: 0.9440  coco/bbox_mAP_75: 0.9210  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7480  coco/bbox_mAP_l: 0.8500  coco/segm_mAP: 0.8320  coco/segm_mAP_50: 0.9440  coco/segm_mAP_75: 0.9300  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7400  coco/segm_mAP_l: 0.8740  data_time: 0.1408  time: 0.3123
+2026/03/11 21:44:49 - mmengine - INFO - Epoch(train)  [86][ 50/112]  lr: 1.0000e-03  eta: 0:08:10  time: 0.2984  data_time: 0.0464  memory: 2242  loss: 0.1852  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0160  loss_cls: 0.0277  acc: 99.2188  loss_bbox: 0.0751  loss_mask: 0.0654
+2026/03/11 21:45:02 - mmengine - INFO - Epoch(train)  [86][100/112]  lr: 1.0000e-03  eta: 0:07:55  time: 0.2632  data_time: 0.0489  memory: 2242  loss: 0.1780  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0150  loss_cls: 0.0264  acc: 98.7305  loss_bbox: 0.0726  loss_mask: 0.0634
+2026/03/11 21:45:06 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:45:22 - mmengine - INFO - Epoch(train)  [87][ 50/112]  lr: 1.0000e-03  eta: 0:07:36  time: 0.3161  data_time: 0.0791  memory: 2242  loss: 0.1751  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0148  loss_cls: 0.0255  acc: 98.6328  loss_bbox: 0.0719  loss_mask: 0.0622
+2026/03/11 21:45:36 - mmengine - INFO - Epoch(train)  [87][100/112]  lr: 1.0000e-03  eta: 0:07:21  time: 0.2944  data_time: 0.0463  memory: 2242  loss: 0.1748  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0151  loss_cls: 0.0258  acc: 99.4141  loss_bbox: 0.0710  loss_mask: 0.0620
+2026/03/11 21:45:40 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:45:55 - mmengine - INFO - Epoch(train)  [88][ 50/112]  lr: 1.0000e-03  eta: 0:07:03  time: 0.3110  data_time: 0.0590  memory: 2242  loss: 0.1764  loss_rpn_cls: 0.0012  loss_rpn_bbox: 0.0160  loss_cls: 0.0261  acc: 98.2422  loss_bbox: 0.0717  loss_mask: 0.0614
+2026/03/11 21:46:09 - mmengine - INFO - Epoch(train)  [88][100/112]  lr: 1.0000e-03  eta: 0:06:47  time: 0.2856  data_time: 0.0479  memory: 2242  loss: 0.1802  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0151  loss_cls: 0.0277  acc: 98.9258  loss_bbox: 0.0725  loss_mask: 0.0640
+2026/03/11 21:46:12 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:46:28 - mmengine - INFO - Epoch(train)  [89][ 50/112]  lr: 1.0000e-03  eta: 0:06:29  time: 0.3128  data_time: 0.0427  memory: 2242  loss: 0.1739  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0142  loss_cls: 0.0254  acc: 99.4141  loss_bbox: 0.0706  loss_mask: 0.0632
+2026/03/11 21:46:42 - mmengine - INFO - Epoch(train)  [89][100/112]  lr: 1.0000e-03  eta: 0:06:14  time: 0.2698  data_time: 0.0505  memory: 2242  loss: 0.1731  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0143  loss_cls: 0.0252  acc: 99.3164  loss_bbox: 0.0703  loss_mask: 0.0625
+2026/03/11 21:46:45 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:46:54 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:47:00 - mmengine - INFO - Epoch(train)  [90][ 50/112]  lr: 1.0000e-03  eta: 0:05:55  time: 0.2975  data_time: 0.0626  memory: 2242  loss: 0.1717  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0145  loss_cls: 0.0243  acc: 99.2188  loss_bbox: 0.0700  loss_mask: 0.0623
+2026/03/11 21:47:16 - mmengine - INFO - Epoch(train)  [90][100/112]  lr: 1.0000e-03  eta: 0:05:40  time: 0.3283  data_time: 0.1015  memory: 2242  loss: 0.1978  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0175  loss_cls: 0.0322  acc: 99.4141  loss_bbox: 0.0785  loss_mask: 0.0689
+2026/03/11 21:47:19 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:47:19 - mmengine - INFO - Saving checkpoint at 90 epochs
+2026/03/11 21:47:32 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:47:32 - mmengine - INFO - bbox_mAP_copypaste: 0.818 0.942 0.919 -1.000 0.745 0.847
+2026/03/11 21:47:32 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:47:34 - mmengine - INFO - segm_mAP_copypaste: 0.831 0.943 0.929 -1.000 0.731 0.874
+2026/03/11 21:47:34 - mmengine - INFO - Epoch(val) [90][13/13]    coco/bbox_mAP: 0.8180  coco/bbox_mAP_50: 0.9420  coco/bbox_mAP_75: 0.9190  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7450  coco/bbox_mAP_l: 0.8470  coco/segm_mAP: 0.8310  coco/segm_mAP_50: 0.9430  coco/segm_mAP_75: 0.9290  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7310  coco/segm_mAP_l: 0.8740  data_time: 0.2227  time: 0.4059
+2026/03/11 21:47:50 - mmengine - INFO - Epoch(train)  [91][ 50/112]  lr: 1.0000e-04  eta: 0:05:21  time: 0.3193  data_time: 0.0732  memory: 2242  loss: 0.1720  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0146  loss_cls: 0.0247  acc: 98.9258  loss_bbox: 0.0705  loss_mask: 0.0616
+2026/03/11 21:48:03 - mmengine - INFO - Epoch(train)  [91][100/112]  lr: 1.0000e-04  eta: 0:05:06  time: 0.2608  data_time: 0.0376  memory: 2241  loss: 0.1686  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0137  loss_cls: 0.0236  acc: 99.4141  loss_bbox: 0.0688  loss_mask: 0.0616
+2026/03/11 21:48:08 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:48:24 - mmengine - INFO - Epoch(train)  [92][ 50/112]  lr: 1.0000e-04  eta: 0:04:48  time: 0.3219  data_time: 0.0531  memory: 2242  loss: 0.1794  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0160  loss_cls: 0.0257  acc: 99.5117  loss_bbox: 0.0723  loss_mask: 0.0646
+2026/03/11 21:48:38 - mmengine - INFO - Epoch(train)  [92][100/112]  lr: 1.0000e-04  eta: 0:04:33  time: 0.2832  data_time: 0.0465  memory: 2242  loss: 0.1839  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0172  loss_cls: 0.0246  acc: 98.9258  loss_bbox: 0.0747  loss_mask: 0.0666
+2026/03/11 21:48:41 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:48:55 - mmengine - INFO - Epoch(train)  [93][ 50/112]  lr: 1.0000e-04  eta: 0:04:14  time: 0.2863  data_time: 0.0626  memory: 2242  loss: 0.1765  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0155  loss_cls: 0.0251  acc: 99.8047  loss_bbox: 0.0718  loss_mask: 0.0633
+2026/03/11 21:49:10 - mmengine - INFO - Epoch(train)  [93][100/112]  lr: 1.0000e-04  eta: 0:03:59  time: 0.2963  data_time: 0.0617  memory: 2241  loss: 0.1804  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0161  loss_cls: 0.0262  acc: 99.4141  loss_bbox: 0.0728  loss_mask: 0.0646
+2026/03/11 21:49:14 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:49:29 - mmengine - INFO - Epoch(train)  [94][ 50/112]  lr: 1.0000e-04  eta: 0:03:40  time: 0.3093  data_time: 0.0765  memory: 2242  loss: 0.1732  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0149  loss_cls: 0.0246  acc: 98.9258  loss_bbox: 0.0699  loss_mask: 0.0630
+2026/03/11 21:49:44 - mmengine - INFO - Epoch(train)  [94][100/112]  lr: 1.0000e-04  eta: 0:03:25  time: 0.2908  data_time: 0.0621  memory: 2241  loss: 0.1692  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0143  loss_cls: 0.0252  acc: 99.6094  loss_bbox: 0.0683  loss_mask: 0.0609
+2026/03/11 21:49:47 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:50:02 - mmengine - INFO - Epoch(train)  [95][ 50/112]  lr: 1.0000e-04  eta: 0:03:06  time: 0.3047  data_time: 0.0649  memory: 2242  loss: 0.1814  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0163  loss_cls: 0.0253  acc: 99.1211  loss_bbox: 0.0739  loss_mask: 0.0652
+2026/03/11 21:50:16 - mmengine - INFO - Epoch(train)  [95][100/112]  lr: 1.0000e-04  eta: 0:02:51  time: 0.2655  data_time: 0.0446  memory: 2241  loss: 0.1560  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0124  loss_cls: 0.0220  acc: 99.8047  loss_bbox: 0.0633  loss_mask: 0.0578
+2026/03/11 21:50:19 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:50:32 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:50:33 - mmengine - INFO - bbox_mAP_copypaste: 0.820 0.943 0.921 -1.000 0.747 0.850
+2026/03/11 21:50:33 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:50:33 - mmengine - INFO - segm_mAP_copypaste: 0.832 0.944 0.930 -1.000 0.738 0.875
+2026/03/11 21:50:33 - mmengine - INFO - Epoch(val) [95][13/13]    coco/bbox_mAP: 0.8200  coco/bbox_mAP_50: 0.9430  coco/bbox_mAP_75: 0.9210  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7470  coco/bbox_mAP_l: 0.8500  coco/segm_mAP: 0.8320  coco/segm_mAP_50: 0.9440  coco/segm_mAP_75: 0.9300  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7380  coco/segm_mAP_l: 0.8750  data_time: 0.1509  time: 0.3253
+2026/03/11 21:50:49 - mmengine - INFO - Epoch(train)  [96][ 50/112]  lr: 1.0000e-04  eta: 0:02:33  time: 0.3181  data_time: 0.0558  memory: 2242  loss: 0.1684  loss_rpn_cls: 0.0007  loss_rpn_bbox: 0.0147  loss_cls: 0.0245  acc: 98.6328  loss_bbox: 0.0677  loss_mask: 0.0607
+2026/03/11 21:51:05 - mmengine - INFO - Epoch(train)  [96][100/112]  lr: 1.0000e-04  eta: 0:02:18  time: 0.3115  data_time: 0.0521  memory: 2242  loss: 0.1838  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0168  loss_cls: 0.0259  acc: 98.5352  loss_bbox: 0.0753  loss_mask: 0.0651
+2026/03/11 21:51:08 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:51:22 - mmengine - INFO - Epoch(train)  [97][ 50/112]  lr: 1.0000e-04  eta: 0:01:59  time: 0.2938  data_time: 0.0467  memory: 2242  loss: 0.1711  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0140  loss_cls: 0.0256  acc: 99.5117  loss_bbox: 0.0696  loss_mask: 0.0614
+2026/03/11 21:51:37 - mmengine - INFO - Epoch(train)  [97][100/112]  lr: 1.0000e-04  eta: 0:01:44  time: 0.2912  data_time: 0.0460  memory: 2242  loss: 0.1614  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0132  loss_cls: 0.0236  acc: 99.4141  loss_bbox: 0.0651  loss_mask: 0.0586
+2026/03/11 21:51:40 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:51:56 - mmengine - INFO - Epoch(train)  [98][ 50/112]  lr: 1.0000e-04  eta: 0:01:25  time: 0.3050  data_time: 0.0559  memory: 2242  loss: 0.1736  loss_rpn_cls: 0.0010  loss_rpn_bbox: 0.0146  loss_cls: 0.0250  acc: 99.0234  loss_bbox: 0.0700  loss_mask: 0.0630
+2026/03/11 21:52:10 - mmengine - INFO - Epoch(train)  [98][100/112]  lr: 1.0000e-04  eta: 0:01:10  time: 0.2806  data_time: 0.0498  memory: 2242  loss: 0.1776  loss_rpn_cls: 0.0009  loss_rpn_bbox: 0.0149  loss_cls: 0.0244  acc: 98.9258  loss_bbox: 0.0725  loss_mask: 0.0648
+2026/03/11 21:52:13 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:52:20 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:52:28 - mmengine - INFO - Epoch(train)  [99][ 50/112]  lr: 1.0000e-04  eta: 0:00:52  time: 0.3129  data_time: 0.0660  memory: 2242  loss: 0.1805  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0158  loss_cls: 0.0255  acc: 99.0234  loss_bbox: 0.0737  loss_mask: 0.0647
+2026/03/11 21:52:42 - mmengine - INFO - Epoch(train)  [99][100/112]  lr: 1.0000e-04  eta: 0:00:37  time: 0.2758  data_time: 0.0683  memory: 2242  loss: 0.1769  loss_rpn_cls: 0.0006  loss_rpn_bbox: 0.0157  loss_cls: 0.0260  acc: 97.9492  loss_bbox: 0.0713  loss_mask: 0.0633
+2026/03/11 21:52:45 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:52:59 - mmengine - INFO - Epoch(train) [100][ 50/112]  lr: 1.0000e-04  eta: 0:00:18  time: 0.2906  data_time: 0.0613  memory: 2241  loss: 0.1749  loss_rpn_cls: 0.0008  loss_rpn_bbox: 0.0157  loss_cls: 0.0233  acc: 98.6328  loss_bbox: 0.0713  loss_mask: 0.0638
+2026/03/11 21:53:14 - mmengine - INFO - Epoch(train) [100][100/112]  lr: 1.0000e-04  eta: 0:00:03  time: 0.2970  data_time: 0.0703  memory: 2242  loss: 0.1763  loss_rpn_cls: 0.0005  loss_rpn_bbox: 0.0148  loss_cls: 0.0253  acc: 98.3398  loss_bbox: 0.0710  loss_mask: 0.0648
+2026/03/11 21:53:18 - mmengine - INFO - Exp name: mask_rcnn_r18_24e_20260311_205243
+2026/03/11 21:53:18 - mmengine - INFO - Saving checkpoint at 100 epochs
+2026/03/11 21:53:33 - mmengine - INFO - Evaluating bbox...
+2026/03/11 21:53:34 - mmengine - INFO - bbox_mAP_copypaste: 0.821 0.952 0.920 -1.000 0.747 0.851
+2026/03/11 21:53:34 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:53:34 - mmengine - INFO - segm_mAP_copypaste: 0.832 0.943 0.930 -1.000 0.738 0.875
+2026/03/11 21:53:34 - mmengine - INFO - Epoch(val) [100][13/13]    coco/bbox_mAP: 0.8210  coco/bbox_mAP_50: 0.9520  coco/bbox_mAP_75: 0.9200  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: 0.7470  coco/bbox_mAP_l: 0.8510  coco/segm_mAP: 0.8320  coco/segm_mAP_50: 0.9430  coco/segm_mAP_75: 0.9300  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.7380  coco/segm_mAP_l: 0.8750  data_time: 0.1922  time: 0.3707

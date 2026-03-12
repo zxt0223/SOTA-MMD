@@ -1,0 +1,1641 @@
+2026/03/11 21:53:55 - mmengine - INFO - 
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.8.20 (default, Oct  3 2024, 15:24:27) [GCC 11.2.0]
+    CUDA available: True
+    MUSA available: False
+    numpy_random_seed: 1512132171
+    GPU 0,1,2,3: NVIDIA GeForce RTX 4090
+    CUDA_HOME: /cuda_alls/cuda-12.6
+    NVCC: Cuda compilation tools, release 12.6, V12.6.85
+    GCC: gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+    PyTorch: 2.1.2
+    PyTorch compiling details: PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201703
+  - Intel(R) oneAPI Math Kernel Library Version 2023.1-Product Build 20230303 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v3.1.1 (Git Hash 64f6bcbcbab628e96f33a62c3e975f8535a7bde4)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 12.1
+  - NVCC architecture flags: -gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_61,code=sm_61;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_90,code=sm_90
+  - CuDNN 8.9.2
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=12.1, CUDNN_VERSION=8.9.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -D_GLIBCXX_USE_CXX11_ABI=0 -fabi-version=11 -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=old-style-cast -Wno-invalid-partial-specialization -Wno-unused-private-field -Wno-aligned-allocation-unavailable -Wno-missing-braces -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_DISABLE_GPU_ASSERTS=ON, TORCH_VERSION=2.1.2, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+    TorchVision: 0.16.2
+    OpenCV: 4.13.0
+    MMEngine: 0.10.7
+
+Runtime environment:
+    cudnn_benchmark: False
+    mp_cfg: {'mp_start_method': 'fork', 'opencv_num_threads': 0}
+    dist_cfg: {'backend': 'nccl'}
+    seed: 1512132171
+    Distributed launcher: pytorch
+    Distributed training: True
+    GPU number: 4
+------------------------------------------------------------
+
+2026/03/11 21:53:55 - mmengine - INFO - Config:
+auto_scale_lr = dict(base_batch_size=16, enable=False)
+backend_args = None
+data_root = 'A-datas/'
+dataset_type = 'CocoDataset'
+default_hooks = dict(
+    checkpoint=dict(interval=10, max_keep_ckpts=3, type='CheckpointHook'),
+    logger=dict(interval=50, type='LoggerHook'),
+    param_scheduler=dict(type='ParamSchedulerHook'),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    timer=dict(type='IterTimerHook'),
+    visualization=dict(type='DetVisualizationHook'))
+default_scope = 'mmdet'
+env_cfg = dict(
+    cudnn_benchmark=False,
+    dist_cfg=dict(backend='nccl'),
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
+launcher = 'pytorch'
+load_from = None
+log_level = 'INFO'
+log_processor = dict(by_epoch=True, type='LogProcessor', window_size=50)
+max_epochs = 36
+metainfo = dict(
+    classes=('stone', ), palette=[
+        (
+            20,
+            220,
+            20,
+        ),
+    ])
+model = dict(
+    backbone=dict(
+        depth=50,
+        frozen_stages=1,
+        init_cfg=dict(checkpoint='torchvision://resnet50', type='Pretrained'),
+        num_stages=4,
+        out_indices=(
+            0,
+            1,
+            2,
+            3,
+        ),
+        style='pytorch',
+        type='ResNet'),
+    data_preprocessor=dict(
+        bgr_to_rgb=True,
+        mean=[
+            123.675,
+            116.28,
+            103.53,
+        ],
+        pad_mask=True,
+        pad_size_divisor=32,
+        std=[
+            58.395,
+            57.12,
+            57.375,
+        ],
+        type='DetDataPreprocessor'),
+    mask_head=dict(
+        cls_down_index=0,
+        feat_channels=256,
+        in_channels=256,
+        loss_cls=dict(
+            alpha=0.25,
+            gamma=2.0,
+            loss_weight=1.0,
+            type='FocalLoss',
+            use_sigmoid=True),
+        loss_mask=dict(loss_weight=3.0, type='DiceLoss', use_sigmoid=True),
+        norm_cfg=dict(num_groups=32, requires_grad=True, type='GN'),
+        num_classes=1,
+        num_grids=[
+            40,
+            36,
+            24,
+            16,
+            12,
+        ],
+        pos_scale=0.2,
+        scale_ranges=(
+            (
+                1,
+                96,
+            ),
+            (
+                48,
+                192,
+            ),
+            (
+                96,
+                384,
+            ),
+            (
+                192,
+                768,
+            ),
+            (
+                384,
+                2048,
+            ),
+        ),
+        stacked_convs=7,
+        strides=[
+            8,
+            8,
+            16,
+            32,
+            32,
+        ],
+        type='SOLOHead'),
+    neck=dict(
+        in_channels=[
+            256,
+            512,
+            1024,
+            2048,
+        ],
+        num_outs=5,
+        out_channels=256,
+        start_level=0,
+        type='FPN'),
+    test_cfg=dict(
+        filter_thr=0.05,
+        kernel='gaussian',
+        mask_thr=0.5,
+        max_per_img=100,
+        nms_pre=500,
+        score_thr=0.1,
+        sigma=2.0),
+    type='SOLO')
+optim_wrapper = dict(
+    optimizer=dict(lr=0.005, momentum=0.9, type='SGD', weight_decay=0.0001),
+    type='OptimWrapper')
+param_scheduler = [
+    dict(
+        begin=0, by_epoch=False, end=500, start_factor=0.001, type='LinearLR'),
+    dict(
+        begin=0,
+        by_epoch=True,
+        end=120,
+        gamma=0.1,
+        milestones=[
+            80,
+            110,
+        ],
+        type='MultiStepLR'),
+]
+resume = False
+test_cfg = dict(type='TestLoop')
+test_dataloader = dict(
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_val2017.json',
+        backend_args=None,
+        data_prefix=dict(img='val2017/'),
+        data_root='A-datas/',
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                1333,
+                800,
+            ), type='Resize'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(
+                meta_keys=(
+                    'img_id',
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackDetInputs'),
+        ],
+        test_mode=True,
+        type='CocoDataset'),
+    drop_last=False,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+test_evaluator = dict(
+    ann_file='A-datas/annotations/instances_val2017.json',
+    backend_args=None,
+    format_only=False,
+    metric=[
+        'segm',
+    ],
+    type='CocoMetric')
+test_pipeline = [
+    dict(backend_args=None, type='LoadImageFromFile'),
+    dict(keep_ratio=True, scale=(
+        1333,
+        800,
+    ), type='Resize'),
+    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    dict(
+        meta_keys=(
+            'img_id',
+            'img_path',
+            'ori_shape',
+            'img_shape',
+            'scale_factor',
+        ),
+        type='PackDetInputs'),
+]
+train_cfg = dict(max_epochs=120, type='EpochBasedTrainLoop', val_interval=5)
+train_dataloader = dict(
+    batch_sampler=dict(type='AspectRatioBatchSampler'),
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_train2017.json',
+        backend_args=None,
+        data_prefix=dict(img='train2017/'),
+        data_root='A-datas/',
+        filter_cfg=dict(filter_empty_gt=True, min_size=32),
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(
+                keep_ratio=True,
+                scales=[
+                    (
+                        1333,
+                        800,
+                    ),
+                    (
+                        1333,
+                        768,
+                    ),
+                    (
+                        1333,
+                        736,
+                    ),
+                    (
+                        1333,
+                        704,
+                    ),
+                    (
+                        1333,
+                        672,
+                    ),
+                    (
+                        1333,
+                        640,
+                    ),
+                ],
+                type='RandomChoiceResize'),
+            dict(prob=0.5, type='RandomFlip'),
+            dict(type='PackDetInputs'),
+        ],
+        type='CocoDataset'),
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=True, type='DefaultSampler'))
+train_pipeline = [
+    dict(backend_args=None, type='LoadImageFromFile'),
+    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    dict(
+        keep_ratio=True,
+        scales=[
+            (
+                1333,
+                800,
+            ),
+            (
+                1333,
+                768,
+            ),
+            (
+                1333,
+                736,
+            ),
+            (
+                1333,
+                704,
+            ),
+            (
+                1333,
+                672,
+            ),
+            (
+                1333,
+                640,
+            ),
+        ],
+        type='RandomChoiceResize'),
+    dict(prob=0.5, type='RandomFlip'),
+    dict(type='PackDetInputs'),
+]
+val_cfg = dict(type='ValLoop')
+val_dataloader = dict(
+    batch_size=2,
+    dataset=dict(
+        ann_file='annotations/instances_val2017.json',
+        backend_args=None,
+        data_prefix=dict(img='val2017/'),
+        data_root='A-datas/',
+        metainfo=dict(classes=('stone', ), palette=[
+            (
+                20,
+                220,
+                20,
+            ),
+        ]),
+        pipeline=[
+            dict(backend_args=None, type='LoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                1333,
+                800,
+            ), type='Resize'),
+            dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+            dict(
+                meta_keys=(
+                    'img_id',
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackDetInputs'),
+        ],
+        test_mode=True,
+        type='CocoDataset'),
+    drop_last=False,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+val_evaluator = dict(
+    ann_file='A-datas/annotations/instances_val2017.json',
+    backend_args=None,
+    format_only=False,
+    metric=[
+        'segm',
+    ],
+    type='CocoMetric')
+vis_backends = [
+    dict(type='LocalVisBackend'),
+]
+visualizer = dict(
+    name='visualizer',
+    type='DetLocalVisualizer',
+    vis_backends=[
+        dict(type='LocalVisBackend'),
+        dict(type='TensorboardVisBackend'),
+    ])
+work_dir = '/group/chenjinming/SOTA_MMD/A-output/solo_24e'
+
+2026/03/11 21:53:57 - mmengine - INFO - Hooks will be executed in the following order:
+before_run:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+before_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_train_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DistSamplerSeedHook                
+ -------------------- 
+before_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_train_epoch:
+(NORMAL      ) IterTimerHook                      
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_val_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_val_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_val_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DetVisualizationHook               
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_val_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_test_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_test_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_test_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DetVisualizationHook               
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_run:
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+2026/03/11 21:53:59 - mmengine - INFO - load model from: torchvision://resnet50
+2026/03/11 21:53:59 - mmengine - INFO - Loads checkpoint by torchvision backend from path: torchvision://resnet50
+2026/03/11 21:53:59 - mmengine - WARNING - The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: fc.weight, fc.bias
+
+Name of parameter - Initialization information
+
+backbone.conv1.weight - torch.Size([64, 3, 7, 7]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.bn1.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.bn1.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.conv1.weight - torch.Size([64, 64, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.bn1.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.bn1.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.conv2.weight - torch.Size([64, 64, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.bn2.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.bn2.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.conv3.weight - torch.Size([256, 64, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.bn3.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.bn3.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.downsample.0.weight - torch.Size([256, 64, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.downsample.1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.0.downsample.1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.conv1.weight - torch.Size([64, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.bn1.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.bn1.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.conv2.weight - torch.Size([64, 64, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.bn2.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.bn2.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.conv3.weight - torch.Size([256, 64, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.bn3.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.1.bn3.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.conv1.weight - torch.Size([64, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.bn1.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.bn1.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.conv2.weight - torch.Size([64, 64, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.bn2.weight - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.bn2.bias - torch.Size([64]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.conv3.weight - torch.Size([256, 64, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.bn3.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer1.2.bn3.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.conv1.weight - torch.Size([128, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.bn1.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.bn1.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.conv2.weight - torch.Size([128, 128, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.bn2.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.bn2.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.conv3.weight - torch.Size([512, 128, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.bn3.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.bn3.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.downsample.0.weight - torch.Size([512, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.downsample.1.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.0.downsample.1.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.conv1.weight - torch.Size([128, 512, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.bn1.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.bn1.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.conv2.weight - torch.Size([128, 128, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.bn2.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.bn2.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.conv3.weight - torch.Size([512, 128, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.bn3.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.1.bn3.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.conv1.weight - torch.Size([128, 512, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.bn1.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.bn1.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.conv2.weight - torch.Size([128, 128, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.bn2.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.bn2.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.conv3.weight - torch.Size([512, 128, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.bn3.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.2.bn3.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.conv1.weight - torch.Size([128, 512, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.bn1.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.bn1.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.conv2.weight - torch.Size([128, 128, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.bn2.weight - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.bn2.bias - torch.Size([128]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.conv3.weight - torch.Size([512, 128, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.bn3.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer2.3.bn3.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.conv1.weight - torch.Size([256, 512, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.bn1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.bn1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.conv2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.bn2.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.bn2.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.conv3.weight - torch.Size([1024, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.bn3.weight - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.bn3.bias - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.downsample.0.weight - torch.Size([1024, 512, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.downsample.1.weight - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.0.downsample.1.bias - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.conv1.weight - torch.Size([256, 1024, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.bn1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.bn1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.conv2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.bn2.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.bn2.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.conv3.weight - torch.Size([1024, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.bn3.weight - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.1.bn3.bias - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.conv1.weight - torch.Size([256, 1024, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.bn1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.bn1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.conv2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.bn2.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.bn2.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.conv3.weight - torch.Size([1024, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.bn3.weight - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.2.bn3.bias - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.conv1.weight - torch.Size([256, 1024, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.bn1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.bn1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.conv2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.bn2.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.bn2.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.conv3.weight - torch.Size([1024, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.bn3.weight - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.3.bn3.bias - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.conv1.weight - torch.Size([256, 1024, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.bn1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.bn1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.conv2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.bn2.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.bn2.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.conv3.weight - torch.Size([1024, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.bn3.weight - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.4.bn3.bias - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.conv1.weight - torch.Size([256, 1024, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.bn1.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.bn1.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.conv2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.bn2.weight - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.bn2.bias - torch.Size([256]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.conv3.weight - torch.Size([1024, 256, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.bn3.weight - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer3.5.bn3.bias - torch.Size([1024]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.conv1.weight - torch.Size([512, 1024, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.bn1.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.bn1.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.conv2.weight - torch.Size([512, 512, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.bn2.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.bn2.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.conv3.weight - torch.Size([2048, 512, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.bn3.weight - torch.Size([2048]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.bn3.bias - torch.Size([2048]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.downsample.0.weight - torch.Size([2048, 1024, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.downsample.1.weight - torch.Size([2048]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.0.downsample.1.bias - torch.Size([2048]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.conv1.weight - torch.Size([512, 2048, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.bn1.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.bn1.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.conv2.weight - torch.Size([512, 512, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.bn2.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.bn2.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.conv3.weight - torch.Size([2048, 512, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.bn3.weight - torch.Size([2048]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.1.bn3.bias - torch.Size([2048]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.conv1.weight - torch.Size([512, 2048, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.bn1.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.bn1.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.conv2.weight - torch.Size([512, 512, 3, 3]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.bn2.weight - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.bn2.bias - torch.Size([512]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.conv3.weight - torch.Size([2048, 512, 1, 1]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.bn3.weight - torch.Size([2048]): 
+PretrainedInit: load from torchvision://resnet50 
+
+backbone.layer4.2.bn3.bias - torch.Size([2048]): 
+PretrainedInit: load from torchvision://resnet50 
+
+neck.lateral_convs.0.conv.weight - torch.Size([256, 256, 1, 1]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.lateral_convs.0.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+neck.lateral_convs.1.conv.weight - torch.Size([256, 512, 1, 1]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.lateral_convs.1.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+neck.lateral_convs.2.conv.weight - torch.Size([256, 1024, 1, 1]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.lateral_convs.2.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+neck.lateral_convs.3.conv.weight - torch.Size([256, 2048, 1, 1]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.lateral_convs.3.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+neck.fpn_convs.0.conv.weight - torch.Size([256, 256, 3, 3]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.fpn_convs.0.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+neck.fpn_convs.1.conv.weight - torch.Size([256, 256, 3, 3]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.fpn_convs.1.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+neck.fpn_convs.2.conv.weight - torch.Size([256, 256, 3, 3]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.fpn_convs.2.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+neck.fpn_convs.3.conv.weight - torch.Size([256, 256, 3, 3]): 
+XavierInit: gain=1, distribution=uniform, bias=0 
+
+neck.fpn_convs.3.conv.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.0.conv.weight - torch.Size([256, 258, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.mask_convs.0.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.0.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.1.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.mask_convs.1.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.1.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.2.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.mask_convs.2.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.2.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.3.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.mask_convs.3.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.3.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.4.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.mask_convs.4.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.4.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.5.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.mask_convs.5.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.5.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.6.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.mask_convs.6.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.mask_convs.6.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.0.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.cls_convs.0.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.0.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.1.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.cls_convs.1.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.1.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.2.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.cls_convs.2.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.2.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.3.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.cls_convs.3.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.3.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.4.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.cls_convs.4.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.4.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.5.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.cls_convs.5.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.5.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.6.conv.weight - torch.Size([256, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=0 
+
+mask_head.cls_convs.6.gn.weight - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.cls_convs.6.gn.bias - torch.Size([256]): 
+The value is the same before and after calling `init_weights` of SOLO  
+
+mask_head.conv_mask_list.0.weight - torch.Size([1600, 256, 1, 1]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.0.bias - torch.Size([1600]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.1.weight - torch.Size([1296, 256, 1, 1]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.1.bias - torch.Size([1296]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.2.weight - torch.Size([576, 256, 1, 1]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.2.bias - torch.Size([576]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.3.weight - torch.Size([256, 256, 1, 1]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.3.bias - torch.Size([256]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.4.weight - torch.Size([144, 256, 1, 1]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_mask_list.4.bias - torch.Size([144]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_cls.weight - torch.Size([1, 256, 3, 3]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+
+mask_head.conv_cls.bias - torch.Size([1]): 
+NormalInit: mean=0, std=0.01, bias=-4.59511985013459 
+2026/03/11 21:53:59 - mmengine - WARNING - "FileClient" will be deprecated in future. Please use io functions in https://mmengine.readthedocs.io/en/latest/api/fileio.html#file-io
+2026/03/11 21:53:59 - mmengine - WARNING - "HardDiskBackend" is the alias of "LocalBackend" and the former will be deprecated in future.
+2026/03/11 21:53:59 - mmengine - INFO - Checkpoints will be saved to /group/chenjinming/SOTA_MMD/A-output/solo_24e.
+2026/03/11 21:54:24 - mmengine - INFO - Epoch(train)   [1][ 50/112]  lr: 4.9549e-04  eta: 1:53:52  time: 0.5103  data_time: 0.0528  memory: 6371  loss: 3.5547  loss_mask: 2.9409  loss_cls: 0.6138
+2026/03/11 21:54:41 - mmengine - INFO - Epoch(train)   [1][100/112]  lr: 9.9599e-04  eta: 1:33:28  time: 0.3306  data_time: 0.0452  memory: 6371  loss: 3.2289  loss_mask: 2.9407  loss_cls: 0.2881
+2026/03/11 21:54:45 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 21:55:04 - mmengine - INFO - Epoch(train)   [2][ 50/112]  lr: 1.6166e-03  eta: 1:29:35  time: 0.3826  data_time: 0.0429  memory: 6370  loss: 3.2197  loss_mask: 2.9401  loss_cls: 0.2797
+2026/03/11 21:55:21 - mmengine - INFO - Epoch(train)   [2][100/112]  lr: 2.1171e-03  eta: 1:25:06  time: 0.3252  data_time: 0.0422  memory: 6370  loss: 3.1447  loss_mask: 2.9383  loss_cls: 0.2064
+2026/03/11 21:55:25 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 21:55:42 - mmengine - INFO - Epoch(train)   [3][ 50/112]  lr: 2.7377e-03  eta: 1:22:49  time: 0.3489  data_time: 0.0382  memory: 6370  loss: 3.1054  loss_mask: 2.9281  loss_cls: 0.1772
+2026/03/11 21:56:00 - mmengine - INFO - Epoch(train)   [3][100/112]  lr: 3.2382e-03  eta: 1:21:55  time: 0.3597  data_time: 0.0465  memory: 6370  loss: 3.0819  loss_mask: 2.9142  loss_cls: 0.1678
+2026/03/11 21:56:04 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 21:56:23 - mmengine - INFO - Epoch(train)   [4][ 50/112]  lr: 3.8589e-03  eta: 1:21:27  time: 0.3780  data_time: 0.0572  memory: 6370  loss: 3.0475  loss_mask: 2.8949  loss_cls: 0.1525
+2026/03/11 21:56:41 - mmengine - INFO - Epoch(train)   [4][100/112]  lr: 4.3594e-03  eta: 1:20:24  time: 0.3449  data_time: 0.0439  memory: 6370  loss: 2.9690  loss_mask: 2.8278  loss_cls: 0.1412
+2026/03/11 21:56:45 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 21:57:03 - mmengine - INFO - Epoch(train)   [5][ 50/112]  lr: 4.9800e-03  eta: 1:19:45  time: 0.3567  data_time: 0.0455  memory: 6370  loss: 2.9565  loss_mask: 2.8163  loss_cls: 0.1402
+2026/03/11 21:57:21 - mmengine - INFO - Epoch(train)   [5][100/112]  lr: 5.0000e-03  eta: 1:19:06  time: 0.3526  data_time: 0.0405  memory: 6370  loss: 2.9190  loss_mask: 2.7859  loss_cls: 0.1330
+2026/03/11 21:57:25 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 21:57:36 - mmengine - INFO - Evaluating segm...
+2026/03/11 21:57:36 - mmengine - INFO - segm_mAP_copypaste: 0.000 0.000 0.000 -1.000 0.000 0.000
+2026/03/11 21:57:36 - mmengine - INFO - Epoch(val) [5][13/13]    coco/segm_mAP: 0.0000  coco/segm_mAP_50: 0.0000  coco/segm_mAP_75: 0.0000  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.0000  coco/segm_mAP_l: 0.0000  data_time: 0.1917  time: 0.4088
+2026/03/11 21:57:56 - mmengine - INFO - Epoch(train)   [6][ 50/112]  lr: 5.0000e-03  eta: 1:19:07  time: 0.3944  data_time: 0.0551  memory: 6379  loss: 2.8934  loss_mask: 2.7689  loss_cls: 0.1246
+2026/03/11 21:58:13 - mmengine - INFO - Epoch(train)   [6][100/112]  lr: 5.0000e-03  eta: 1:18:23  time: 0.3446  data_time: 0.0353  memory: 6379  loss: 2.8768  loss_mask: 2.7530  loss_cls: 0.1238
+2026/03/11 21:58:17 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 21:58:36 - mmengine - INFO - Epoch(train)   [7][ 50/112]  lr: 5.0000e-03  eta: 1:17:55  time: 0.3657  data_time: 0.0462  memory: 6379  loss: 2.8204  loss_mask: 2.7126  loss_cls: 0.1078
+2026/03/11 21:58:54 - mmengine - INFO - Epoch(train)   [7][100/112]  lr: 5.0000e-03  eta: 1:17:30  time: 0.3594  data_time: 0.0483  memory: 6379  loss: 2.8009  loss_mask: 2.6867  loss_cls: 0.1142
+2026/03/11 21:58:57 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 21:59:16 - mmengine - INFO - Epoch(train)   [8][ 50/112]  lr: 5.0000e-03  eta: 1:17:01  time: 0.3745  data_time: 0.0543  memory: 6379  loss: 2.7881  loss_mask: 2.6693  loss_cls: 0.1188
+2026/03/11 21:59:34 - mmengine - INFO - Epoch(train)   [8][100/112]  lr: 5.0000e-03  eta: 1:16:38  time: 0.3602  data_time: 0.0535  memory: 6379  loss: 2.8021  loss_mask: 2.6874  loss_cls: 0.1148
+2026/03/11 21:59:38 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 21:59:55 - mmengine - INFO - Epoch(train)   [9][ 50/112]  lr: 5.0000e-03  eta: 1:15:59  time: 0.3518  data_time: 0.0532  memory: 6379  loss: 2.6810  loss_mask: 2.5703  loss_cls: 0.1107
+2026/03/11 22:00:13 - mmengine - INFO - Epoch(train)   [9][100/112]  lr: 5.0000e-03  eta: 1:15:37  time: 0.3578  data_time: 0.0434  memory: 6379  loss: 2.7080  loss_mask: 2.6006  loss_cls: 0.1074
+2026/03/11 22:00:15 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:00:18 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:00:36 - mmengine - INFO - Epoch(train)  [10][ 50/112]  lr: 5.0000e-03  eta: 1:15:15  time: 0.3653  data_time: 0.0451  memory: 6379  loss: 2.6665  loss_mask: 2.5597  loss_cls: 0.1068
+2026/03/11 22:00:53 - mmengine - INFO - Epoch(train)  [10][100/112]  lr: 5.0000e-03  eta: 1:14:46  time: 0.3454  data_time: 0.0480  memory: 6379  loss: 2.6493  loss_mask: 2.5410  loss_cls: 0.1084
+2026/03/11 22:00:57 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:00:57 - mmengine - INFO - Saving checkpoint at 10 epochs
+2026/03/11 22:01:10 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:01:11 - mmengine - INFO - segm_mAP_copypaste: 0.001 0.005 0.000 -1.000 0.004 0.001
+2026/03/11 22:01:11 - mmengine - INFO - Epoch(val) [10][13/13]    coco/segm_mAP: 0.0010  coco/segm_mAP_50: 0.0050  coco/segm_mAP_75: 0.0000  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.0040  coco/segm_mAP_l: 0.0010  data_time: 0.1917  time: 0.4923
+2026/03/11 22:01:30 - mmengine - INFO - Epoch(train)  [11][ 50/112]  lr: 5.0000e-03  eta: 1:14:30  time: 0.3810  data_time: 0.0689  memory: 6379  loss: 2.5688  loss_mask: 2.4680  loss_cls: 0.1007
+2026/03/11 22:01:47 - mmengine - INFO - Epoch(train)  [11][100/112]  lr: 5.0000e-03  eta: 1:14:06  time: 0.3541  data_time: 0.0430  memory: 6379  loss: 2.4995  loss_mask: 2.4046  loss_cls: 0.0948
+2026/03/11 22:01:51 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:02:09 - mmengine - INFO - Epoch(train)  [12][ 50/112]  lr: 5.0000e-03  eta: 1:13:39  time: 0.3616  data_time: 0.0424  memory: 6379  loss: 2.4762  loss_mask: 2.3738  loss_cls: 0.1024
+2026/03/11 22:02:27 - mmengine - INFO - Epoch(train)  [12][100/112]  lr: 5.0000e-03  eta: 1:13:16  time: 0.3517  data_time: 0.0440  memory: 6379  loss: 2.4478  loss_mask: 2.3426  loss_cls: 0.1053
+2026/03/11 22:02:31 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:02:50 - mmengine - INFO - Epoch(train)  [13][ 50/112]  lr: 5.0000e-03  eta: 1:12:56  time: 0.3722  data_time: 0.0379  memory: 6379  loss: 2.4089  loss_mask: 2.3052  loss_cls: 0.1037
+2026/03/11 22:03:08 - mmengine - INFO - Epoch(train)  [13][100/112]  lr: 5.0000e-03  eta: 1:12:35  time: 0.3548  data_time: 0.0494  memory: 6379  loss: 2.3862  loss_mask: 2.2846  loss_cls: 0.1016
+2026/03/11 22:03:11 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:03:30 - mmengine - INFO - Epoch(train)  [14][ 50/112]  lr: 5.0000e-03  eta: 1:12:08  time: 0.3629  data_time: 0.0389  memory: 6379  loss: 2.3491  loss_mask: 2.2540  loss_cls: 0.0951
+2026/03/11 22:03:47 - mmengine - INFO - Epoch(train)  [14][100/112]  lr: 5.0000e-03  eta: 1:11:46  time: 0.3522  data_time: 0.0450  memory: 6379  loss: 2.3382  loss_mask: 2.2416  loss_cls: 0.0966
+2026/03/11 22:03:51 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:04:09 - mmengine - INFO - Epoch(train)  [15][ 50/112]  lr: 5.0000e-03  eta: 1:11:19  time: 0.3571  data_time: 0.0475  memory: 6380  loss: 2.3235  loss_mask: 2.2246  loss_cls: 0.0989
+2026/03/11 22:04:27 - mmengine - INFO - Epoch(train)  [15][100/112]  lr: 5.0000e-03  eta: 1:11:02  time: 0.3663  data_time: 0.0464  memory: 6379  loss: 2.2949  loss_mask: 2.1925  loss_cls: 0.1024
+2026/03/11 22:04:31 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:04:45 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:04:46 - mmengine - INFO - segm_mAP_copypaste: 0.012 0.033 0.010 -1.000 0.006 0.016
+2026/03/11 22:04:46 - mmengine - INFO - Epoch(val) [15][13/13]    coco/segm_mAP: 0.0120  coco/segm_mAP_50: 0.0330  coco/segm_mAP_75: 0.0100  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.0060  coco/segm_mAP_l: 0.0160  data_time: 0.2480  time: 0.5519
+2026/03/11 22:05:05 - mmengine - INFO - Epoch(train)  [16][ 50/112]  lr: 5.0000e-03  eta: 1:10:43  time: 0.3759  data_time: 0.0435  memory: 6379  loss: 2.2339  loss_mask: 2.1389  loss_cls: 0.0950
+2026/03/11 22:05:23 - mmengine - INFO - Epoch(train)  [16][100/112]  lr: 5.0000e-03  eta: 1:10:25  time: 0.3643  data_time: 0.0401  memory: 6379  loss: 2.1586  loss_mask: 2.0647  loss_cls: 0.0939
+2026/03/11 22:05:27 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:05:45 - mmengine - INFO - Epoch(train)  [17][ 50/112]  lr: 5.0000e-03  eta: 1:09:59  time: 0.3672  data_time: 0.0391  memory: 6379  loss: 2.0987  loss_mask: 2.0084  loss_cls: 0.0903
+2026/03/11 22:06:02 - mmengine - INFO - Epoch(train)  [17][100/112]  lr: 5.0000e-03  eta: 1:09:34  time: 0.3394  data_time: 0.0440  memory: 6379  loss: 2.1165  loss_mask: 2.0236  loss_cls: 0.0929
+2026/03/11 22:06:06 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:06:26 - mmengine - INFO - Epoch(train)  [18][ 50/112]  lr: 5.0000e-03  eta: 1:09:18  time: 0.3867  data_time: 0.0459  memory: 6379  loss: 2.0522  loss_mask: 1.9637  loss_cls: 0.0885
+2026/03/11 22:06:41 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:06:43 - mmengine - INFO - Epoch(train)  [18][100/112]  lr: 5.0000e-03  eta: 1:08:55  time: 0.3452  data_time: 0.0430  memory: 6379  loss: 2.0109  loss_mask: 1.9223  loss_cls: 0.0886
+2026/03/11 22:06:47 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:07:05 - mmengine - INFO - Epoch(train)  [19][ 50/112]  lr: 5.0000e-03  eta: 1:08:30  time: 0.3652  data_time: 0.0418  memory: 6379  loss: 1.9964  loss_mask: 1.9070  loss_cls: 0.0895
+2026/03/11 22:07:22 - mmengine - INFO - Epoch(train)  [19][100/112]  lr: 5.0000e-03  eta: 1:08:10  time: 0.3540  data_time: 0.0405  memory: 6379  loss: 1.9278  loss_mask: 1.8398  loss_cls: 0.0880
+2026/03/11 22:07:27 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:07:45 - mmengine - INFO - Epoch(train)  [20][ 50/112]  lr: 5.0000e-03  eta: 1:07:48  time: 0.3641  data_time: 0.0389  memory: 6379  loss: 1.9094  loss_mask: 1.8175  loss_cls: 0.0919
+2026/03/11 22:08:04 - mmengine - INFO - Epoch(train)  [20][100/112]  lr: 5.0000e-03  eta: 1:07:33  time: 0.3724  data_time: 0.0407  memory: 6379  loss: 1.9070  loss_mask: 1.8129  loss_cls: 0.0940
+2026/03/11 22:08:08 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:08:08 - mmengine - INFO - Saving checkpoint at 20 epochs
+2026/03/11 22:08:23 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:08:24 - mmengine - INFO - segm_mAP_copypaste: 0.073 0.178 0.054 -1.000 0.010 0.106
+2026/03/11 22:08:24 - mmengine - INFO - Epoch(val) [20][13/13]    coco/segm_mAP: 0.0730  coco/segm_mAP_50: 0.1780  coco/segm_mAP_75: 0.0540  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.0100  coco/segm_mAP_l: 0.1060  data_time: 0.2173  time: 0.5554
+2026/03/11 22:08:43 - mmengine - INFO - Epoch(train)  [21][ 50/112]  lr: 5.0000e-03  eta: 1:07:15  time: 0.3824  data_time: 0.0399  memory: 6379  loss: 1.8670  loss_mask: 1.7742  loss_cls: 0.0928
+2026/03/11 22:09:01 - mmengine - INFO - Epoch(train)  [21][100/112]  lr: 5.0000e-03  eta: 1:06:53  time: 0.3466  data_time: 0.0387  memory: 6379  loss: 1.7357  loss_mask: 1.6490  loss_cls: 0.0867
+2026/03/11 22:09:05 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:09:24 - mmengine - INFO - Epoch(train)  [22][ 50/112]  lr: 5.0000e-03  eta: 1:06:33  time: 0.3745  data_time: 0.0430  memory: 6379  loss: 1.7703  loss_mask: 1.6868  loss_cls: 0.0835
+2026/03/11 22:09:41 - mmengine - INFO - Epoch(train)  [22][100/112]  lr: 5.0000e-03  eta: 1:06:12  time: 0.3491  data_time: 0.0413  memory: 6379  loss: 1.7117  loss_mask: 1.6195  loss_cls: 0.0921
+2026/03/11 22:09:45 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:10:04 - mmengine - INFO - Epoch(train)  [23][ 50/112]  lr: 5.0000e-03  eta: 1:05:51  time: 0.3710  data_time: 0.0502  memory: 6379  loss: 1.6763  loss_mask: 1.5945  loss_cls: 0.0818
+2026/03/11 22:10:22 - mmengine - INFO - Epoch(train)  [23][100/112]  lr: 5.0000e-03  eta: 1:05:33  time: 0.3616  data_time: 0.0511  memory: 6379  loss: 1.6847  loss_mask: 1.6012  loss_cls: 0.0835
+2026/03/11 22:10:26 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:10:45 - mmengine - INFO - Epoch(train)  [24][ 50/112]  lr: 5.0000e-03  eta: 1:05:13  time: 0.3742  data_time: 0.0391  memory: 6379  loss: 1.6039  loss_mask: 1.5228  loss_cls: 0.0811
+2026/03/11 22:11:02 - mmengine - INFO - Epoch(train)  [24][100/112]  lr: 5.0000e-03  eta: 1:04:52  time: 0.3507  data_time: 0.0463  memory: 6379  loss: 1.5849  loss_mask: 1.5059  loss_cls: 0.0790
+2026/03/11 22:11:07 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:11:25 - mmengine - INFO - Epoch(train)  [25][ 50/112]  lr: 5.0000e-03  eta: 1:04:31  time: 0.3621  data_time: 0.0556  memory: 6379  loss: 1.5257  loss_mask: 1.4464  loss_cls: 0.0793
+2026/03/11 22:11:43 - mmengine - INFO - Epoch(train)  [25][100/112]  lr: 5.0000e-03  eta: 1:04:14  time: 0.3674  data_time: 0.0518  memory: 6379  loss: 1.4737  loss_mask: 1.3974  loss_cls: 0.0764
+2026/03/11 22:11:47 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:12:03 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:12:04 - mmengine - INFO - segm_mAP_copypaste: 0.165 0.343 0.152 -1.000 0.054 0.211
+2026/03/11 22:12:04 - mmengine - INFO - Epoch(val) [25][13/13]    coco/segm_mAP: 0.1650  coco/segm_mAP_50: 0.3430  coco/segm_mAP_75: 0.1520  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.0540  coco/segm_mAP_l: 0.2110  data_time: 0.1460  time: 0.4954
+2026/03/11 22:12:22 - mmengine - INFO - Epoch(train)  [26][ 50/112]  lr: 5.0000e-03  eta: 1:03:48  time: 0.3557  data_time: 0.0459  memory: 6379  loss: 1.4668  loss_mask: 1.3866  loss_cls: 0.0802
+2026/03/11 22:12:40 - mmengine - INFO - Epoch(train)  [26][100/112]  lr: 5.0000e-03  eta: 1:03:30  time: 0.3596  data_time: 0.0469  memory: 6379  loss: 1.4681  loss_mask: 1.3928  loss_cls: 0.0753
+2026/03/11 22:12:44 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:13:02 - mmengine - INFO - Epoch(train)  [27][ 50/112]  lr: 5.0000e-03  eta: 1:03:07  time: 0.3676  data_time: 0.0437  memory: 6379  loss: 1.4780  loss_mask: 1.3981  loss_cls: 0.0799
+2026/03/11 22:13:16 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:13:20 - mmengine - INFO - Epoch(train)  [27][100/112]  lr: 5.0000e-03  eta: 1:02:49  time: 0.3633  data_time: 0.0400  memory: 6379  loss: 1.4488  loss_mask: 1.3681  loss_cls: 0.0807
+2026/03/11 22:13:25 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:13:43 - mmengine - INFO - Epoch(train)  [28][ 50/112]  lr: 5.0000e-03  eta: 1:02:25  time: 0.3602  data_time: 0.0490  memory: 6379  loss: 1.3503  loss_mask: 1.2710  loss_cls: 0.0794
+2026/03/11 22:13:59 - mmengine - INFO - Epoch(train)  [28][100/112]  lr: 5.0000e-03  eta: 1:02:03  time: 0.3355  data_time: 0.0384  memory: 6379  loss: 1.4526  loss_mask: 1.3661  loss_cls: 0.0865
+2026/03/11 22:14:03 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:14:20 - mmengine - INFO - Epoch(train)  [29][ 50/112]  lr: 5.0000e-03  eta: 1:01:36  time: 0.3366  data_time: 0.0375  memory: 6379  loss: 1.3475  loss_mask: 1.2617  loss_cls: 0.0858
+2026/03/11 22:14:38 - mmengine - INFO - Epoch(train)  [29][100/112]  lr: 5.0000e-03  eta: 1:01:17  time: 0.3568  data_time: 0.0463  memory: 6379  loss: 1.3372  loss_mask: 1.2626  loss_cls: 0.0746
+2026/03/11 22:14:42 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:15:01 - mmengine - INFO - Epoch(train)  [30][ 50/112]  lr: 5.0000e-03  eta: 1:00:58  time: 0.3798  data_time: 0.0489  memory: 6379  loss: 1.3238  loss_mask: 1.2454  loss_cls: 0.0784
+2026/03/11 22:15:18 - mmengine - INFO - Epoch(train)  [30][100/112]  lr: 5.0000e-03  eta: 1:00:36  time: 0.3362  data_time: 0.0404  memory: 6379  loss: 1.2286  loss_mask: 1.1540  loss_cls: 0.0747
+2026/03/11 22:15:22 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:15:22 - mmengine - INFO - Saving checkpoint at 30 epochs
+2026/03/11 22:15:39 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:15:40 - mmengine - INFO - segm_mAP_copypaste: 0.192 0.387 0.176 -1.000 0.065 0.245
+2026/03/11 22:15:40 - mmengine - INFO - Epoch(val) [30][13/13]    coco/segm_mAP: 0.1920  coco/segm_mAP_50: 0.3870  coco/segm_mAP_75: 0.1760  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.0650  coco/segm_mAP_l: 0.2450  data_time: 0.2338  time: 0.5934
+2026/03/11 22:15:58 - mmengine - INFO - Epoch(train)  [31][ 50/112]  lr: 5.0000e-03  eta: 1:00:12  time: 0.3539  data_time: 0.0395  memory: 6379  loss: 1.1996  loss_mask: 1.1276  loss_cls: 0.0720
+2026/03/11 22:16:15 - mmengine - INFO - Epoch(train)  [31][100/112]  lr: 5.0000e-03  eta: 0:59:52  time: 0.3459  data_time: 0.0370  memory: 6380  loss: 1.2483  loss_mask: 1.1691  loss_cls: 0.0792
+2026/03/11 22:16:20 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:16:38 - mmengine - INFO - Epoch(train)  [32][ 50/112]  lr: 5.0000e-03  eta: 0:59:32  time: 0.3705  data_time: 0.0380  memory: 6379  loss: 1.2370  loss_mask: 1.1580  loss_cls: 0.0790
+2026/03/11 22:16:57 - mmengine - INFO - Epoch(train)  [32][100/112]  lr: 5.0000e-03  eta: 0:59:15  time: 0.3671  data_time: 0.0384  memory: 6379  loss: 1.1945  loss_mask: 1.1131  loss_cls: 0.0814
+2026/03/11 22:17:00 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:17:19 - mmengine - INFO - Epoch(train)  [33][ 50/112]  lr: 5.0000e-03  eta: 0:58:51  time: 0.3645  data_time: 0.0366  memory: 6379  loss: 1.2222  loss_mask: 1.1463  loss_cls: 0.0758
+2026/03/11 22:17:36 - mmengine - INFO - Epoch(train)  [33][100/112]  lr: 5.0000e-03  eta: 0:58:31  time: 0.3467  data_time: 0.0321  memory: 6379  loss: 1.1489  loss_mask: 1.0728  loss_cls: 0.0761
+2026/03/11 22:17:41 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:17:59 - mmengine - INFO - Epoch(train)  [34][ 50/112]  lr: 5.0000e-03  eta: 0:58:12  time: 0.3750  data_time: 0.0469  memory: 6379  loss: 1.1408  loss_mask: 1.0660  loss_cls: 0.0747
+2026/03/11 22:18:17 - mmengine - INFO - Epoch(train)  [34][100/112]  lr: 5.0000e-03  eta: 0:57:53  time: 0.3520  data_time: 0.0316  memory: 6379  loss: 1.1273  loss_mask: 1.0528  loss_cls: 0.0746
+2026/03/11 22:18:21 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:18:40 - mmengine - INFO - Epoch(train)  [35][ 50/112]  lr: 5.0000e-03  eta: 0:57:31  time: 0.3747  data_time: 0.0582  memory: 6379  loss: 1.0883  loss_mask: 1.0118  loss_cls: 0.0765
+2026/03/11 22:18:56 - mmengine - INFO - Epoch(train)  [35][100/112]  lr: 5.0000e-03  eta: 0:57:10  time: 0.3337  data_time: 0.0311  memory: 6379  loss: 1.1001  loss_mask: 1.0243  loss_cls: 0.0759
+2026/03/11 22:19:01 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:19:18 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:19:19 - mmengine - INFO - segm_mAP_copypaste: 0.376 0.631 0.387 -1.000 0.144 0.479
+2026/03/11 22:19:19 - mmengine - INFO - Epoch(val) [35][13/13]    coco/segm_mAP: 0.3760  coco/segm_mAP_50: 0.6310  coco/segm_mAP_75: 0.3870  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.1440  coco/segm_mAP_l: 0.4790  data_time: 0.1499  time: 0.5465
+2026/03/11 22:19:37 - mmengine - INFO - Epoch(train)  [36][ 50/112]  lr: 5.0000e-03  eta: 0:56:47  time: 0.3519  data_time: 0.0464  memory: 6379  loss: 1.0380  loss_mask: 0.9677  loss_cls: 0.0703
+2026/03/11 22:19:47 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:19:54 - mmengine - INFO - Epoch(train)  [36][100/112]  lr: 5.0000e-03  eta: 0:56:28  time: 0.3457  data_time: 0.0395  memory: 6379  loss: 0.9979  loss_mask: 0.9238  loss_cls: 0.0741
+2026/03/11 22:19:58 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:20:16 - mmengine - INFO - Epoch(train)  [37][ 50/112]  lr: 5.0000e-03  eta: 0:56:05  time: 0.3585  data_time: 0.0380  memory: 6379  loss: 0.9551  loss_mask: 0.8820  loss_cls: 0.0731
+2026/03/11 22:20:34 - mmengine - INFO - Epoch(train)  [37][100/112]  lr: 5.0000e-03  eta: 0:55:47  time: 0.3630  data_time: 0.0419  memory: 6379  loss: 0.9913  loss_mask: 0.9195  loss_cls: 0.0718
+2026/03/11 22:20:39 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:20:57 - mmengine - INFO - Epoch(train)  [38][ 50/112]  lr: 5.0000e-03  eta: 0:55:24  time: 0.3623  data_time: 0.0415  memory: 6379  loss: 1.0069  loss_mask: 0.9366  loss_cls: 0.0703
+2026/03/11 22:21:14 - mmengine - INFO - Epoch(train)  [38][100/112]  lr: 5.0000e-03  eta: 0:55:05  time: 0.3507  data_time: 0.0439  memory: 6379  loss: 0.9702  loss_mask: 0.9024  loss_cls: 0.0678
+2026/03/11 22:21:18 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:21:36 - mmengine - INFO - Epoch(train)  [39][ 50/112]  lr: 5.0000e-03  eta: 0:54:42  time: 0.3549  data_time: 0.0467  memory: 6379  loss: 0.9127  loss_mask: 0.8463  loss_cls: 0.0664
+2026/03/11 22:21:53 - mmengine - INFO - Epoch(train)  [39][100/112]  lr: 5.0000e-03  eta: 0:54:23  time: 0.3519  data_time: 0.0355  memory: 6379  loss: 0.9552  loss_mask: 0.8865  loss_cls: 0.0687
+2026/03/11 22:21:58 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:22:16 - mmengine - INFO - Epoch(train)  [40][ 50/112]  lr: 5.0000e-03  eta: 0:54:02  time: 0.3765  data_time: 0.0508  memory: 6379  loss: 0.8759  loss_mask: 0.8077  loss_cls: 0.0682
+2026/03/11 22:22:34 - mmengine - INFO - Epoch(train)  [40][100/112]  lr: 5.0000e-03  eta: 0:53:44  time: 0.3544  data_time: 0.0374  memory: 6379  loss: 0.8659  loss_mask: 0.8027  loss_cls: 0.0632
+2026/03/11 22:22:39 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:22:39 - mmengine - INFO - Saving checkpoint at 40 epochs
+2026/03/11 22:22:57 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:22:58 - mmengine - INFO - segm_mAP_copypaste: 0.441 0.708 0.467 -1.000 0.198 0.549
+2026/03/11 22:22:58 - mmengine - INFO - Epoch(val) [40][13/13]    coco/segm_mAP: 0.4410  coco/segm_mAP_50: 0.7080  coco/segm_mAP_75: 0.4670  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.1980  coco/segm_mAP_l: 0.5490  data_time: 0.2138  time: 0.5924
+2026/03/11 22:23:17 - mmengine - INFO - Epoch(train)  [41][ 50/112]  lr: 5.0000e-03  eta: 0:53:24  time: 0.3714  data_time: 0.0385  memory: 6380  loss: 0.8485  loss_mask: 0.7791  loss_cls: 0.0694
+2026/03/11 22:23:34 - mmengine - INFO - Epoch(train)  [41][100/112]  lr: 5.0000e-03  eta: 0:53:05  time: 0.3520  data_time: 0.0397  memory: 6379  loss: 0.8603  loss_mask: 0.7920  loss_cls: 0.0682
+2026/03/11 22:23:38 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:23:56 - mmengine - INFO - Epoch(train)  [42][ 50/112]  lr: 5.0000e-03  eta: 0:52:42  time: 0.3573  data_time: 0.0489  memory: 6379  loss: 0.7869  loss_mask: 0.7245  loss_cls: 0.0625
+2026/03/11 22:24:15 - mmengine - INFO - Epoch(train)  [42][100/112]  lr: 5.0000e-03  eta: 0:52:25  time: 0.3751  data_time: 0.0476  memory: 6379  loss: 0.8791  loss_mask: 0.8112  loss_cls: 0.0679
+2026/03/11 22:24:19 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:24:38 - mmengine - INFO - Epoch(train)  [43][ 50/112]  lr: 5.0000e-03  eta: 0:52:05  time: 0.3900  data_time: 0.0436  memory: 6379  loss: 0.8336  loss_mask: 0.7674  loss_cls: 0.0662
+2026/03/11 22:24:56 - mmengine - INFO - Epoch(train)  [43][100/112]  lr: 5.0000e-03  eta: 0:51:46  time: 0.3524  data_time: 0.0422  memory: 6379  loss: 0.7900  loss_mask: 0.7256  loss_cls: 0.0644
+2026/03/11 22:25:00 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:25:19 - mmengine - INFO - Epoch(train)  [44][ 50/112]  lr: 5.0000e-03  eta: 0:51:26  time: 0.3844  data_time: 0.0401  memory: 6379  loss: 0.8293  loss_mask: 0.7558  loss_cls: 0.0735
+2026/03/11 22:25:37 - mmengine - INFO - Epoch(train)  [44][100/112]  lr: 5.0000e-03  eta: 0:51:07  time: 0.3515  data_time: 0.0468  memory: 6379  loss: 0.7716  loss_mask: 0.7068  loss_cls: 0.0648
+2026/03/11 22:25:40 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:25:58 - mmengine - INFO - Epoch(train)  [45][ 50/112]  lr: 5.0000e-03  eta: 0:50:43  time: 0.3561  data_time: 0.0575  memory: 6379  loss: 0.7766  loss_mask: 0.7149  loss_cls: 0.0617
+2026/03/11 22:26:06 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:26:16 - mmengine - INFO - Epoch(train)  [45][100/112]  lr: 5.0000e-03  eta: 0:50:26  time: 0.3674  data_time: 0.0384  memory: 6379  loss: 0.7459  loss_mask: 0.6849  loss_cls: 0.0610
+2026/03/11 22:26:20 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:26:37 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:26:39 - mmengine - INFO - segm_mAP_copypaste: 0.459 0.711 0.494 -1.000 0.182 0.585
+2026/03/11 22:26:39 - mmengine - INFO - Epoch(val) [45][13/13]    coco/segm_mAP: 0.4590  coco/segm_mAP_50: 0.7110  coco/segm_mAP_75: 0.4940  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.1820  coco/segm_mAP_l: 0.5850  data_time: 0.2266  time: 0.6215
+2026/03/11 22:26:58 - mmengine - INFO - Epoch(train)  [46][ 50/112]  lr: 5.0000e-03  eta: 0:50:05  time: 0.3838  data_time: 0.0581  memory: 6379  loss: 0.7248  loss_mask: 0.6580  loss_cls: 0.0668
+2026/03/11 22:27:16 - mmengine - INFO - Epoch(train)  [46][100/112]  lr: 5.0000e-03  eta: 0:49:47  time: 0.3547  data_time: 0.0434  memory: 6379  loss: 0.6688  loss_mask: 0.6076  loss_cls: 0.0612
+2026/03/11 22:27:20 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:27:39 - mmengine - INFO - Epoch(train)  [47][ 50/112]  lr: 5.0000e-03  eta: 0:49:26  time: 0.3774  data_time: 0.0676  memory: 6379  loss: 0.7599  loss_mask: 0.6970  loss_cls: 0.0629
+2026/03/11 22:27:57 - mmengine - INFO - Epoch(train)  [47][100/112]  lr: 5.0000e-03  eta: 0:49:07  time: 0.3566  data_time: 0.0338  memory: 6379  loss: 0.6437  loss_mask: 0.5731  loss_cls: 0.0706
+2026/03/11 22:28:01 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:28:19 - mmengine - INFO - Epoch(train)  [48][ 50/112]  lr: 5.0000e-03  eta: 0:48:45  time: 0.3566  data_time: 0.0465  memory: 6379  loss: 0.6941  loss_mask: 0.6333  loss_cls: 0.0608
+2026/03/11 22:28:37 - mmengine - INFO - Epoch(train)  [48][100/112]  lr: 5.0000e-03  eta: 0:48:27  time: 0.3578  data_time: 0.0358  memory: 6379  loss: 0.6602  loss_mask: 0.5949  loss_cls: 0.0654
+2026/03/11 22:28:41 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:29:00 - mmengine - INFO - Epoch(train)  [49][ 50/112]  lr: 5.0000e-03  eta: 0:48:05  time: 0.3715  data_time: 0.0467  memory: 6379  loss: 0.6806  loss_mask: 0.6135  loss_cls: 0.0671
+2026/03/11 22:29:18 - mmengine - INFO - Epoch(train)  [49][100/112]  lr: 5.0000e-03  eta: 0:47:47  time: 0.3593  data_time: 0.0453  memory: 6379  loss: 0.6487  loss_mask: 0.5842  loss_cls: 0.0645
+2026/03/11 22:29:22 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:29:40 - mmengine - INFO - Epoch(train)  [50][ 50/112]  lr: 5.0000e-03  eta: 0:47:24  time: 0.3625  data_time: 0.0417  memory: 6379  loss: 0.6352  loss_mask: 0.5763  loss_cls: 0.0589
+2026/03/11 22:29:58 - mmengine - INFO - Epoch(train)  [50][100/112]  lr: 5.0000e-03  eta: 0:47:07  time: 0.3709  data_time: 0.0415  memory: 6379  loss: 0.6104  loss_mask: 0.5474  loss_cls: 0.0629
+2026/03/11 22:30:02 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:30:02 - mmengine - INFO - Saving checkpoint at 50 epochs
+2026/03/11 22:30:19 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:30:21 - mmengine - INFO - segm_mAP_copypaste: 0.540 0.779 0.591 -1.000 0.267 0.651
+2026/03/11 22:30:21 - mmengine - INFO - Epoch(val) [50][13/13]    coco/segm_mAP: 0.5400  coco/segm_mAP_50: 0.7790  coco/segm_mAP_75: 0.5910  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.2670  coco/segm_mAP_l: 0.6510  data_time: 0.1912  time: 0.5518
+2026/03/11 22:30:38 - mmengine - INFO - Epoch(train)  [51][ 50/112]  lr: 5.0000e-03  eta: 0:46:43  time: 0.3479  data_time: 0.0489  memory: 6379  loss: 0.6778  loss_mask: 0.6132  loss_cls: 0.0647
+2026/03/11 22:30:56 - mmengine - INFO - Epoch(train)  [51][100/112]  lr: 5.0000e-03  eta: 0:46:25  time: 0.3562  data_time: 0.0495  memory: 6379  loss: 0.6567  loss_mask: 0.5940  loss_cls: 0.0627
+2026/03/11 22:31:00 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:31:18 - mmengine - INFO - Epoch(train)  [52][ 50/112]  lr: 5.0000e-03  eta: 0:46:02  time: 0.3589  data_time: 0.0535  memory: 6379  loss: 0.6084  loss_mask: 0.5476  loss_cls: 0.0609
+2026/03/11 22:31:36 - mmengine - INFO - Epoch(train)  [52][100/112]  lr: 5.0000e-03  eta: 0:45:44  time: 0.3571  data_time: 0.0425  memory: 6379  loss: 0.5541  loss_mask: 0.4959  loss_cls: 0.0582
+2026/03/11 22:31:40 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:31:59 - mmengine - INFO - Epoch(train)  [53][ 50/112]  lr: 5.0000e-03  eta: 0:45:22  time: 0.3776  data_time: 0.0694  memory: 6379  loss: 0.5911  loss_mask: 0.5307  loss_cls: 0.0605
+2026/03/11 22:32:16 - mmengine - INFO - Epoch(train)  [53][100/112]  lr: 5.0000e-03  eta: 0:45:03  time: 0.3474  data_time: 0.0317  memory: 6379  loss: 0.5740  loss_mask: 0.5085  loss_cls: 0.0656
+2026/03/11 22:32:21 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:32:39 - mmengine - INFO - Epoch(train)  [54][ 50/112]  lr: 5.0000e-03  eta: 0:44:42  time: 0.3661  data_time: 0.0644  memory: 6379  loss: 0.5622  loss_mask: 0.5037  loss_cls: 0.0585
+2026/03/11 22:32:44 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:32:57 - mmengine - INFO - Epoch(train)  [54][100/112]  lr: 5.0000e-03  eta: 0:44:23  time: 0.3530  data_time: 0.0324  memory: 6379  loss: 0.5534  loss_mask: 0.4992  loss_cls: 0.0542
+2026/03/11 22:33:01 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:33:18 - mmengine - INFO - Epoch(train)  [55][ 50/112]  lr: 5.0000e-03  eta: 0:44:00  time: 0.3424  data_time: 0.0558  memory: 6379  loss: 0.5744  loss_mask: 0.5180  loss_cls: 0.0563
+2026/03/11 22:33:36 - mmengine - INFO - Epoch(train)  [55][100/112]  lr: 5.0000e-03  eta: 0:43:42  time: 0.3602  data_time: 0.0461  memory: 6379  loss: 0.6275  loss_mask: 0.5647  loss_cls: 0.0628
+2026/03/11 22:33:40 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:33:56 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:33:58 - mmengine - INFO - segm_mAP_copypaste: 0.529 0.769 0.582 -1.000 0.245 0.645
+2026/03/11 22:33:58 - mmengine - INFO - Epoch(val) [55][13/13]    coco/segm_mAP: 0.5290  coco/segm_mAP_50: 0.7690  coco/segm_mAP_75: 0.5820  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.2450  coco/segm_mAP_l: 0.6450  data_time: 0.1482  time: 0.5099
+2026/03/11 22:34:17 - mmengine - INFO - Epoch(train)  [56][ 50/112]  lr: 5.0000e-03  eta: 0:43:20  time: 0.3809  data_time: 0.0449  memory: 6379  loss: 0.5290  loss_mask: 0.4758  loss_cls: 0.0532
+2026/03/11 22:34:34 - mmengine - INFO - Epoch(train)  [56][100/112]  lr: 5.0000e-03  eta: 0:43:02  time: 0.3470  data_time: 0.0364  memory: 6379  loss: 0.5320  loss_mask: 0.4716  loss_cls: 0.0604
+2026/03/11 22:34:39 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:34:58 - mmengine - INFO - Epoch(train)  [57][ 50/112]  lr: 5.0000e-03  eta: 0:42:41  time: 0.3909  data_time: 0.0439  memory: 6379  loss: 0.5104  loss_mask: 0.4541  loss_cls: 0.0563
+2026/03/11 22:35:16 - mmengine - INFO - Epoch(train)  [57][100/112]  lr: 5.0000e-03  eta: 0:42:23  time: 0.3569  data_time: 0.0509  memory: 6379  loss: 0.5343  loss_mask: 0.4782  loss_cls: 0.0560
+2026/03/11 22:35:20 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:35:39 - mmengine - INFO - Epoch(train)  [58][ 50/112]  lr: 5.0000e-03  eta: 0:42:01  time: 0.3756  data_time: 0.0590  memory: 6379  loss: 0.5419  loss_mask: 0.4874  loss_cls: 0.0546
+2026/03/11 22:35:57 - mmengine - INFO - Epoch(train)  [58][100/112]  lr: 5.0000e-03  eta: 0:41:43  time: 0.3585  data_time: 0.0394  memory: 6379  loss: 0.5279  loss_mask: 0.4635  loss_cls: 0.0644
+2026/03/11 22:36:01 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:36:21 - mmengine - INFO - Epoch(train)  [59][ 50/112]  lr: 5.0000e-03  eta: 0:41:22  time: 0.3948  data_time: 0.0416  memory: 6379  loss: 0.4889  loss_mask: 0.4365  loss_cls: 0.0525
+2026/03/11 22:36:38 - mmengine - INFO - Epoch(train)  [59][100/112]  lr: 5.0000e-03  eta: 0:41:04  time: 0.3461  data_time: 0.0414  memory: 6379  loss: 0.4814  loss_mask: 0.4284  loss_cls: 0.0530
+2026/03/11 22:36:41 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:37:01 - mmengine - INFO - Epoch(train)  [60][ 50/112]  lr: 5.0000e-03  eta: 0:40:42  time: 0.3843  data_time: 0.0471  memory: 6379  loss: 0.4695  loss_mask: 0.4144  loss_cls: 0.0552
+2026/03/11 22:37:19 - mmengine - INFO - Epoch(train)  [60][100/112]  lr: 5.0000e-03  eta: 0:40:24  time: 0.3682  data_time: 0.0375  memory: 6379  loss: 0.4488  loss_mask: 0.3924  loss_cls: 0.0564
+2026/03/11 22:37:23 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:37:23 - mmengine - INFO - Saving checkpoint at 60 epochs
+2026/03/11 22:37:40 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:37:42 - mmengine - INFO - segm_mAP_copypaste: 0.576 0.806 0.635 -1.000 0.316 0.683
+2026/03/11 22:37:42 - mmengine - INFO - Epoch(val) [60][13/13]    coco/segm_mAP: 0.5760  coco/segm_mAP_50: 0.8060  coco/segm_mAP_75: 0.6350  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.3160  coco/segm_mAP_l: 0.6830  data_time: 0.1503  time: 0.5250
+2026/03/11 22:38:00 - mmengine - INFO - Epoch(train)  [61][ 50/112]  lr: 5.0000e-03  eta: 0:40:02  time: 0.3661  data_time: 0.0436  memory: 6380  loss: 0.4348  loss_mask: 0.3783  loss_cls: 0.0565
+2026/03/11 22:38:18 - mmengine - INFO - Epoch(train)  [61][100/112]  lr: 5.0000e-03  eta: 0:39:44  time: 0.3690  data_time: 0.0350  memory: 6379  loss: 0.4319  loss_mask: 0.3725  loss_cls: 0.0594
+2026/03/11 22:38:22 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:38:42 - mmengine - INFO - Epoch(train)  [62][ 50/112]  lr: 5.0000e-03  eta: 0:39:23  time: 0.3863  data_time: 0.0598  memory: 6380  loss: 0.4094  loss_mask: 0.3601  loss_cls: 0.0493
+2026/03/11 22:39:00 - mmengine - INFO - Epoch(train)  [62][100/112]  lr: 5.0000e-03  eta: 0:39:05  time: 0.3599  data_time: 0.0409  memory: 6379  loss: 0.4613  loss_mask: 0.4079  loss_cls: 0.0534
+2026/03/11 22:39:04 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:39:21 - mmengine - INFO - Epoch(train)  [63][ 50/112]  lr: 5.0000e-03  eta: 0:38:42  time: 0.3547  data_time: 0.0454  memory: 6379  loss: 0.4210  loss_mask: 0.3687  loss_cls: 0.0523
+2026/03/11 22:39:24 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:39:39 - mmengine - INFO - Epoch(train)  [63][100/112]  lr: 5.0000e-03  eta: 0:38:24  time: 0.3583  data_time: 0.0490  memory: 6379  loss: 0.4379  loss_mask: 0.3851  loss_cls: 0.0527
+2026/03/11 22:39:44 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:40:02 - mmengine - INFO - Epoch(train)  [64][ 50/112]  lr: 5.0000e-03  eta: 0:38:02  time: 0.3647  data_time: 0.0442  memory: 6379  loss: 0.4362  loss_mask: 0.3843  loss_cls: 0.0519
+2026/03/11 22:40:19 - mmengine - INFO - Epoch(train)  [64][100/112]  lr: 5.0000e-03  eta: 0:37:43  time: 0.3389  data_time: 0.0359  memory: 6379  loss: 0.4165  loss_mask: 0.3639  loss_cls: 0.0526
+2026/03/11 22:40:23 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:40:41 - mmengine - INFO - Epoch(train)  [65][ 50/112]  lr: 5.0000e-03  eta: 0:37:20  time: 0.3669  data_time: 0.0340  memory: 6379  loss: 0.4237  loss_mask: 0.3710  loss_cls: 0.0527
+2026/03/11 22:40:59 - mmengine - INFO - Epoch(train)  [65][100/112]  lr: 5.0000e-03  eta: 0:37:02  time: 0.3573  data_time: 0.0387  memory: 6379  loss: 0.4237  loss_mask: 0.3757  loss_cls: 0.0479
+2026/03/11 22:41:03 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:41:21 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:41:22 - mmengine - INFO - segm_mAP_copypaste: 0.584 0.813 0.647 -1.000 0.315 0.691
+2026/03/11 22:41:22 - mmengine - INFO - Epoch(val) [65][13/13]    coco/segm_mAP: 0.5840  coco/segm_mAP_50: 0.8130  coco/segm_mAP_75: 0.6470  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.3150  coco/segm_mAP_l: 0.6910  data_time: 0.1324  time: 0.4970
+2026/03/11 22:41:40 - mmengine - INFO - Epoch(train)  [66][ 50/112]  lr: 5.0000e-03  eta: 0:36:40  time: 0.3627  data_time: 0.0443  memory: 6379  loss: 0.4293  loss_mask: 0.3775  loss_cls: 0.0518
+2026/03/11 22:41:59 - mmengine - INFO - Epoch(train)  [66][100/112]  lr: 5.0000e-03  eta: 0:36:22  time: 0.3687  data_time: 0.0384  memory: 6379  loss: 0.3896  loss_mask: 0.3373  loss_cls: 0.0523
+2026/03/11 22:42:03 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:42:22 - mmengine - INFO - Epoch(train)  [67][ 50/112]  lr: 5.0000e-03  eta: 0:36:00  time: 0.3748  data_time: 0.0534  memory: 6379  loss: 0.4160  loss_mask: 0.3641  loss_cls: 0.0519
+2026/03/11 22:42:39 - mmengine - INFO - Epoch(train)  [67][100/112]  lr: 5.0000e-03  eta: 0:35:41  time: 0.3401  data_time: 0.0401  memory: 6379  loss: 0.3866  loss_mask: 0.3347  loss_cls: 0.0519
+2026/03/11 22:42:43 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:43:02 - mmengine - INFO - Epoch(train)  [68][ 50/112]  lr: 5.0000e-03  eta: 0:35:19  time: 0.3666  data_time: 0.0453  memory: 6379  loss: 0.4298  loss_mask: 0.3781  loss_cls: 0.0517
+2026/03/11 22:43:18 - mmengine - INFO - Epoch(train)  [68][100/112]  lr: 5.0000e-03  eta: 0:35:00  time: 0.3354  data_time: 0.0333  memory: 6379  loss: 0.3548  loss_mask: 0.3078  loss_cls: 0.0471
+2026/03/11 22:43:23 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:43:42 - mmengine - INFO - Epoch(train)  [69][ 50/112]  lr: 5.0000e-03  eta: 0:34:39  time: 0.3711  data_time: 0.0448  memory: 6379  loss: 0.3751  loss_mask: 0.3256  loss_cls: 0.0495
+2026/03/11 22:44:00 - mmengine - INFO - Epoch(train)  [69][100/112]  lr: 5.0000e-03  eta: 0:34:21  time: 0.3638  data_time: 0.0348  memory: 6380  loss: 0.3911  loss_mask: 0.3414  loss_cls: 0.0497
+2026/03/11 22:44:03 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:44:23 - mmengine - INFO - Epoch(train)  [70][ 50/112]  lr: 5.0000e-03  eta: 0:33:59  time: 0.3934  data_time: 0.0519  memory: 6379  loss: 0.3904  loss_mask: 0.3462  loss_cls: 0.0442
+2026/03/11 22:44:40 - mmengine - INFO - Epoch(train)  [70][100/112]  lr: 5.0000e-03  eta: 0:33:41  time: 0.3467  data_time: 0.0358  memory: 6379  loss: 0.3504  loss_mask: 0.2991  loss_cls: 0.0513
+2026/03/11 22:44:45 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:44:45 - mmengine - INFO - Saving checkpoint at 70 epochs
+2026/03/11 22:45:02 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:45:04 - mmengine - INFO - segm_mAP_copypaste: 0.618 0.823 0.698 -1.000 0.332 0.730
+2026/03/11 22:45:04 - mmengine - INFO - Epoch(val) [70][13/13]    coco/segm_mAP: 0.6180  coco/segm_mAP_50: 0.8230  coco/segm_mAP_75: 0.6980  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.3320  coco/segm_mAP_l: 0.7300  data_time: 0.2084  time: 0.5780
+2026/03/11 22:45:21 - mmengine - INFO - Epoch(train)  [71][ 50/112]  lr: 5.0000e-03  eta: 0:33:18  time: 0.3494  data_time: 0.0481  memory: 6379  loss: 0.3648  loss_mask: 0.3157  loss_cls: 0.0490
+2026/03/11 22:45:40 - mmengine - INFO - Epoch(train)  [71][100/112]  lr: 5.0000e-03  eta: 0:33:00  time: 0.3725  data_time: 0.0416  memory: 6379  loss: 0.3691  loss_mask: 0.3199  loss_cls: 0.0492
+2026/03/11 22:45:44 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:46:02 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:46:03 - mmengine - INFO - Epoch(train)  [72][ 50/112]  lr: 5.0000e-03  eta: 0:32:39  time: 0.3713  data_time: 0.0406  memory: 6379  loss: 0.3978  loss_mask: 0.3461  loss_cls: 0.0517
+2026/03/11 22:46:20 - mmengine - INFO - Epoch(train)  [72][100/112]  lr: 5.0000e-03  eta: 0:32:20  time: 0.3414  data_time: 0.0404  memory: 6379  loss: 0.3951  loss_mask: 0.3446  loss_cls: 0.0505
+2026/03/11 22:46:24 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:46:43 - mmengine - INFO - Epoch(train)  [73][ 50/112]  lr: 5.0000e-03  eta: 0:31:58  time: 0.3809  data_time: 0.0441  memory: 6379  loss: 0.3662  loss_mask: 0.3154  loss_cls: 0.0508
+2026/03/11 22:47:00 - mmengine - INFO - Epoch(train)  [73][100/112]  lr: 5.0000e-03  eta: 0:31:39  time: 0.3353  data_time: 0.0351  memory: 6379  loss: 0.3537  loss_mask: 0.3096  loss_cls: 0.0441
+2026/03/11 22:47:04 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:47:22 - mmengine - INFO - Epoch(train)  [74][ 50/112]  lr: 5.0000e-03  eta: 0:31:17  time: 0.3675  data_time: 0.0461  memory: 6379  loss: 0.3433  loss_mask: 0.2966  loss_cls: 0.0467
+2026/03/11 22:47:40 - mmengine - INFO - Epoch(train)  [74][100/112]  lr: 5.0000e-03  eta: 0:30:59  time: 0.3570  data_time: 0.0356  memory: 6379  loss: 0.3435  loss_mask: 0.2946  loss_cls: 0.0490
+2026/03/11 22:47:44 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:48:03 - mmengine - INFO - Epoch(train)  [75][ 50/112]  lr: 5.0000e-03  eta: 0:30:37  time: 0.3773  data_time: 0.0442  memory: 6379  loss: 0.3233  loss_mask: 0.2794  loss_cls: 0.0439
+2026/03/11 22:48:20 - mmengine - INFO - Epoch(train)  [75][100/112]  lr: 5.0000e-03  eta: 0:30:18  time: 0.3466  data_time: 0.0343  memory: 6379  loss: 0.3375  loss_mask: 0.2911  loss_cls: 0.0464
+2026/03/11 22:48:24 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:48:42 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:48:43 - mmengine - INFO - segm_mAP_copypaste: 0.629 0.834 0.701 -1.000 0.342 0.747
+2026/03/11 22:48:43 - mmengine - INFO - Epoch(val) [75][13/13]    coco/segm_mAP: 0.6290  coco/segm_mAP_50: 0.8340  coco/segm_mAP_75: 0.7010  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.3420  coco/segm_mAP_l: 0.7470  data_time: 0.2208  time: 0.5845
+2026/03/11 22:49:01 - mmengine - INFO - Epoch(train)  [76][ 50/112]  lr: 5.0000e-03  eta: 0:29:56  time: 0.3637  data_time: 0.0463  memory: 6379  loss: 0.3171  loss_mask: 0.2745  loss_cls: 0.0427
+2026/03/11 22:49:19 - mmengine - INFO - Epoch(train)  [76][100/112]  lr: 5.0000e-03  eta: 0:29:38  time: 0.3522  data_time: 0.0414  memory: 6379  loss: 0.3538  loss_mask: 0.3071  loss_cls: 0.0466
+2026/03/11 22:49:23 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:49:43 - mmengine - INFO - Epoch(train)  [77][ 50/112]  lr: 5.0000e-03  eta: 0:29:16  time: 0.4095  data_time: 0.0459  memory: 6379  loss: 0.3030  loss_mask: 0.2587  loss_cls: 0.0443
+2026/03/11 22:50:01 - mmengine - INFO - Epoch(train)  [77][100/112]  lr: 5.0000e-03  eta: 0:28:58  time: 0.3556  data_time: 0.0450  memory: 6379  loss: 0.3253  loss_mask: 0.2796  loss_cls: 0.0456
+2026/03/11 22:50:05 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:50:23 - mmengine - INFO - Epoch(train)  [78][ 50/112]  lr: 5.0000e-03  eta: 0:28:36  time: 0.3616  data_time: 0.0419  memory: 6379  loss: 0.3397  loss_mask: 0.2940  loss_cls: 0.0457
+2026/03/11 22:50:41 - mmengine - INFO - Epoch(train)  [78][100/112]  lr: 5.0000e-03  eta: 0:28:18  time: 0.3609  data_time: 0.0391  memory: 6380  loss: 0.3170  loss_mask: 0.2742  loss_cls: 0.0428
+2026/03/11 22:50:45 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:51:03 - mmengine - INFO - Epoch(train)  [79][ 50/112]  lr: 5.0000e-03  eta: 0:27:55  time: 0.3643  data_time: 0.0406  memory: 6379  loss: 0.2957  loss_mask: 0.2472  loss_cls: 0.0485
+2026/03/11 22:51:21 - mmengine - INFO - Epoch(train)  [79][100/112]  lr: 5.0000e-03  eta: 0:27:37  time: 0.3465  data_time: 0.0353  memory: 6379  loss: 0.3168  loss_mask: 0.2732  loss_cls: 0.0436
+2026/03/11 22:51:25 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:51:44 - mmengine - INFO - Epoch(train)  [80][ 50/112]  lr: 5.0000e-03  eta: 0:27:15  time: 0.3819  data_time: 0.0687  memory: 6379  loss: 0.3481  loss_mask: 0.3025  loss_cls: 0.0456
+2026/03/11 22:52:02 - mmengine - INFO - Epoch(train)  [80][100/112]  lr: 5.0000e-03  eta: 0:26:57  time: 0.3560  data_time: 0.0406  memory: 6379  loss: 0.2990  loss_mask: 0.2598  loss_cls: 0.0392
+2026/03/11 22:52:06 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:52:06 - mmengine - INFO - Saving checkpoint at 80 epochs
+2026/03/11 22:52:23 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:52:26 - mmengine - INFO - segm_mAP_copypaste: 0.645 0.841 0.727 -1.000 0.378 0.751
+2026/03/11 22:52:26 - mmengine - INFO - Epoch(val) [80][13/13]    coco/segm_mAP: 0.6450  coco/segm_mAP_50: 0.8410  coco/segm_mAP_75: 0.7270  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.3780  coco/segm_mAP_l: 0.7510  data_time: 0.2159  time: 0.5644
+2026/03/11 22:52:41 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:52:45 - mmengine - INFO - Epoch(train)  [81][ 50/112]  lr: 5.0000e-04  eta: 0:26:35  time: 0.3812  data_time: 0.0482  memory: 6379  loss: 0.2810  loss_mask: 0.2401  loss_cls: 0.0409
+2026/03/11 22:53:02 - mmengine - INFO - Epoch(train)  [81][100/112]  lr: 5.0000e-04  eta: 0:26:17  time: 0.3452  data_time: 0.0435  memory: 6379  loss: 0.2933  loss_mask: 0.2554  loss_cls: 0.0379
+2026/03/11 22:53:06 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:53:25 - mmengine - INFO - Epoch(train)  [82][ 50/112]  lr: 5.0000e-04  eta: 0:25:55  time: 0.3678  data_time: 0.0569  memory: 6379  loss: 0.2672  loss_mask: 0.2358  loss_cls: 0.0314
+2026/03/11 22:53:43 - mmengine - INFO - Epoch(train)  [82][100/112]  lr: 5.0000e-04  eta: 0:25:37  time: 0.3646  data_time: 0.0448  memory: 6379  loss: 0.2873  loss_mask: 0.2486  loss_cls: 0.0387
+2026/03/11 22:53:47 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:54:05 - mmengine - INFO - Epoch(train)  [83][ 50/112]  lr: 5.0000e-04  eta: 0:25:14  time: 0.3600  data_time: 0.0367  memory: 6379  loss: 0.2707  loss_mask: 0.2376  loss_cls: 0.0330
+2026/03/11 22:54:23 - mmengine - INFO - Epoch(train)  [83][100/112]  lr: 5.0000e-04  eta: 0:24:56  time: 0.3535  data_time: 0.0443  memory: 6379  loss: 0.2840  loss_mask: 0.2497  loss_cls: 0.0343
+2026/03/11 22:54:27 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:54:44 - mmengine - INFO - Epoch(train)  [84][ 50/112]  lr: 5.0000e-04  eta: 0:24:33  time: 0.3442  data_time: 0.0381  memory: 6379  loss: 0.2549  loss_mask: 0.2237  loss_cls: 0.0313
+2026/03/11 22:55:02 - mmengine - INFO - Epoch(train)  [84][100/112]  lr: 5.0000e-04  eta: 0:24:15  time: 0.3612  data_time: 0.0411  memory: 6379  loss: 0.2787  loss_mask: 0.2409  loss_cls: 0.0377
+2026/03/11 22:55:07 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:55:26 - mmengine - INFO - Epoch(train)  [85][ 50/112]  lr: 5.0000e-04  eta: 0:23:54  time: 0.3816  data_time: 0.0413  memory: 6379  loss: 0.2673  loss_mask: 0.2317  loss_cls: 0.0356
+2026/03/11 22:55:43 - mmengine - INFO - Epoch(train)  [85][100/112]  lr: 5.0000e-04  eta: 0:23:35  time: 0.3542  data_time: 0.0401  memory: 6379  loss: 0.2584  loss_mask: 0.2261  loss_cls: 0.0324
+2026/03/11 22:55:47 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:56:05 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:56:06 - mmengine - INFO - segm_mAP_copypaste: 0.672 0.854 0.758 -1.000 0.406 0.775
+2026/03/11 22:56:06 - mmengine - INFO - Epoch(val) [85][13/13]    coco/segm_mAP: 0.6720  coco/segm_mAP_50: 0.8540  coco/segm_mAP_75: 0.7580  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4060  coco/segm_mAP_l: 0.7750  data_time: 0.2265  time: 0.5846
+2026/03/11 22:56:25 - mmengine - INFO - Epoch(train)  [86][ 50/112]  lr: 5.0000e-04  eta: 0:23:13  time: 0.3796  data_time: 0.0512  memory: 6379  loss: 0.2996  loss_mask: 0.2653  loss_cls: 0.0344
+2026/03/11 22:56:43 - mmengine - INFO - Epoch(train)  [86][100/112]  lr: 5.0000e-04  eta: 0:22:55  time: 0.3514  data_time: 0.0319  memory: 6379  loss: 0.2613  loss_mask: 0.2306  loss_cls: 0.0307
+2026/03/11 22:56:47 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:57:05 - mmengine - INFO - Epoch(train)  [87][ 50/112]  lr: 5.0000e-04  eta: 0:22:33  time: 0.3636  data_time: 0.0455  memory: 6379  loss: 0.2940  loss_mask: 0.2617  loss_cls: 0.0323
+2026/03/11 22:57:23 - mmengine - INFO - Epoch(train)  [87][100/112]  lr: 5.0000e-04  eta: 0:22:15  time: 0.3557  data_time: 0.0382  memory: 6379  loss: 0.2789  loss_mask: 0.2479  loss_cls: 0.0311
+2026/03/11 22:57:27 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:57:45 - mmengine - INFO - Epoch(train)  [88][ 50/112]  lr: 5.0000e-04  eta: 0:21:52  time: 0.3703  data_time: 0.0437  memory: 6379  loss: 0.2659  loss_mask: 0.2346  loss_cls: 0.0313
+2026/03/11 22:58:03 - mmengine - INFO - Epoch(train)  [88][100/112]  lr: 5.0000e-04  eta: 0:21:34  time: 0.3563  data_time: 0.0329  memory: 6379  loss: 0.2368  loss_mask: 0.2055  loss_cls: 0.0313
+2026/03/11 22:58:07 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:58:27 - mmengine - INFO - Epoch(train)  [89][ 50/112]  lr: 5.0000e-04  eta: 0:21:12  time: 0.3898  data_time: 0.0616  memory: 6379  loss: 0.2537  loss_mask: 0.2204  loss_cls: 0.0334
+2026/03/11 22:58:45 - mmengine - INFO - Epoch(train)  [89][100/112]  lr: 5.0000e-04  eta: 0:20:54  time: 0.3615  data_time: 0.0382  memory: 6379  loss: 0.2614  loss_mask: 0.2312  loss_cls: 0.0302
+2026/03/11 22:58:49 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:59:00 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:59:07 - mmengine - INFO - Epoch(train)  [90][ 50/112]  lr: 5.0000e-04  eta: 0:20:32  time: 0.3630  data_time: 0.0522  memory: 6379  loss: 0.2814  loss_mask: 0.2494  loss_cls: 0.0319
+2026/03/11 22:59:24 - mmengine - INFO - Epoch(train)  [90][100/112]  lr: 5.0000e-04  eta: 0:20:14  time: 0.3433  data_time: 0.0358  memory: 6379  loss: 0.2492  loss_mask: 0.2202  loss_cls: 0.0290
+2026/03/11 22:59:28 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 22:59:28 - mmengine - INFO - Saving checkpoint at 90 epochs
+2026/03/11 22:59:46 - mmengine - INFO - Evaluating segm...
+2026/03/11 22:59:47 - mmengine - INFO - segm_mAP_copypaste: 0.679 0.858 0.761 -1.000 0.413 0.782
+2026/03/11 22:59:47 - mmengine - INFO - Epoch(val) [90][13/13]    coco/segm_mAP: 0.6790  coco/segm_mAP_50: 0.8580  coco/segm_mAP_75: 0.7610  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4130  coco/segm_mAP_l: 0.7820  data_time: 0.2272  time: 0.5812
+2026/03/11 23:00:07 - mmengine - INFO - Epoch(train)  [91][ 50/112]  lr: 5.0000e-04  eta: 0:19:52  time: 0.3862  data_time: 0.0357  memory: 6379  loss: 0.2313  loss_mask: 0.2017  loss_cls: 0.0296
+2026/03/11 23:00:24 - mmengine - INFO - Epoch(train)  [91][100/112]  lr: 5.0000e-04  eta: 0:19:34  time: 0.3503  data_time: 0.0402  memory: 6379  loss: 0.2475  loss_mask: 0.2169  loss_cls: 0.0306
+2026/03/11 23:00:28 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:00:47 - mmengine - INFO - Epoch(train)  [92][ 50/112]  lr: 5.0000e-04  eta: 0:19:11  time: 0.3630  data_time: 0.0356  memory: 6379  loss: 0.2437  loss_mask: 0.2121  loss_cls: 0.0315
+2026/03/11 23:01:04 - mmengine - INFO - Epoch(train)  [92][100/112]  lr: 5.0000e-04  eta: 0:18:53  time: 0.3505  data_time: 0.0362  memory: 6379  loss: 0.2751  loss_mask: 0.2435  loss_cls: 0.0316
+2026/03/11 23:01:08 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:01:27 - mmengine - INFO - Epoch(train)  [93][ 50/112]  lr: 5.0000e-04  eta: 0:18:31  time: 0.3733  data_time: 0.0566  memory: 6379  loss: 0.2444  loss_mask: 0.2151  loss_cls: 0.0294
+2026/03/11 23:01:44 - mmengine - INFO - Epoch(train)  [93][100/112]  lr: 5.0000e-04  eta: 0:18:13  time: 0.3397  data_time: 0.0402  memory: 6379  loss: 0.2670  loss_mask: 0.2378  loss_cls: 0.0292
+2026/03/11 23:01:48 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:02:07 - mmengine - INFO - Epoch(train)  [94][ 50/112]  lr: 5.0000e-04  eta: 0:17:50  time: 0.3696  data_time: 0.0480  memory: 6379  loss: 0.2715  loss_mask: 0.2429  loss_cls: 0.0286
+2026/03/11 23:02:25 - mmengine - INFO - Epoch(train)  [94][100/112]  lr: 5.0000e-04  eta: 0:17:32  time: 0.3552  data_time: 0.0355  memory: 6380  loss: 0.2564  loss_mask: 0.2246  loss_cls: 0.0318
+2026/03/11 23:02:29 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:02:46 - mmengine - INFO - Epoch(train)  [95][ 50/112]  lr: 5.0000e-04  eta: 0:17:10  time: 0.3521  data_time: 0.0429  memory: 6379  loss: 0.2582  loss_mask: 0.2263  loss_cls: 0.0320
+2026/03/11 23:03:04 - mmengine - INFO - Epoch(train)  [95][100/112]  lr: 5.0000e-04  eta: 0:16:52  time: 0.3485  data_time: 0.0424  memory: 6379  loss: 0.2701  loss_mask: 0.2393  loss_cls: 0.0308
+2026/03/11 23:03:08 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:03:24 - mmengine - INFO - Evaluating segm...
+2026/03/11 23:03:25 - mmengine - INFO - segm_mAP_copypaste: 0.677 0.854 0.759 -1.000 0.413 0.779
+2026/03/11 23:03:25 - mmengine - INFO - Epoch(val) [95][13/13]    coco/segm_mAP: 0.6770  coco/segm_mAP_50: 0.8540  coco/segm_mAP_75: 0.7590  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4130  coco/segm_mAP_l: 0.7790  data_time: 0.1672  time: 0.5161
+2026/03/11 23:03:44 - mmengine - INFO - Epoch(train)  [96][ 50/112]  lr: 5.0000e-04  eta: 0:16:29  time: 0.3725  data_time: 0.0445  memory: 6379  loss: 0.2841  loss_mask: 0.2518  loss_cls: 0.0323
+2026/03/11 23:04:02 - mmengine - INFO - Epoch(train)  [96][100/112]  lr: 5.0000e-04  eta: 0:16:11  time: 0.3584  data_time: 0.0441  memory: 6379  loss: 0.2658  loss_mask: 0.2359  loss_cls: 0.0299
+2026/03/11 23:04:06 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:04:25 - mmengine - INFO - Epoch(train)  [97][ 50/112]  lr: 5.0000e-04  eta: 0:15:49  time: 0.3640  data_time: 0.0360  memory: 6379  loss: 0.2486  loss_mask: 0.2178  loss_cls: 0.0308
+2026/03/11 23:04:44 - mmengine - INFO - Epoch(train)  [97][100/112]  lr: 5.0000e-04  eta: 0:15:32  time: 0.3838  data_time: 0.0423  memory: 6379  loss: 0.2406  loss_mask: 0.2116  loss_cls: 0.0290
+2026/03/11 23:04:48 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:05:07 - mmengine - INFO - Epoch(train)  [98][ 50/112]  lr: 5.0000e-04  eta: 0:15:09  time: 0.3823  data_time: 0.0590  memory: 6379  loss: 0.2797  loss_mask: 0.2487  loss_cls: 0.0310
+2026/03/11 23:05:25 - mmengine - INFO - Epoch(train)  [98][100/112]  lr: 5.0000e-04  eta: 0:14:51  time: 0.3699  data_time: 0.0440  memory: 6379  loss: 0.2649  loss_mask: 0.2347  loss_cls: 0.0302
+2026/03/11 23:05:29 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:05:38 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:05:48 - mmengine - INFO - Epoch(train)  [99][ 50/112]  lr: 5.0000e-04  eta: 0:14:29  time: 0.3681  data_time: 0.0504  memory: 6379  loss: 0.2618  loss_mask: 0.2342  loss_cls: 0.0276
+2026/03/11 23:06:05 - mmengine - INFO - Epoch(train)  [99][100/112]  lr: 5.0000e-04  eta: 0:14:11  time: 0.3459  data_time: 0.0429  memory: 6379  loss: 0.2524  loss_mask: 0.2244  loss_cls: 0.0281
+2026/03/11 23:06:09 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:06:28 - mmengine - INFO - Epoch(train) [100][ 50/112]  lr: 5.0000e-04  eta: 0:13:49  time: 0.3786  data_time: 0.0572  memory: 6379  loss: 0.2660  loss_mask: 0.2369  loss_cls: 0.0291
+2026/03/11 23:06:45 - mmengine - INFO - Epoch(train) [100][100/112]  lr: 5.0000e-04  eta: 0:13:31  time: 0.3471  data_time: 0.0403  memory: 6379  loss: 0.2559  loss_mask: 0.2254  loss_cls: 0.0305
+2026/03/11 23:06:49 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:06:49 - mmengine - INFO - Saving checkpoint at 100 epochs
+2026/03/11 23:07:08 - mmengine - INFO - Evaluating segm...
+2026/03/11 23:07:10 - mmengine - INFO - segm_mAP_copypaste: 0.673 0.849 0.755 -1.000 0.413 0.776
+2026/03/11 23:07:10 - mmengine - INFO - Epoch(val) [100][13/13]    coco/segm_mAP: 0.6730  coco/segm_mAP_50: 0.8490  coco/segm_mAP_75: 0.7550  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4130  coco/segm_mAP_l: 0.7760  data_time: 0.2367  time: 0.5812
+2026/03/11 23:07:28 - mmengine - INFO - Epoch(train) [101][ 50/112]  lr: 5.0000e-04  eta: 0:13:08  time: 0.3655  data_time: 0.0418  memory: 6379  loss: 0.2704  loss_mask: 0.2400  loss_cls: 0.0304
+2026/03/11 23:07:46 - mmengine - INFO - Epoch(train) [101][100/112]  lr: 5.0000e-04  eta: 0:12:50  time: 0.3504  data_time: 0.0350  memory: 6379  loss: 0.2406  loss_mask: 0.2109  loss_cls: 0.0297
+2026/03/11 23:07:50 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:08:09 - mmengine - INFO - Epoch(train) [102][ 50/112]  lr: 5.0000e-04  eta: 0:12:28  time: 0.3848  data_time: 0.0517  memory: 6379  loss: 0.2646  loss_mask: 0.2381  loss_cls: 0.0265
+2026/03/11 23:08:27 - mmengine - INFO - Epoch(train) [102][100/112]  lr: 5.0000e-04  eta: 0:12:10  time: 0.3485  data_time: 0.0424  memory: 6379  loss: 0.2756  loss_mask: 0.2462  loss_cls: 0.0293
+2026/03/11 23:08:31 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:08:50 - mmengine - INFO - Epoch(train) [103][ 50/112]  lr: 5.0000e-04  eta: 0:11:48  time: 0.3765  data_time: 0.0435  memory: 6379  loss: 0.2875  loss_mask: 0.2557  loss_cls: 0.0318
+2026/03/11 23:09:07 - mmengine - INFO - Epoch(train) [103][100/112]  lr: 5.0000e-04  eta: 0:11:30  time: 0.3523  data_time: 0.0392  memory: 6379  loss: 0.2855  loss_mask: 0.2579  loss_cls: 0.0276
+2026/03/11 23:09:12 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:09:31 - mmengine - INFO - Epoch(train) [104][ 50/112]  lr: 5.0000e-04  eta: 0:11:07  time: 0.3796  data_time: 0.0421  memory: 6379  loss: 0.2746  loss_mask: 0.2458  loss_cls: 0.0288
+2026/03/11 23:09:48 - mmengine - INFO - Epoch(train) [104][100/112]  lr: 5.0000e-04  eta: 0:10:49  time: 0.3567  data_time: 0.0384  memory: 6379  loss: 0.2658  loss_mask: 0.2377  loss_cls: 0.0281
+2026/03/11 23:09:53 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:10:11 - mmengine - INFO - Epoch(train) [105][ 50/112]  lr: 5.0000e-04  eta: 0:10:27  time: 0.3670  data_time: 0.0417  memory: 6379  loss: 0.2408  loss_mask: 0.2131  loss_cls: 0.0276
+2026/03/11 23:10:29 - mmengine - INFO - Epoch(train) [105][100/112]  lr: 5.0000e-04  eta: 0:10:09  time: 0.3657  data_time: 0.0423  memory: 6379  loss: 0.2732  loss_mask: 0.2413  loss_cls: 0.0319
+2026/03/11 23:10:33 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:10:50 - mmengine - INFO - Evaluating segm...
+2026/03/11 23:10:52 - mmengine - INFO - segm_mAP_copypaste: 0.679 0.849 0.762 -1.000 0.417 0.781
+2026/03/11 23:10:52 - mmengine - INFO - Epoch(val) [105][13/13]    coco/segm_mAP: 0.6790  coco/segm_mAP_50: 0.8490  coco/segm_mAP_75: 0.7620  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4170  coco/segm_mAP_l: 0.7810  data_time: 0.2272  time: 0.5761
+2026/03/11 23:11:09 - mmengine - INFO - Epoch(train) [106][ 50/112]  lr: 5.0000e-04  eta: 0:09:47  time: 0.3439  data_time: 0.0415  memory: 6379  loss: 0.2505  loss_mask: 0.2207  loss_cls: 0.0299
+2026/03/11 23:11:26 - mmengine - INFO - Epoch(train) [106][100/112]  lr: 5.0000e-04  eta: 0:09:28  time: 0.3471  data_time: 0.0342  memory: 6379  loss: 0.2676  loss_mask: 0.2381  loss_cls: 0.0295
+2026/03/11 23:11:30 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:11:48 - mmengine - INFO - Epoch(train) [107][ 50/112]  lr: 5.0000e-04  eta: 0:09:06  time: 0.3528  data_time: 0.0516  memory: 6379  loss: 0.2654  loss_mask: 0.2371  loss_cls: 0.0283
+2026/03/11 23:12:06 - mmengine - INFO - Epoch(train) [107][100/112]  lr: 5.0000e-04  eta: 0:08:48  time: 0.3588  data_time: 0.0411  memory: 6379  loss: 0.2347  loss_mask: 0.2043  loss_cls: 0.0304
+2026/03/11 23:12:10 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:12:17 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:12:29 - mmengine - INFO - Epoch(train) [108][ 50/112]  lr: 5.0000e-04  eta: 0:08:26  time: 0.3919  data_time: 0.0382  memory: 6379  loss: 0.2422  loss_mask: 0.2130  loss_cls: 0.0292
+2026/03/11 23:12:47 - mmengine - INFO - Epoch(train) [108][100/112]  lr: 5.0000e-04  eta: 0:08:08  time: 0.3458  data_time: 0.0393  memory: 6379  loss: 0.2268  loss_mask: 0.2017  loss_cls: 0.0251
+2026/03/11 23:12:50 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:13:08 - mmengine - INFO - Epoch(train) [109][ 50/112]  lr: 5.0000e-04  eta: 0:07:45  time: 0.3583  data_time: 0.0410  memory: 6379  loss: 0.2593  loss_mask: 0.2316  loss_cls: 0.0277
+2026/03/11 23:13:26 - mmengine - INFO - Epoch(train) [109][100/112]  lr: 5.0000e-04  eta: 0:07:27  time: 0.3535  data_time: 0.0431  memory: 6379  loss: 0.2743  loss_mask: 0.2460  loss_cls: 0.0284
+2026/03/11 23:13:30 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:13:48 - mmengine - INFO - Epoch(train) [110][ 50/112]  lr: 5.0000e-04  eta: 0:07:05  time: 0.3644  data_time: 0.0420  memory: 6380  loss: 0.2362  loss_mask: 0.2062  loss_cls: 0.0300
+2026/03/11 23:14:06 - mmengine - INFO - Epoch(train) [110][100/112]  lr: 5.0000e-04  eta: 0:06:47  time: 0.3537  data_time: 0.0453  memory: 6379  loss: 0.2831  loss_mask: 0.2551  loss_cls: 0.0280
+2026/03/11 23:14:10 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:14:10 - mmengine - INFO - Saving checkpoint at 110 epochs
+2026/03/11 23:14:27 - mmengine - INFO - Evaluating segm...
+2026/03/11 23:14:28 - mmengine - INFO - segm_mAP_copypaste: 0.680 0.851 0.766 -1.000 0.420 0.782
+2026/03/11 23:14:28 - mmengine - INFO - Epoch(val) [110][13/13]    coco/segm_mAP: 0.6800  coco/segm_mAP_50: 0.8510  coco/segm_mAP_75: 0.7660  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4200  coco/segm_mAP_l: 0.7820  data_time: 0.1524  time: 0.5027
+2026/03/11 23:14:47 - mmengine - INFO - Epoch(train) [111][ 50/112]  lr: 5.0000e-05  eta: 0:06:25  time: 0.3790  data_time: 0.0506  memory: 6379  loss: 0.2807  loss_mask: 0.2520  loss_cls: 0.0287
+2026/03/11 23:15:04 - mmengine - INFO - Epoch(train) [111][100/112]  lr: 5.0000e-05  eta: 0:06:07  time: 0.3392  data_time: 0.0370  memory: 6379  loss: 0.2315  loss_mask: 0.2044  loss_cls: 0.0271
+2026/03/11 23:15:08 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:15:27 - mmengine - INFO - Epoch(train) [112][ 50/112]  lr: 5.0000e-05  eta: 0:05:44  time: 0.3821  data_time: 0.0573  memory: 6379  loss: 0.2708  loss_mask: 0.2420  loss_cls: 0.0288
+2026/03/11 23:15:45 - mmengine - INFO - Epoch(train) [112][100/112]  lr: 5.0000e-05  eta: 0:05:26  time: 0.3546  data_time: 0.0322  memory: 6379  loss: 0.2043  loss_mask: 0.1795  loss_cls: 0.0248
+2026/03/11 23:15:49 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:16:07 - mmengine - INFO - Epoch(train) [113][ 50/112]  lr: 5.0000e-05  eta: 0:05:04  time: 0.3677  data_time: 0.0405  memory: 6379  loss: 0.2387  loss_mask: 0.2124  loss_cls: 0.0263
+2026/03/11 23:16:24 - mmengine - INFO - Epoch(train) [113][100/112]  lr: 5.0000e-05  eta: 0:04:46  time: 0.3481  data_time: 0.0408  memory: 6379  loss: 0.2580  loss_mask: 0.2296  loss_cls: 0.0284
+2026/03/11 23:16:29 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:16:47 - mmengine - INFO - Epoch(train) [114][ 50/112]  lr: 5.0000e-05  eta: 0:04:24  time: 0.3635  data_time: 0.0581  memory: 6379  loss: 0.2780  loss_mask: 0.2494  loss_cls: 0.0287
+2026/03/11 23:17:04 - mmengine - INFO - Epoch(train) [114][100/112]  lr: 5.0000e-05  eta: 0:04:06  time: 0.3498  data_time: 0.0374  memory: 6379  loss: 0.2308  loss_mask: 0.2053  loss_cls: 0.0255
+2026/03/11 23:17:08 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:17:27 - mmengine - INFO - Epoch(train) [115][ 50/112]  lr: 5.0000e-05  eta: 0:03:43  time: 0.3649  data_time: 0.0437  memory: 6379  loss: 0.2685  loss_mask: 0.2413  loss_cls: 0.0272
+2026/03/11 23:17:44 - mmengine - INFO - Epoch(train) [115][100/112]  lr: 5.0000e-05  eta: 0:03:25  time: 0.3534  data_time: 0.0455  memory: 6379  loss: 0.2618  loss_mask: 0.2324  loss_cls: 0.0295
+2026/03/11 23:17:48 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:18:05 - mmengine - INFO - Evaluating segm...
+2026/03/11 23:18:06 - mmengine - INFO - segm_mAP_copypaste: 0.681 0.851 0.764 -1.000 0.422 0.782
+2026/03/11 23:18:06 - mmengine - INFO - Epoch(val) [115][13/13]    coco/segm_mAP: 0.6810  coco/segm_mAP_50: 0.8510  coco/segm_mAP_75: 0.7640  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4220  coco/segm_mAP_l: 0.7820  data_time: 0.2110  time: 0.5542
+2026/03/11 23:18:25 - mmengine - INFO - Epoch(train) [116][ 50/112]  lr: 5.0000e-05  eta: 0:03:03  time: 0.3632  data_time: 0.0365  memory: 6379  loss: 0.2378  loss_mask: 0.2099  loss_cls: 0.0279
+2026/03/11 23:18:42 - mmengine - INFO - Epoch(train) [116][100/112]  lr: 5.0000e-05  eta: 0:02:45  time: 0.3506  data_time: 0.0483  memory: 6379  loss: 0.2713  loss_mask: 0.2439  loss_cls: 0.0274
+2026/03/11 23:18:46 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:18:50 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:19:05 - mmengine - INFO - Epoch(train) [117][ 50/112]  lr: 5.0000e-05  eta: 0:02:23  time: 0.3847  data_time: 0.0422  memory: 6379  loss: 0.2525  loss_mask: 0.2263  loss_cls: 0.0262
+2026/03/11 23:19:23 - mmengine - INFO - Epoch(train) [117][100/112]  lr: 5.0000e-05  eta: 0:02:05  time: 0.3591  data_time: 0.0336  memory: 6379  loss: 0.2461  loss_mask: 0.2196  loss_cls: 0.0264
+2026/03/11 23:19:27 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:19:45 - mmengine - INFO - Epoch(train) [118][ 50/112]  lr: 5.0000e-05  eta: 0:01:42  time: 0.3539  data_time: 0.0392  memory: 6379  loss: 0.2348  loss_mask: 0.2099  loss_cls: 0.0249
+2026/03/11 23:20:03 - mmengine - INFO - Epoch(train) [118][100/112]  lr: 5.0000e-05  eta: 0:01:24  time: 0.3593  data_time: 0.0521  memory: 6380  loss: 0.2454  loss_mask: 0.2188  loss_cls: 0.0265
+2026/03/11 23:20:07 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:20:25 - mmengine - INFO - Epoch(train) [119][ 50/112]  lr: 5.0000e-05  eta: 0:01:02  time: 0.3657  data_time: 0.0452  memory: 6379  loss: 0.2866  loss_mask: 0.2576  loss_cls: 0.0290
+2026/03/11 23:20:42 - mmengine - INFO - Epoch(train) [119][100/112]  lr: 5.0000e-05  eta: 0:00:44  time: 0.3379  data_time: 0.0308  memory: 6379  loss: 0.2253  loss_mask: 0.1978  loss_cls: 0.0274
+2026/03/11 23:20:46 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:21:05 - mmengine - INFO - Epoch(train) [120][ 50/112]  lr: 5.0000e-05  eta: 0:00:22  time: 0.3680  data_time: 0.0491  memory: 6379  loss: 0.2512  loss_mask: 0.2235  loss_cls: 0.0278
+2026/03/11 23:21:22 - mmengine - INFO - Epoch(train) [120][100/112]  lr: 5.0000e-05  eta: 0:00:04  time: 0.3419  data_time: 0.0390  memory: 6379  loss: 0.2478  loss_mask: 0.2205  loss_cls: 0.0273
+2026/03/11 23:21:25 - mmengine - INFO - Exp name: solo_24e_20260311_215352
+2026/03/11 23:21:25 - mmengine - INFO - Saving checkpoint at 120 epochs
+2026/03/11 23:21:42 - mmengine - INFO - Evaluating segm...
+2026/03/11 23:21:44 - mmengine - INFO - segm_mAP_copypaste: 0.681 0.851 0.765 -1.000 0.422 0.782
+2026/03/11 23:21:44 - mmengine - INFO - Epoch(val) [120][13/13]    coco/segm_mAP: 0.6810  coco/segm_mAP_50: 0.8510  coco/segm_mAP_75: 0.7650  coco/segm_mAP_s: -1.0000  coco/segm_mAP_m: 0.4220  coco/segm_mAP_l: 0.7820  data_time: 0.2538  time: 0.5981

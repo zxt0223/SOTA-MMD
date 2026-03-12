@@ -1,34 +1,30 @@
 #!/bin/bash
-cd /group/chenjinming/SOTA_MMD
 
-# 创建存放运行日志的文件夹
-mkdir -p A-train-multigpu/work_dirs/logs_parallel
+export CUDA_VISIBLE_DEVICES="7,6,5,4"
+export NCCL_P2P_DISABLE="1"
+GPUS=4
+OUTPUT_BASE="/group/chenjinming/SOTA_MMD/A-output"
 
-echo "========================================"
-echo "🚀 启动三线并发 SOTA 训练任务..."
-echo "========================================"
+CONFIGS=(
+    "A-config/mask_rcnn_r50_24e.py"
+    "A-config/mask_rcnn_r18_24e.py"
+    "A-config/solo_24e.py"
+    "A-config/yolact_24e.py"
+)
 
-# 1. 训练 Vanilla Mask R-CNN (挂载在 GPU 1)
-export CUDA_VISIBLE_DEVICES=1
-nohup python tools/train.py A-config/mask_rcnn_vanilla_24e.py --work-dir A-train-multigpu/work_dirs/vanilla_mask_rcnn > A-train-multigpu/work_dirs/logs_parallel/mask_rcnn.log 2>&1 &
-PID1=$!
-echo "✅ [GPU 1] Vanilla Mask R-CNN 已启动 (PID: $PID1)"
-
-# 2. 训练 抢救版 SOLO (挂载在 GPU 2)
-export CUDA_VISIBLE_DEVICES=2
-nohup python tools/train.py A-config/solo_24e.py --work-dir A-train-multigpu/work_dirs/fixed_solo > A-train-multigpu/work_dirs/logs_parallel/solo.log 2>&1 &
-PID2=$!
-echo "✅ [GPU 2] SOLO 已启动 (PID: $PID2)"
-
-# 3. 训练 抢救版 YOLACT (挂载在 GPU 3)
-export CUDA_VISIBLE_DEVICES=3
-nohup python tools/train.py A-config/yolact_24e.py --work-dir A-train-multigpu/work_dirs/fixed_yolact > A-train-multigpu/work_dirs/logs_parallel/yolact.log 2>&1 &
-PID3=$!
-echo "✅ [GPU 3] YOLACT 已启动 (PID: $PID3)"
-
-echo "========================================"
-echo "🎉 恭喜！三个模型正在各自的显卡上疯狂运算！"
-echo "你可以随时输入以下命令之一来偷看训练进度："
-echo "tail -f A-train-multigpu/work_dirs/logs_parallel/mask_rcnn.log"
-echo "tail -f A-train-multigpu/work_dirs/logs_parallel/solo.log"
-echo "tail -f A-train-multigpu/work_dirs/logs_parallel/yolact.log"
+for CONFIG in "${CONFIGS[@]}"; do
+    MODEL_NAME=$(basename $CONFIG .py)
+    WORK_DIR="${OUTPUT_BASE}/${MODEL_NAME}"
+    mkdir -p ${WORK_DIR}
+    
+    echo "============================================="
+    echo "🚀 开始正式训练: ${MODEL_NAME}"
+    echo "============================================="
+    
+    # 核心：使用 tee 保存屏幕的所有终端输出
+    bash tools/dist_train.sh ${CONFIG} ${GPUS} --work-dir ${WORK_DIR} 2>&1 | tee ${WORK_DIR}/terminal_full_log.txt
+    
+    echo ">>> ${MODEL_NAME} 训练结束，准备切换下一个模型..."
+    sleep 5
+done
+echo "🎉 所有模型正式训练完毕！"

@@ -1,0 +1,66 @@
+# ========== 数据集/标注文件 ==========
+A-datas/
+datasets/
+data/
+# 图片/标注格式（通配所有子目录）
+**/*.jpg
+**/*.jpeg
+**/*.png
+**/*.json
+**/*.xml
+
+# ========== 训练产物（核心：忽略训练输出） ==========
+A-output/          # 你的训练日志/结果目录
+A-res/
+work_dirs/
+# 权重/模型文件（通配所有子目录）
+**/*.pth
+**/*.pt
+**/*.ckpt
+**/*.log           # 包含terminal_full_log.txt等日志文件
+**/*.pkl
+
+# ========== Python 缓存 ==========
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+
+# ========== 虚拟环境 ==========
+venv/
+env/
+.env
+
+# ========== 系统文件 ==========
+.DS_Store
+*.swp              # vim临时文件
+*.swo# 忽略数据集和标注
+A-datas/
+data/
+datasets/
+*.jpg
+*.jpeg
+*.png
+*.json
+*.xml
+
+# 忽略训练产生的结果、权重和日志
+A-res/
+work_dirs/
+*.pth
+*.pt
+*.ckpt
+*.log
+*.pkl
+
+# 忽略 Python 缓存文件
+__pycache__/
+*.pyc
+*.pyo
+
+# 忽略虚拟环境（如果有）
+venv/
+env/
+.env
+
+# 忽略系统隐藏文件
+.DS_Store
